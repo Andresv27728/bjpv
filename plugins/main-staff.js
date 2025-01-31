@@ -17,6 +17,16 @@ let handler = async (m, { conn, args }) => {
 
 🍃 *Colaboradores:*
 
+
+☘️ I'm Fz' (Tesis)
+🔖 *Rol:* Developer
+👾 *GitHub:* https://github.com/FzTeis
+
+ 👾 Deylin 
+🔖 *Rol:* Developer
+👾 *GitHub:* https://github.com/deylinqff
+
+
 🫧  ⁱᵃᵐ|𝔇ĕ𝐬†𝓻⊙γ𒆜 
 🔖 *Rol:* Developer 
 👾 *GitHub:*https://github.com/The-King-Destroy
