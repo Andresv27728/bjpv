@@ -148,7 +148,10 @@ href="https://dahs.hostingpy.shop/home"><img src="https://files.catbox.moe/lr92z
 ### **`🌟 Colaboradores`**
 <a href="https://github.com/robyito62/Mitsuri-Kanroji-MD/graphs/contributors">
 <img src="https://contrib.rocks/image?repo=robyito62/Mitsuri-Kanroji-MD" /> 
-</a>
+<a 
+href="https://github.com/deylinqff/>
+<img src="https://contrib.rocks/image?repo=https://github.com/deylinqff"
+
 
 
 ### **`👑 Propietarios`**
