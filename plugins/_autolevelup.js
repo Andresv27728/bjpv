@@ -20,7 +20,7 @@ handler.before = async function (m, { conn, usedPrefix }) {
         user.level++;
     
     if (before !== user.level) {
-        m.reply(`*✿ ¡ F E L I C I D A D E S ! ✿*\n\n✰ Nivel Anterior » *${before}*\n✰ Nivel Actual » *${user.level}*\n✦ Fecha » *${moment.tz('America/Bogota').format('DD/MM/YY')}*\n\n> *\`¡Has alcanzado un Nuevo Nivel!\`*`);
+        m.reply(`🍡𝑭𝑬𝑳𝑰𝑪𝑰𝑫𝑨𝑫𝑬𝑺🍨\n\nდ Nivel Anterior » *${before}*\n♡ Nivel Actual » *${user.level}*\n✦ Fecha » *${moment.tz('America/Bogota').format('DD/MM/YY')}*\n\n> *\`¡Has alcanzado un Nuevo Nivel!\`*`);
 
         let especial = 'coin';
         let especial2 = 'exp';
