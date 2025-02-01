@@ -3,12 +3,12 @@ import fetch from 'node-fetch'
 
 let handler = async (m, { conn, args }) => {
 try {
-let res = await fetch('https://api.github.com/repos/The-King-Destroy/Yuki_Suou-Bot')
+let res = await fetch('https://github.com/2277meliodas/Mitsuri-Kanroji-Bot-MD/tree/main')
 
 if (!res.ok) throw new Error('Error al obtener datos del repositorio')
 let json = await res.json()
 
-let txt = `*乂  S C R I P T  -  M A I N  乂*\n\n`
+let txt = `*✿  𝑺 𝑪 𝑹 𝑰 𝑷  -  𝑴 𝑨 𝑰 𝑵  ✿*\n\n`
 txt += `✩  *Nombre* : ${json.name}\n`
 txt += `✩  *Visitas* : ${json.watchers_count}\n`
 txt += `✩  *Peso* : ${(json.size / 1024).toFixed(2)} MB\n`
