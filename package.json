@@ -1,5 +1,5 @@
 {
-"name": "Mitsuri-Kanroji-MD",
+"name": "Mitsuri-Kanroji-Bot-MD",
 "version": "1.0.0",
 "description": "Super WhatsApp Bot Multi Device",
 "main": "index.js",
@@ -18,16 +18,16 @@
 "eslint": "eslint .",
 "eslintfix": "eslint --fix ."
 },
-"homepage": "https://github.com/robyito62/Mitsuri-Kanroji-MD",
+"homepage": "https://github.com/2277meliodas/Mitsuri-Kanroji-Bot-MD",
 "author": {
 "name": "Katsuki Bakugo"
 },
 "repository": {
 "type": "git",
-"url": "git+https://github.com/robyito62/Mitsuri-Kanroji-MD.git"
+"url": "git+https://github.com/2277meliodas/Mitsuri-Kanroji-Bot-MD.git"
 },
 "bugs": {
-"url": "https://github.com/robyito62/Mitsuri-Kanroji-MD/issues"
+"url": "https://github.com/2277meliodas/Mitsuri-Kanroji-Bot-MD/issues"
 },
 "license": "GPL-3.0-or-later",
 "dependencies": {
