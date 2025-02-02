@@ -9,7 +9,7 @@ const sanSessionPath = `./${sessions}/`;
 function cleanSubbotDirectories() {
   fs.readdir(directoryPath, (err, subbotDirs) => {
     if (err) {
-      return console.log('No se puede escanear el directorio: ' + err);
+      return console.log('💐No se puede escanear el directorio: ' + err);
     }
 
     subbotDirs.forEach((subbotDir) => {
@@ -24,7 +24,7 @@ function cleanSubbotDirectories() {
           if (file !== 'creds.json') {
             fs.unlink(`${subbotPath}${file}`, (err) => {
               if (err && err.code !== 'ENOENT') {
-                console.log(`Error al eliminar JadiBot: ${file}: ` + err);
+                console.log(`🍡Error al eliminar JadiBot: ${file}: ` + err);
               } else {
                 console.log(`JadiBot: ${file} eliminado.`);
               }
@@ -39,7 +39,7 @@ function cleanSubbotDirectories() {
 function cleanSessionFiles() {
   fs.readdir(sanSessionPath, (err, files) => {
     if (err) {
-      return console.log('No se puede escanear el directorio: ' + err);
+      return console.log('✨No se puede escanear el directorio: ' + err);
     }
 
     files.forEach((file) => {
