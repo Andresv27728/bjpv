@@ -1,7 +1,7 @@
 import moment from 'moment-timezone';
 
 let handler = async (m, { conn, args }) => {
-let usd = m.sender.split('@')[0]
+let uss = m.sender.split('@')[0]
 if (uss === '5212431268546' || uss === '584120515006') {
   let userId = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.sender;
   let user = global.db.data.users[userId];
@@ -138,7 +138,7 @@ Lista de comandos exclusiva para owners*
   await conn.sendMessage(m.chat, { 
       text: txt,
       contextInfo: {
-          mentionedJid: [m.sender, userId],
+          mentionedJid: conn.parseMention(txt),
           isForwarded: true,
           forwardedNewsletterMessageInfo: {
               newsletterJid: channelRD.id,
