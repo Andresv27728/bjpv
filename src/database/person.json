@@ -49,7 +49,7 @@
     "tipo": "soporte",
     "rareza": "raro",
     "img": [
-      "https://qu.ax/mmqzh.jpg"
+      "https://files.catbox.moe/kn9kls.jpg"
     ],
     "usser": null,
     "status": true,
@@ -64,9 +64,9 @@
     "tipo": "ataque",
     "rareza": "raro",
     "img": [
-      "https://qu.ax/EnKsS.jpg"
+      "https://files.catbox.moe/f85hoj.jpg"
     ],
-    "usser": "5212431268546",
+    "usser": null,
     "status": true,
     "ataques": {
       "Estocada precisa": 30,
@@ -79,7 +79,7 @@
     "tipo": "soporte",
     "rareza": "raro",
     "img": [
-      "https://qu.ax/HQShE.jpg"
+      "https://files.catbox.moe/snapx8.jpg"
     ],
     "usser": null,
     "status": false,
