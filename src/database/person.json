@@ -109,7 +109,7 @@
     "tipo": "ataque",
     "rareza": "épico",
     "img": [
-      "https://qu.ax/yJXON.jpg"
+      "https://files.catbox.moe/rvbzkf.jpg"
     ],
     "usser": null,
     "status": false,
@@ -135,20 +135,20 @@
     "valor": 100000,
     "poder": 100
   },
-  "Hitogami": {
+  "Kakashi Hatake": {
     "tipo": "misterioso",
     "rareza": "mítico",
     "img": [
-      "https://qu.ax/aVata.jpg"
+      "https://files.catbox.moe/ywtd9z.jpg"
     ],
     "usser": null,
     "status": false,
     "ataques": {
-      "Manipulación mental": 75,
-      "Ilusión eterna": 80
+      "Raikiri": 150,
+      "Taijutsu": 100
     },
     "valor": 98000,
-    "poder": 98
+    "poder": 400
   },
   "Ruijerd Superdia": {
     "tipo": "defensa",
