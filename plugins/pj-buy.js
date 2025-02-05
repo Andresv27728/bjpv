@@ -145,7 +145,7 @@ let handler = async (m, { conn, text }) => {
         }
     } catch (error) {
         console.error('Error al comprar personaje:', error)
-        return conn.reply(m.chat, '❌ Hubo un error al procesar la compra.', m)
+        return conn.reply(m.chat, '❌ Hubo un error al procesar la compra: ' + error, m)
     }
 }
 
