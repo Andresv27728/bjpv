@@ -210,23 +210,16 @@ let handler = async (m, { conn, args }) => {
 
 »  ⊹˚• \`Gacha-rpg\` •˚⊹
 
-🍬 Comandos de gacha para reclamar y colecciónar personajes.
-ᰔᩚ *#rollwaifu • #rw • #roll*
-> ✦ Waifu o husbando aleatorio.
-ᰔᩚ  *#claim • #c • #reclamar*
-> ✦ Reclamar un personaje.
-ᰔᩚ *#harem • #waifus • #claims*
-> ✦ Ver tus personajes reclamados.
-ᰔᩚ *#charimage • #waifuimage • #wimage* 
-> ✦ Ver una imagen aleatoria de un personaje.
-ᰔᩚ *#charinfo • #winfo • #waifuinfo*
-> ✦ Ver información de un personaje.
-ᰔᩚ *#givechar • #givewaifu • #regalar*
-> ✦ Regalar un personaje a otro usuario.
-ᰔᩚ *#vote • #votar*
-> ✦ Votar por un personaje para subir su valor.
-ᰔᩚ *#waifusboard • #waifustop • #topwaifus*
-> ✦ Ver el top de personajes con mayor valor.
+🍬 Comandos de gacha para comprar y vender personajes y mas.
+ᰔᩚ *#shop • #shop 2 • #shop 3*
+> ✦ Tienda de waifus .
+ᰔᩚ  *#comprar • #c -o*
+> ✦ compra un personaje de la tienda,y el otro es para la tienda de ventas.
+ᰔᩚ *#inv*
+> ✦ Ver tus personajes comprados.
+ᰔᩚ *#v* 
+> ✦ Vender un personaje .
+
 
 »  ⊹˚• \`Stickers\` •˚⊹
 
