@@ -209,5 +209,22 @@
     },
     "valor": 86000,
     "poder": 91
-  }
-}
+  },
+  "Naruto Uzumaki": {
+    "tipo": "Chakra",
+    "rareza": "legendario",
+    "img": [
+      "https://qu.ax/MzDAf.jpg"
+    ],
+    "usser": "5212431268546",
+    "status": true,
+    "ataques": {
+      "Estilo de agua": 50,
+      "Jutsu clones de sombra": 2000,
+      "Rasengan": 100
+    },
+    "valor": 85000,
+    "poder":590
+
+  }   
+
