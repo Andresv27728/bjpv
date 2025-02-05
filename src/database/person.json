@@ -154,7 +154,7 @@
     "tipo": "defensa",
     "rareza": "épico",
     "img": [
-      "https://qu.ax/PpUpJ.jpg"
+      "https://files.catbox.moe/gcb1y0.jpg"
     ],
     "usser": null,
     "status": false,
@@ -169,7 +169,7 @@
     "tipo": "misterioso",
     "rareza": "raro",
     "img": [
-      "https://qu.ax/wchzW.jpg"
+      "https://files.catbox.moe/oqob50.jpg"
     ],
     "usser": null,
     "status": false,
@@ -180,43 +180,43 @@
     "valor": 30000,
     "poder": 60
   },
-  "Badigadi": {
+  "Izuku Miyudora": {
     "tipo": "defensa",
     "rareza": "legendario",
     "img": [
-      "https://qu.ax/iSJDo.jpg"
+      "https://files.catbox.moe/zbfn2c.jpg"
     ],
     "usser": null,
     "status": false,
     "ataques": {
-      "Regeneración oscura": 70,
-      "Golpe titánico": 75
+      "latigo negro": 70,
+      "Cortina de humo": 75
     },
     "valor": 87000,
     "poder": 92
   },
-  "Atofe": {
+  "Tomioka Giyuu": {
     "tipo": "ataque",
     "rareza": "legendario",
     "img": [
-      "https://ejemplo.com"
+      "https://files.catbox.moe/kjqq3t.jpg"
     ],
     "usser": null,
     "status": false,
     "ataques": {
-      "Golpe infernal": 65,
-      "Ira demoníaca": 72
+      "Respiración del agua: primera postura": 100,
+      "Respiración del agua: decima postura": 200
     },
     "valor": 86000,
-    "poder": 91
+    "poder": 200
   },
   "Naruto Uzumaki": {
     "tipo": "ataque",
     "rareza": "legendario",
     "img": [
-      "https://qu.ax/MzDAf.jpg"
+      "https://files.catbox.moe/hxo1hg.jpg"
     ],
-    "usser": "5212431268546",
+    "usser": null,
     "status": true,
     "ataques": {
       "Estilo de agua": 50,
