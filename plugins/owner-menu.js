@@ -33,17 +33,17 @@ Lista de comandos exclusiva para owners*
 ᰔᩚ *setcmd*
 > ✦ permite cambiar la función de usar un comando con un sticker .
 ᰔᩚ *=> owner*
-> ✦ permite ver los owners permanentesben el archivo .
+> ✦ permite ver los owners permanentes en el archivo .
 ᰔᩚ *#status • #estado*
 > ✦ Ver el estado actual de la Bot.
 ᰔᩚ *#links • #grupos*
 > ✦ Ver los enlaces oficiales de la Bot.
 ᰔᩚ *#infobot • #infobot*
 > ✦ Ver la información completa de la Bot.
-ᰔᩚ *#sug • #newcommand*
-> ✦ Sugiere un nuevo comando.
-ᰔᩚ *#solicitud • #sugerencia*
-> ✦ Envia una sugerencia al canal de la Bot.
+ᰔᩚ *#rollwaifu • #rw*
+> ✦ Permite ver las waifus disponibles o ocupadas.
+ᰔᩚ *#winfo • #waifuinfo*
+> ✦ Permite ver la información de una waifu.
 ᰔᩚ *#p • #ping*
 > ✦ Ver la velocidad de respuesta del Bot.
 ᰔᩚ *#reporte • #reportar*
