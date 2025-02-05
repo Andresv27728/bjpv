@@ -90,11 +90,11 @@
     "valor": 26000,
     "poder": 52
   },
-  "Lilia": {
+  "Rias Greamory": {
     "tipo": "soporte",
-    "rareza": "común",
+    "rareza": "legendaria",
     "img": [
-      "https://qu.ax/PDBZw.jpg"
+      "https://files.catbox.moe/rabh7z.jpg"
     ],
     "usser": null,
     "status": true,
@@ -124,7 +124,7 @@
     "tipo": "magia",
     "rareza": "mítico",
     "img": [
-      "https://qu.ax/ERQnx.jpg"
+      "https://files.catbox.moe/e3zoct.jpg"
     ],
     "usser": null,
     "status": false,
