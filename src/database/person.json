@@ -88,22 +88,7 @@
       "Barrera mágica": 28
     },
     "valor": 26000,
-    "poder": 52
-  },
-  "Rias Greamory": {
-    "tipo": "soporte",
-    "rareza": "legendaria",
-    "img": [
-      "https://files.catbox.moe/rabh7z.jpg"
-    ],
-    "usser": null,
-    "status": false,
-    "ataques": {
-      "Primeros auxilios": 10,
-      "Refuerzo físico": 12
-    },
-    "valor": 50000,
-    "poder": 390
+    "poder": 50
   },
   "Ghislaine Dedoldia": {
     "tipo": "ataque",
@@ -217,7 +202,7 @@
       "https://files.catbox.moe/hxo1hg.jpg"
     ],
     "usser": null,
-    "status": true,
+    "status": false,
     "ataques": {
       "Estilo de agua": 50,
       "Jutsu clones de sombra": 2000,
@@ -226,5 +211,24 @@
     "valor": 85000,
     "poder":590
 
-  }   
+    },
+    "Rias Greamory": {
+       "tipo": "ataque",
+       "rareza": "legendaria",
+       "img": [
+         "https://files.catbox.moe/rabh7z.jpg"
+       ],
+       "usser": null,
+       "status": false,
+       "ataques": {
+         "Poder de destrucción": 300,
+         "Detencion del tiempo":  400,
+         "Manipulación de las sombras": 100,
+         "Darkness Queen Mode": 10000,
+         "Tercer ojo": 500,
+       },
+       "valor": 85000 
+       "poder": 10800
+    }
 }
+      
