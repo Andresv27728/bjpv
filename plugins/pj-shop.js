@@ -56,7 +56,7 @@ async function getInfo(pagina) {
 
     } catch (error) {
         console.error('Error al leer el archivo JSON:', error)
-        return 'Hubo un error al obtener la información.'
+        return 'Hubo un error al obtener la información: ' + error
     }
 }
 
@@ -98,6 +98,6 @@ async function getVenta(pagina) {
 
     } catch (error) {
         console.error('Error al leer el archivo de personajes a la venta:', error)
-        return 'Hubo un error al obtener la información de personajes a la venta.'
+        return 'Hubo un error al obtener la información de personajes a la venta: ' + error
     }
 }
