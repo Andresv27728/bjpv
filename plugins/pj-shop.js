@@ -8,7 +8,7 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
         let perso = await getVenta(args[1])
         msg += perso
     } else {
-        let perso = await getInfo(text)
+        let perso = await getInfo(text || 1)
         msg += perso
     }
 
