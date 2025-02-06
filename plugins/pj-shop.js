@@ -1,14 +1,14 @@
 import fs from 'fs/promises'
 
 let handler = async (m, { conn, text, usedPrefix, command }) => {
-    let pagina = parseInt(text.split(' ')[1]) || 1
+   // let pagina = parseInt(text.split(' ')[1]) || 1
     let msg = `¡Hola! @${m.sender.split('@')[0]}, a continuación te muestro una lista de los personajes.\nPara ver la siguiente página usa: ${usedPrefix + command} 2 - 3 - 4 - etc...\n\n`
 
     if (text.includes('-o') || text === 'o') {
-        let perso = await getVenta(pagina)
+        let perso = await getVenta(args[1])
         msg += perso
     } else {
-        let perso = await getInfo(pagina)
+        let perso = await getInfo(text)
         msg += perso
     }
 
