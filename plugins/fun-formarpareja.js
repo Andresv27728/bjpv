@@ -5,7 +5,7 @@ function handler(m, {groupMetadata}) {
   let b;
   do b = ps.getRandom();
   while (b === a);
-  m.reply(`*${toM(a)}, Deberías casarte 💍 con ${toM(b)}, hacen una bonita pareja 💓*`, null, {
+  m.reply(`*${toM(a)}, 𝐷𝑒𝑏𝑒𝑟𝑢𝑎𝑠 𝑐𝑎𝑠𝑎𝑟𝑡𝑒 💍 𝑐𝑜𝑛 ${toM(b)}, 𝐻𝑎𝑐𝑒𝑛 𝑢𝑛𝑎 ℎ𝑒𝑟𝑚𝑜𝑠𝑎 𝑝𝑎𝑟𝑒𝑗𝑎 🌷*`, null, {
     mentions: [a, b],
   });
 }
