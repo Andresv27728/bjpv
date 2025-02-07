@@ -16,7 +16,7 @@ const handler = async (m, {conn, args, usedPrefix, command}) => {
   } catch (e) {
     m.reply(e + '');
     text = args.join(' ');
-    if (!text) throw `*🍬 Por favor, ingresé una frase.`;
+    if (!text) throw `*🌷 𝑃𝑜𝑟 𝑓𝑎𝑣𝑜𝑡, 𝑖𝑛𝑔𝑟𝑒𝑠𝑒 𝑢𝑛𝑎 𝑓𝑟𝑎𝑠𝑒, 𝑝𝑎𝑟𝑎 ℎ𝑎𝑐𝑒𝑟 𝑡𝑢 𝑎𝑢𝑑𝑖𝑜.`;
     res = await tts(text, defaultLang);
   } finally {
     if (res) conn.sendFile(m.chat, res, 'tts.opus', null, m, true);
