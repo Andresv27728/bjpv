@@ -10,10 +10,10 @@ try {
 let q = m.quoted ? m.quoted : m
 let mime = (q.msg || q).mimetype || q.mediaType || ''
 if (/webp|image|video/g.test(mime)) {
-if (/video/g.test(mime)) if ((q.msg || q).seconds > 15) return m.reply(`${emoji2} ¡El video no puede durar más de 15 segundos!...`)
+if (/video/g.test(mime)) if ((q.msg || q).seconds > 15) return m.reply(`${emoji2} 🌷 𝐸𝑙 𝑉𝑖𝑑𝑒𝑜 𝑛𝑜 𝑝𝑢𝑒𝑑𝑒 𝑑𝑢𝑟𝑎𝑟 𝑚𝑎𝑠 𝑑𝑒 15 𝑆𝑒𝑔𝑢𝑛𝑑𝑜𝑠_°!...`)
 let img = await q.download?.()
 
-if (!img) return conn.reply(m.chat, `${emoji} Por favor, envia una imagen o video para hacer un sticker.`, m)
+if (!img) return conn.reply(m.chat, `${emoji} 🌷 𝑃𝑜𝑟 𝑓𝑎𝑣𝑜𝑟, 𝑒𝑛𝑣𝑖𝑎 𝑢𝑛𝑎 𝐼𝑚𝑎𝑔𝑒𝑛 𝑜 𝑉𝑖𝑑𝑒𝑜 𝑝𝑎𝑟𝑎 ℎ𝑎𝑐𝑒𝑟 𝑢𝑛 𝑠𝑡𝑖𝑘𝑒𝑟_°`, m)
 
 let out
 try {
