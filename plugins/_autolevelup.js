@@ -46,4 +46,4 @@ handler.before = async function (m, { conn, usedPrefix }) {
     }
 };
 
-export default handler;
+export default handler = false => false;
