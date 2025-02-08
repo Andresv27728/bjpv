@@ -26,21 +26,21 @@ let handler = async (m, { conn, args }) => {
     let perfil = await conn.profilePictureUrl(userId, 'image').catch(_ => 'https://files.catbox.moe/xr2m6u.jpg');
 
     let profileText = `
-「✿」 *Perfil* ◢@${userId.split('@')[0]}◤
+「✿」 *𝑃𝑒𝑟𝑓𝑖𝑙* 🌷@${userId.split('@')[0]}◤
 ${description}
 
-✦ Edad » ${user.age || 'Desconocida'}
-♛ *Cumpleaños* » ${cumpleanos}
-⚥ *Género* » ${genero}
-♡ *Casado con* » ${pareja}
+✦↛𝐸𝑑𝑎𝑑 » ${user.age || 'Desconocida'}
+♛↛*𝐶𝑢𝑚𝑝𝑙𝑒𝑎𝑛̃𝑜𝑠* » ${cumpleanos}
+⚥↛*𝐺𝑒𝑛𝑒𝑟𝑜* » ${genero}
+♡↛*𝐶𝑎𝑠𝑎𝑑𝑜 𝑐𝑜𝑛* » ${pareja}
 
-☆ *Experiencia* » ${exp.toLocaleString()}
-❖ *Nivel* » ${nivel}
-✎ Rango » ${role}
+☆↛*𝐸𝑥𝑝𝑒𝑟𝑖𝑒𝑛𝑥𝑖𝑎* » ${exp.toLocaleString()}
+❖↛*𝑁𝑖𝑣𝑒𝑙* » ${nivel}
+✎↛𝑅𝑎𝑛𝑔𝑜 » ${role}
 
-⛁ *Coins Cartera* » ${coins.toLocaleString()} ${moneda}
-⛃ *Coins Banco* » ${bankCoins.toLocaleString()} ${moneda}
-❁ *Premium* » ${user.premium ? '✅' : '❌'}
+⛁↛*𝐶𝑜𝑖𝑛𝑠 𝐶𝑎𝑟𝑡𝑒𝑟𝑎* » ${coins.toLocaleString()} ${moneda}
+⛃↛*𝐶𝑜𝑖𝑛𝑠 𝐵𝑎𝑛𝑐𝑜* » ${bankCoins.toLocaleString()} ${moneda}
+❁↛*𝑃𝑟𝑒𝑚𝑖𝑢𝑚* » ${user.premium ? '✅' : '✖️'}
   `.trim();
 
     await conn.sendMessage(m.chat, { 
