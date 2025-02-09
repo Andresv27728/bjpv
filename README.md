@@ -47,7 +47,7 @@
 
  * Canal Oficial  [`¡Click aquí!`](https://whatsapp.com/channel/0029Vb3aOo3GU3BLPdISnc2Y)
 * Grupo Oficial [`¡Click aquí!`]()
-* Comunidad Oficial [`¡Click aquí!`]()
+* Comunidad Oficial [`¡Click aquí!`](https://chat.whatsapp.com/EzYop3aYndpFhOerZOUy1A)
 </details>
 
 <details>
