@@ -10,14 +10,14 @@ let handler = async(m, { conn, text, usedPrefix, command }) => {
 
         let trio = `\t\t*TRIO VIOLENTOOOOO!*
         
-${name1} y ${name2} tienen un *${Math.floor(Math.random() * 100)}%* de compatibilidad como pareja.
-Mientras que ${name1} y ${name3} tienen un *${Math.floor(Math.random() * 100)}%* de compatibilidad.
-Y ${name2} y ${name3} tienen un *${Math.floor(Math.random() * 100)}%* de compatibilidad.
-¿Qué opinas de un trío? 😏`;
+${name1} 𝑦 ${name2} 𝑇𝑖𝑒𝑛𝑒𝑛 𝑢𝑛 *${Math.floor(Math.random() * 100)}%* 𝑑𝑒 𝑐𝑜𝑚𝑡𝑎𝑡𝑖𝑏𝑖𝑙𝑖𝑑𝑎𝑑 𝑐𝑜𝑚𝑜 𝑝𝑎𝑟𝑒𝑗𝑎_°.
+𝑀𝑖𝑒𝑛𝑡𝑟𝑎𝑠 𝑞𝑢𝑒 ${name1} 𝑦 ${name3} 𝑡𝑖𝑒𝑛𝑒𝑛 𝑢𝑛 *${Math.floor(Math.random() * 100)}%* 𝑑𝑒 𝑐𝑜𝑚𝑡𝑎𝑡𝑖𝑏𝑖𝑙𝑖𝑑𝑎𝑑 𝑐𝑜𝑚𝑜 𝑝𝑎𝑟𝑒𝑗𝑎_°.
+𝑇𝑎𝑚𝑏𝑖𝑒𝑛 ${name2} 𝑌 ${name3} 𝑇𝑖𝑒𝑛𝑒𝑛 𝑢𝑛 *${Math.floor(Math.random() * 100)}%* 𝑑𝑒 𝑐𝑜𝑚𝑡𝑎𝑡𝑖𝑏𝑖𝑙𝑖𝑑𝑎𝑑 𝑐𝑜𝑚𝑜 𝑝𝑎𝑟𝑒𝑗𝑎_°
+¿𝐻𝑀𝑀𝑀𝑀𝑀𝑀.... 𝑞𝑢𝑒 𝑜𝑝𝑖𝑛𝑎𝑛 𝑢𝑠𝑡𝑒𝑑𝑒𝑠 𝑑𝑒 𝑢𝑛 𝑡𝑟𝑖𝑜, 𝑑𝑜𝑛𝑑𝑒 𝑦 𝑝𝑎𝑟𝑎 𝑐𝑢𝑎𝑛𝑑𝑜? 😏`;
 
         conn.sendMessage(m.chat, { image: { url: pp }, caption: trio, mentions: [person1, person2, m.sender] }, { quoted: m });
     } else {
-        conn.reply(m.chat, '🍬 Menciona a 2 usuarios mas, para calcular la compatibilidad.', m);
+        conn.reply(m.chat, '🌷↛𝑀𝑒𝑛𝑐𝑖𝑜𝑛𝑎 𝑎 2 𝑢𝑠𝑢𝑎𝑟𝑖𝑜𝑠 𝑚𝑎𝑠, 𝑝𝑎𝑟𝑎 𝑐𝑎𝑙𝑐𝑢𝑙𝑎𝑟 𝑠𝑢 𝑐𝑜𝑚𝑡𝑎𝑏𝑖𝑙𝑖𝑑𝑎𝑑 𝑐𝑜𝑚𝑜 𝑡𝑟𝑖𝑜😏_°.', m);
     }
 }
 
