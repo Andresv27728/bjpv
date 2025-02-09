@@ -8,7 +8,7 @@ let handler = async(m, { conn, text, usedPrefix, command }) => {
         let name3 = conn.getName(m.sender);
         const pp = 'https://qu.ax/MuTrd.jpg';
 
-        let trio = `\t\t> 🌷~𝐸𝐿 𝑀𝐸𝐽𝑂𝑅 𝑇𝑅𝐼𝑂 𝐷𝐸𝐿 𝐺𝑅𝑈𝑃𝑂~🍡
+        let trio =`> 🌷~𝐸𝐿 𝑀𝐸𝐽𝑂𝑅 𝑇𝑅𝐼𝑂 𝐷𝐸𝐿 𝐺𝑅𝑈𝑃𝑂~🍡
         
 
 🌷↛ *${name1}* 𝑦 *${name2}* 𝑇𝑖𝑒𝑛𝑒𝑛 𝑢𝑛 *${Math.floor(Math.random() * 100)}%* 𝑑𝑒 𝑐𝑜𝑚𝑝𝑎𝑡𝑖𝑏𝑖𝑙𝑖𝑑𝑎𝑑 𝑐𝑜𝑚𝑜 𝑝𝑎𝑟𝑒𝑗𝑎_°.
