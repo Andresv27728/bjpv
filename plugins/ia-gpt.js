@@ -12,10 +12,16 @@ const handler = async (m, { conn, text }) => {
 
   try {
     const searchUrl = `https://www.google.com/search?tbm=isch&q=${encodeURIComponent(text)}`;
+    const res = await fetch(`https://www.googleapis.com/customsearch/v1?cx=YOUR_CX_KEY&key=YOUR_API_KEY&q=${encodeURIComponent(text)}&searchType=image`);
+    const json = await res.json();
+
+    if (!json.items || json.items.length === 0) throw new Error();
     
-    await conn.sendMessage(m.chat, {
-      text: `🔎 Aquí tienes las imágenes encontradas: [Clic aquí para ver en Google](${searchUrl})`,
-      contextInfo: { externalAdReply: { title: `Resultados de: ${text}`, body: 'Google Imágenes', sourceUrl: searchUrl } }
+    const imageUrl = json.items[0].link; // Toma la primera imagen de los resultados
+
+    await conn.sendMessage(m.chat, { 
+      image: { url: imageUrl },
+      caption: `🔎 *Resultados para:* ${text}\n🌍 [Ver más imágenes aquí](${searchUrl})`
     }, { quoted: m });
 
     m.react('✅');
