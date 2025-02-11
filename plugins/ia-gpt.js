@@ -13,7 +13,7 @@ const handler = async (m, { conn, text }) => {
     const res = await googleImage(text);
     if (!res || res.length === 0) throw new Error();
 
-    const images = res.slice(0, 4).map(img => img); // Obtiene hasta 4 imágenes
+    const images = res.slice(0, 1).map(img => img); // Obtiene hasta 4 imágenes
 
     const messages = images.map((img, index) => [
       `Imagen ${index + 1}`,
