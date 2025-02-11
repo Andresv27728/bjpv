@@ -11,7 +11,7 @@ const handler = async (m, { conn, text }) => {
   await conn.sendMessage(m.chat, { text: '*🤖 Pensando...*' }, { quoted: m });
 
   try {
-    const res = await fetch(`https://apis-starlights-team.koyeb.app/starlight/gemini?text=${text}`);
+    const res = await fetch(`https://api.itsrose.site/v2/gpt4?text=${encodeURIComponent(text)}`);
     if (!res.ok) throw new Error();
 
     const json = await res.json();
@@ -24,8 +24,8 @@ const handler = async (m, { conn, text }) => {
   }
 };
 
-handler.tags = ['aix'];
+handler.tags = ['ai'];
 handler.help = ['iachat'];
-handler.command = ['iax', 'aix', 'chatgpt', 'openai'];
+handler.command = ['ia', 'ai', 'chatgpt', 'openai'];
 
 export default handler;
