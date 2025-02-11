@@ -8,7 +8,7 @@ const handler = async (m, { conn, text }) => {
   }
 
   m.react('✨');
-  await conn.sendMessage(m.chat, { text: '*🌹 𝒄𝒓𝒆𝒂𝒏𝒅𝒐 𝒊𝒎𝒂𝒈𝒆𝒏 𝒅𝒆 ✎${text}*' }, { quoted: m });
+  await conn.sendMessage(m.chat, { text: '*🌹 𝒄𝒓𝒆𝒂𝒏𝒅𝒐 𝒊𝒎𝒂𝒈𝒆𝒏*' }, { quoted: m });
 
   try {
     const res = await fetch(`https://eliasar-yt-api.vercel.app/api/ai/text2img?prompt=${encodeURIComponent(text)}`);
