@@ -19,7 +19,7 @@ const handler = async (m, { conn, text }) => {
 
     await conn.sendMessage(m.chat, {
       image: { url: image },
-      caption: `🔍 Imagen encontrada para: ${text} \n> *${dev}*` `
+      caption: `🔍 Imagen encontrada para: ${text} \n> *${dev}*`
     }, { quoted: m });
 
   } catch (e) {
