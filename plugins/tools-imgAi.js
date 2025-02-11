@@ -3,12 +3,12 @@ import fetch from 'node-fetch';
 
 const handler = async (m, { conn, text }) => {
   if (!text) {
-    await conn.sendMessage(m.chat, { text: '*👑 Falta texto para generar imagen*' }, { quoted: m });
+    await conn.sendMessage(m.chat, { text: '*🌺 𝑭𝒂𝒍𝒕𝒂 𝒆𝒍 𝒕𝒆𝒙𝒕𝒐 𝒑𝒂𝒓𝒂 𝒈𝒆𝒏𝒆𝒓𝒂𝒓 𝒍𝒂 𝒊𝒎𝒂𝒈𝒆𝒏✎*' }, { quoted: m });
     return;
   }
 
   m.react('✨');
-  await conn.sendMessage(m.chat, { text: '*👑 Generando imagen...*' }, { quoted: m });
+  await conn.sendMessage(m.chat, { text: '*🌹 𝒄𝒓𝒆𝒂𝒏𝒅𝒐 𝒊𝒎𝒂𝒈𝒆𝒏...✎*' }, { quoted: m });
 
   try {
     const res = await fetch(`https://eliasar-yt-api.vercel.app/api/ai/text2img?prompt=${encodeURIComponent(text)}`);
