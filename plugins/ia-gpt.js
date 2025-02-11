@@ -19,10 +19,9 @@ const handler = async (m, { conn, text }) => {
       `Imagen ${index + 1}`,
       'Fuente: Google Imágenes',
       img,
-      [[]], [[]], [[]], [[]]
-    ]);
+      [[]]);
 
-    await conn.sendCarousel(m.chat, `🔍 Resultados para: ${text}`, '⪛✰ Google Imágenes ✰⪜', null, messages, m);
+    await conn.sendCarousel(m.chat, `🔍 Resultados para: ${text}`, ' Google Imágenes ', null, messages, m);
 
   } catch (e) {
     await conn.sendMessage(m.chat, { text: '*🚨 No se encontraron imágenes 😔*' }, { quoted: m });
