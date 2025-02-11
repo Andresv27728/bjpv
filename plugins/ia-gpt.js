@@ -11,7 +11,7 @@ const handler = async (m, { conn, text }) => {
   await conn.sendMessage(m.chat, { text: '*🤖 Pensando...*' }, { quoted: m });
 
   try {
-    const res = await fetch(`https://api.itsrose.site/v2/gpt4?text=${encodeURIComponent(text)}`);
+    const res = await fetch(`https://api.itsrose.site/v2/bard?text=${encodeURIComponent(text)}`);
     if (!res.ok) throw new Error();
 
     const json = await res.json();
@@ -26,6 +26,6 @@ const handler = async (m, { conn, text }) => {
 
 handler.tags = ['ai'];
 handler.help = ['iachat'];
-handler.command = ['iax', 'ai', 'chatgpt', 'openai'];
+handler.command = ['iax', 'ai', 'bard', 'googleai'];
 
 export default handler;
