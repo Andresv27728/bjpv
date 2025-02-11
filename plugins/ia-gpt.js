@@ -11,7 +11,7 @@ const handler = async (m, { conn, text }) => {
   await conn.sendMessage(m.chat, { text: '*🤖 Pensando...*' }, { quoted: m });
 
   try {
-    const res = await fetch(`https://eliasar-yt-api.vercel.app/api/ia/gpt4?text=${encodeURIComponent(text)}`);
+    const res = await fetch(`https://apis-starlights-team.koyeb.app/starlight/gemini?text=${text}`);
     if (!res.ok) throw new Error();
 
     const json = await res.json();
