@@ -13,15 +13,12 @@ const handler = async (m, { conn, text }) => {
     const res = await googleImage(text);
     if (!res || res.length === 0) throw new Error();
 
-    const images = res.slice(0, 1).map(img => img); // Obtiene hasta 4 imágenes
+    const image = res[0]; // Toma la primera imagen
 
-    const messages = images.map((img, index) => [
-      `Imagen ${index + 1}`,
-      'Fuente: Google Imágenes',
-      img,
-      [[]]);
-
-    await conn.sendCarousel(m.chat, `🔍 Resultados para: ${text}`, ' Google Imágenes ', null, messages, m);
+    await conn.sendMessage(m.chat, {
+      image: { url: image },
+      caption: `🔍 Imagen encontrada para: ${text}`
+    }, { quoted: m });
 
   } catch (e) {
     await conn.sendMessage(m.chat, { text: '*🚨 No se encontraron imágenes 😔*' }, { quoted: m });
