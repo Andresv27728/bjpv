@@ -8,11 +8,11 @@ let usuario = `@${m.sender.split`@`[0]}`
 let pp = await conn.profilePictureUrl(m.chat, 'image').catch(_ => null) || 'https://files.catbox.moe/xr2m6u.jpg'  
 
 let nombre, foto, edit, newlink, status, admingp, noadmingp
-nombre = `*${usuario}*\n💐 Ha cambiado el nombre del grupo.\n\n🍡 Ahora el grupo se llama:\n*<${m.messageStubParameters[0]}>*...`
-foto = `*${usuario}*\n🍡 Ha cambiado la imagen del grupo...`
-edit = `*${usuario}*\n🍨 Ha permitido que ${m.messageStubParameters[0] == 'on' ? 'solo admins' : 'todos'} puedan configurar el grupo...`
+nombre = `*${usuario}*\n🌷↛ 𝐻𝑎𝑠 𝑐𝑎𝑚𝑏𝑖𝑎𝑑𝑜 𝑒𝑙 𝑛𝑜𝑚𝑏𝑟𝑒 𝑑𝑒𝑙 𝑔𝑟𝑢𝑝𝑜_°.\n\n⚡↛ 𝐴ℎ𝑜𝑟𝑎 𝑒𝑙 𝑔𝑟𝑢𝑝𝑜 𝑡𝑖𝑒𝑛𝑒 𝑒𝑙 𝑛𝑜𝑚𝑏𝑟𝑒_°↛:\n*<${m.messageStubParameters[0]}>*...`
+foto = `*${usuario}*\n🍡↛ 𝐻𝑎𝑠 𝑐𝑎𝑚𝑏𝑖𝑎𝑑𝑜 𝑙𝑎 𝑖𝑚𝑎𝑔𝑒𝑛 𝑑𝑒𝑙 𝑔𝑟𝑢𝑝𝑜 𝑎_° :`
+edit = `*${usuario}*\n🍨↛ 𝐴ℎ𝑜𝑟𝑎 𝑠𝑜𝑙𝑜 ℎ𝑎𝑠 𝑝𝑒𝑟𝑚𝑖𝑡𝑖𝑑𝑜 𝑞𝑢𝑒_° ${m.messageStubParameters[0] == 'on' ? '𝑆𝑜𝑙𝑎𝑚𝑒𝑛𝑡𝑒 𝑙𝑜𝑠 𝑎𝑑𝑚𝑖𝑛𝑠' : '𝑇𝑜𝑑𝑜𝑠 𝑒𝑛 𝑔𝑒𝑛𝑒𝑟𝑎𝑙'} 𝑃𝑢𝑒𝑑𝑎𝑛 𝑐𝑜𝑛𝑓𝑖𝑔𝑢𝑟𝑎𝑟 𝑒𝑠𝑡𝑒 𝑔𝑟𝑢𝑝𝑜_°...`
 newlink = `🍡 El enlace del grupo ha sido restablecido por:\n*» ${usuario}*...`
-status = `🍨 El grupo ha sido ${m.messageStubParameters[0] == 'on' ? '*cerrado 🔒*' : '*abierto 🔓*'} Por *${usuario}*\n\n💐 Ahora ${m.messageStubParameters[0] == 'on' ? '*solo admins*' : '*todos*'} pueden enviar mensaje...`
+status = `🌷↛ 𝐸𝑙 𝑔𝑟𝑢𝑝𝑜 𝑒𝑠𝑡𝑎 𝑡𝑜𝑡𝑎𝑙𝑚𝑒𝑛𝑡𝑒↛ ${m.messageStubParameters[0] == 'on' ? '*𝐶𝑒𝑟𝑟𝑎𝑑𝑜 🔏*' : '*abierto 🔓*'} Por *${usuario}*\n\n💐 Ahora ${m.messageStubParameters[0] == 'on' ? '*solo admins*' : '*todos*'} pueden enviar mensaje...`
 admingp = `*@${m.messageStubParameters[0].split`@`[0]}* Ahora es admin del grupo 🍡\n\n🍨 Acción hecha por:\n*» ${usuario}*...`
 noadmingp =  `*@${m.messageStubParameters[0].split`@`[0]}* Deja de ser admin del grupo 💐\n\n🍨 Acción hecha por:\n*» ${usuario}*...`
 
