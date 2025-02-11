@@ -11,15 +11,14 @@ const handler = async (m, { conn, text }) => {
   await conn.sendMessage(m.chat, { text: `*🔍 Buscando imágenes de:* ${text}` }, { quoted: m });
 
   try {
-    const res = await fetch(`https://duckduckgo.com/i.js?q=${encodeURIComponent(text)}`);
-    if (!res.ok) throw new Error();
+    const searchUrl = `https://www.google.com/search?tbm=isch&q=${encodeURIComponent(text)}`;
+    
+    await conn.sendMessage(m.chat, {
+      text: `🔎 Aquí tienes las imágenes encontradas: [Clic aquí para ver en Google](${searchUrl})`,
+      contextInfo: { externalAdReply: { title: `Resultados de: ${text}`, body: 'Google Imágenes', sourceUrl: searchUrl } }
+    }, { quoted: m });
 
-    const json = await res.json();
-    if (!json.results || json.results.length === 0) throw new Error();
-
-    const imageUrl = json.results[0].image;
     m.react('✅');
-    await conn.sendMessage(m.chat, { image: { url: imageUrl } }, { quoted: m });
 
   } catch (e) {
     await conn.sendMessage(m.chat, { text: '*🚨 No se encontraron imágenes 😔*' }, { quoted: m });
