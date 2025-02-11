@@ -12,8 +12,8 @@ let handler = async (m, { conn, args }) => {
   let perfil = await conn.profilePictureUrl(userId, 'image').catch(_ => 'https://files.catbox.moe/xr2m6u.jpg');
 
   let txt = `
-һ᥆ᥣᥲ! s᥆ᥡ  *${botname}*  ٩(˘◡˘)۶
-ᥲ𝗊ᥙí 𝗍іᥱᥒᥱs ᥣᥲ ᥣіs𝗍ᥲ ძᥱ ᥴ᥆mᥲᥒძ᥆s
+🌷↛ 𝐻𝑜𝑙𝑖𝑖𝑖! 𝑌𝑜 𝑠𝑜𝑦 *${botname}*  ｡^‿^｡
+♡ 𝐴𝑞𝑢𝑖 𝑡𝑒 𝑑𝑒𝑗𝑜 𝑙𝑎 𝑙𝑖𝑠𝑡𝑎 𝑑𝑒 𝑚𝑖𝑠 𝑐𝑜𝑚𝑎𝑛𝑑𝑜𝑠
 ╭┈ ↷
 │☁️ Cliente » @${userId.split('@')[0]}
 │💸 ${moneda} » ${coins}
@@ -26,7 +26,7 @@ let handler = async (m, { conn, args }) => {
 
 »  ⊹˚• \`Info-Bot\` •˚⊹
 
-🍬 Comandos para ver estado e información de la Bot.
+🌷 Comandos para ver estado e información de la Bot.
 ᰔᩚ *#help • #menu*
 > ✦ Ver la lista de comandos de la Bot.
 ᰔᩚ *#uptime • #runtime*
