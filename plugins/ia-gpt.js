@@ -26,6 +26,6 @@ const handler = async (m, { conn, text }) => {
 
 handler.tags = ['ai'];
 handler.help = ['iachat'];
-handler.command = ['ia', 'ai', 'chatgpt', 'openai'];
+handler.command = ['iax', 'ai', 'chatgpt', 'openai'];
 
 export default handler;
