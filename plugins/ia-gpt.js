@@ -1,3 +1,5 @@
+//créditos a https://github.com/deylinqff
+
 import { googleImage } from '@bochilteam/scraper';
 
 const handler = async (m, { conn, text }) => {
