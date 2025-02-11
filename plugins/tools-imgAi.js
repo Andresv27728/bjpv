@@ -1,11 +1,11 @@
-// créditos a https://github.com/deylinqff
+// Código creado por Deyin
 import fetch from 'node-fetch';
 
 const handler = async (m, { conn, text }) => {
   if (!text) throw '*👑 Falta texto para generar imagen*';
   
   m.react('✨');
-  await conn.sendMessage(m.chat, { text: '*👑 Generando imagen*' }, { quoted: m });
+  await conn.sendMessage(m.chat, { text: '*👑 Generando imagen...*' }, { quoted: m });
 
   try {
     const res = await fetch(`https://eliasar-yt-api.vercel.app/api/ai/text2img?prompt=${encodeURIComponent(text)}`);
@@ -15,7 +15,7 @@ const handler = async (m, { conn, text }) => {
     m.react('🪄');
     await conn.sendMessage(m.chat, { image: buffer }, { quoted: m });
   } catch (e) {
-    throw '*⚠️ Error*';
+    throw '*🚨 Ha ocurrido un error 😔*';
   }
 };
 
