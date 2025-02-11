@@ -11,17 +11,13 @@ const handler = async (m, { conn, text }) => {
   await conn.sendMessage(m.chat, { text: `*🎨 Generando imagen de:* ${text}` }, { quoted: m });
 
   try {
-    const res = await fetch(`https://api.deepai.org/api/text2img`, {
-      method: 'POST',
-      headers: { 'api-key': 'TU_CLAVE_DEEPAI' }, 
-      body: new URLSearchParams({ text })
-    });
-
+    const res = await fetch(`https://lexica.art/api/v1/search?q=${encodeURIComponent(text)}`);
     if (!res.ok) throw new Error();
-    const json = await res.json();
-    const imageUrl = json.output_url || null;
 
-    if (!imageUrl) throw new Error();
+    const json = await res.json();
+    if (!json.images || json.images.length === 0) throw new Error();
+
+    const imageUrl = json.images[0].src;
     m.react('✅');
     await conn.sendMessage(m.chat, { image: { url: imageUrl } }, { quoted: m });
 
