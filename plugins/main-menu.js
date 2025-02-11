@@ -70,7 +70,9 @@ let handler = async (m, { conn, args }) => {
 
 »  ⊹˚• \`Buscadores\` •˚⊹
 
-🍬 Comandos para realizar búsquedas en distintas plataformas.
+🍬 Comandos para realizar búsquedas en distintas plataformas. 
+ᰔᩚ *#buscarimg*
+> ✦ Buscador imágenes en Google un solo resultado 
 ᰔᩚ *#tiktoksearch • #tiktoks*
 > ✦ Buscador de videos de tiktok.
 ᰔᩚ *#tweetposts*
