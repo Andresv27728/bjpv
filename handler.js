@@ -152,7 +152,7 @@ chat.sAutoresponder = ''
 if (!('welcome' in chat))
 chat.welcome = true
 if (!('autolevelup' in chat))
-chat.autolevelup = true
+chat.autolevelup = false
 if (!('autoAceptar' in chat))
 chat.autoAceptar = false
 if (!('autoRechazar' in chat))
@@ -164,7 +164,7 @@ chat.detect = true
 if (!('antiBot' in chat))
 chat.antiBot = false
 if (!('antiBot2' in chat))
-chat.antiBot2 = false
+chat.antiBot2 = true
 if (!('modoadmin' in chat))                     
 chat.modoadmin = false   
 if (!('antiLink' in chat))
@@ -191,15 +191,15 @@ chat.expired = 0
 global.db.data.chats[m.chat] = {
 isBanned: false,
 sAutoresponder: '',
-welcome: true,
-autolevelup: true,
+welcome: false,
+autolevelup: false,
 autoresponder: false,
 delete: false,
 autoAceptar: false,
 autoRechazar: false,
 detect: true,
 antiBot: false,
-antiBot2: false,
+antiBot2: true,
 modoadmin: false,
 antiLink: true,
 simi: false,
