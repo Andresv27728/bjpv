@@ -1,6 +1,6 @@
-/* Código hecho por Destroy
+//* Código hecho por Destroy
 
-/*adaptado por Deylin 
+//*adaptado por Deylin 
 
 import fs from 'fs';
 import path from 'path';
