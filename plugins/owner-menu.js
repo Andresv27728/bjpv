@@ -157,7 +157,7 @@ Lista de comandos exclusiva para owners*
       },
   }, { quoted: m });
 } else {
-conn.reply(m.chat, `🌷 No tienes permiso para usar este comando.`, m)
+conn.reply(m.chat, `🌷↛ 𝑁𝑜 𝑡𝑖𝑒𝑛𝑒𝑠 𝑒𝑙 𝑝𝑒𝑟𝑚𝑖𝑠𝑜 𝑝𝑎𝑟𝑎 𝑒𝑗𝑒𝑐𝑢𝑡𝑎𝑟 𝑒𝑠𝑡𝑒 𝑐𝑜𝑚𝑎𝑛𝑑𝑜_°`, m)
 }
 };
 
