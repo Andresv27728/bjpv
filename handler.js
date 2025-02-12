@@ -150,7 +150,7 @@ chat.isBanned = false
 if (!('sAutoresponder' in chat))
 chat.sAutoresponder = ''
 if (!('welcome' in chat))
-chat.welcome = true
+chat.welcome = false
 if (!('autolevelup' in chat))
 chat.autolevelup = false
 if (!('autoAceptar' in chat))
