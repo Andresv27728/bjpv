@@ -573,8 +573,8 @@ let user2 = m.pushName || 'Anónimo'
 let verifyaleatorio = ['registrar', 'reg', 'verificar', 'verify', 'register'].getRandom()
 
 const msg = {
-rowner: `🌷↛ 𝐸𝑠𝑡𝑒 𝑐𝑜𝑚𝑎𝑛𝑑𝑜: *${comando}* 𝑠𝑜𝑙𝑜 𝑠𝑒 𝑝𝑢𝑒𝑑𝑒 𝑒𝑗𝑒𝑐𝑢𝑡𝑎𝑟 𝑒𝑥𝑐𝑙𝑢𝑠𝑖𝑣𝑎𝑚𝑒𝑛𝑡𝑒 𝑝𝑎𝑟𝑎 𝑙𝑜𝑠 𝑐𝑟𝑒𝑎𝑑𝑜𝑟𝑒𝑠 𝑑𝑒 𝑙𝑎 𝑏𝑜𝑡_°`, 
-owner: `🌹 El comando *${comando}* solo puede ser usado por los desarrolladores del bot.`, 
+rowner: `🌷↛ 𝐸𝑠𝑡𝑒 𝑐𝑜𝑚𝑎𝑛𝑑𝑜: *${comando}* 𝑆𝑜𝑙𝑜 𝑠𝑒 𝑝𝑢𝑒𝑑𝑒 𝑒𝑗𝑒𝑐𝑢𝑡𝑎𝑟 𝑒𝑥𝑐𝑙𝑢𝑠𝑖𝑣𝑎𝑚𝑒𝑛𝑡𝑒 𝑝𝑎𝑟𝑎 𝑙𝑜𝑠 𝑐𝑟𝑒𝑎𝑑𝑜𝑟𝑒𝑠 𝑑𝑒 𝑙𝑎 𝑏𝑜𝑡_°`, 
+owner: `🌹↛ 𝐸𝑠𝑡𝑒 𝑐𝑜𝑚𝑎𝑛𝑑𝑜: *${comando}* 𝑆𝑜𝑙𝑜 𝑠𝑒 𝑝𝑢𝑒𝑑𝑒 𝑒𝑗𝑒𝑐𝑢𝑡𝑎𝑟 𝑒𝑥𝑐𝑙𝑢𝑠𝑖𝑣𝑎𝑚𝑒𝑛𝑡𝑤 𝑝𝑎𝑒𝑎 𝑙𝑖𝑠 𝑑𝑒𝑠𝑎𝑟𝑟𝑜𝑙𝑙𝑎𝑑𝑜𝑟𝑒𝑠 𝑑𝑒 𝑙𝑎 𝑏𝑜𝑡_°`, 
 mods: `🌹 El comando *${comando}* solo puede ser usado por los moderadores del bot.`, 
 premium: `🌹 El comando *${comando}* solo puede ser usado por los usuarios premium.`, 
 group: `🩷 El comando *${comando}* solo puede ser usado en grupos.`,
