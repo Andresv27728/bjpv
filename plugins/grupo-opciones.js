@@ -1,7 +1,7 @@
 const handler = async (m, { conn, participants, groupMetadata }) => {
   const { welcome, autolevelup, antiBot, antiBot2, autoAceptar, autoRechazar, autoresponder, modoadmin, reaction, nsfw, detect, antiLink, antiLink2, antitoxic, antiTraba, antifake } = global.db.data.chats[m.chat];
   
-  const text = `✨ *CONFIGURACIÓN DEL GRUPO* 
+  const text = `🌷↛ *𝐶𝑜𝑛𝑓𝑖𝑔𝑢𝑟𝑎𝑐𝑖𝑜𝑛 𝑑𝑒 𝑒𝑠𝑡𝑒 𝑔𝑟𝑢𝑝𝑜* ↚🍡
   
 ◈ Welcome: \`${welcome ? 'Activado' : 'Desactivado'}\`
 > ➨ *Descripción:* Activa o desactiva el mensaje de bienvenida en el grupo.
