@@ -50,6 +50,4 @@ handler.help = ['wimage <nombre del personaje>'];
 handler.tags = ['anime'];
 handler.command = ['charimage', 'cimage', 'wimage', 'waifuimage'];
 
-handler.admin = true;
-
 export default handler;
