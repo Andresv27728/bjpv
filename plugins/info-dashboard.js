@@ -21,9 +21,9 @@ let handler = async (m, { conn, command }) => {
         let rtotalreg = Object.values(global.db.data.users).filter(user => user.registered == true).length
 
         conn.reply(m.chat, `
-🗂️ *Tengo ${rtotalreg} Usuarios Registrados*
+🗂️ *𝑇𝑒𝑛𝑔𝑜 ${rtotalreg} 𝑈𝑠𝑢𝑎𝑟𝑖𝑜𝑠 𝑒𝑛 𝑚𝑖 𝑏𝑎𝑠𝑒 𝑑𝑒 𝑑𝑎𝑡𝑜𝑠_°*
 
-📂 *${totalreg} No Están Registrados*`, m, rcanal)
+📂 *${totalreg} 𝑁𝑜 𝑒𝑠𝑡𝑎𝑛 𝑟𝑒𝑔𝑖𝑠𝑡𝑟𝑎𝑑𝑜𝑠_°*`, m, rcanal)
     }
 
 }
