@@ -54,7 +54,7 @@ Lista de comandos exclusiva para owners*
 > ✦ Ver las estadísticas de velocidad de la Bot.
 ᰔᩚ *#views • #usuarios*
 > ✦ Ver la cantidad de usuarios registrados en el sistema.
-ᰔᩚ *#perra • #diomar
+ᰔᩚ *#perra • #diomar*
 > ✦ ver a tu perra favorita recien salida del horno, solo oferta limitada, corre
 ᰔᩚ **
 > ✦ .
