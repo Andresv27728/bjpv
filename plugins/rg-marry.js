@@ -45,6 +45,13 @@ let handler = async (message, { conn, command, usedPrefix, args }) => {
         console.error(error);
     }
 
+    switch (true) {
+        case isMarryCommand:
+            let senderData = global.db.users[message.sender];
+            if (senderData.age < 18) {
+                await message.reply('✧ Debes ser mayor de 18 años para casarte.');
+                return;
+            }
 
             let sender = message.sender;
             if (marriages[sender]) {
