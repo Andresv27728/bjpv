@@ -1,3 +1,148 @@
-// - OfcKing >> https://github.com/OfcKing
+import fs from 'fs';
+import path from 'path';
 
-const _0xa19aa5=_0x360b;(function(_0x433b09,_0x50cd39){const _0x45dc9f=_0x360b,_0x2a6250=_0x433b09();while(!![]){try{const _0x35ba0f=parseInt(_0x45dc9f(0x11f))/0x1+-parseInt(_0x45dc9f(0x120))/0x2*(-parseInt(_0x45dc9f(0x122))/0x3)+parseInt(_0x45dc9f(0x12e))/0x4*(parseInt(_0x45dc9f(0x124))/0x5)+parseInt(_0x45dc9f(0x131))/0x6*(-parseInt(_0x45dc9f(0x128))/0x7)+parseInt(_0x45dc9f(0x11e))/0x8*(-parseInt(_0x45dc9f(0x132))/0x9)+-parseInt(_0x45dc9f(0x13d))/0xa*(parseInt(_0x45dc9f(0x138))/0xb)+parseInt(_0x45dc9f(0x13c))/0xc*(parseInt(_0x45dc9f(0x11a))/0xd);if(_0x35ba0f===_0x50cd39)break;else _0x2a6250['push'](_0x2a6250['shift']());}catch(_0x96910){_0x2a6250['push'](_0x2a6250['shift']());}}}(_0x239d,0x2ce00));function _0x360b(_0x5c8e4c,_0x498977){const _0x239dbc=_0x239d();return _0x360b=function(_0x360be5,_0x1d5d0e){_0x360be5=_0x360be5-0x112;let _0x2dcbd1=_0x239dbc[_0x360be5];return _0x2dcbd1;},_0x360b(_0x5c8e4c,_0x498977);}import _0x3fb815 from'fs';import _0x28a38f from'path';const marriagesFile=_0x28a38f[_0xa19aa5(0x149)]('./src/database/casados.json');let proposals={};function loadMarriages(){const _0x41c41e=_0xa19aa5;if(_0x3fb815[_0x41c41e(0x133)](marriagesFile)){const _0x1fff70=_0x3fb815['readFileSync'](marriagesFile,_0x41c41e(0x125));return JSON[_0x41c41e(0x114)](_0x1fff70);}else return{};}function saveMarriages(_0x20aaf8){const _0x3a17a1=_0xa19aa5;_0x3fb815[_0x3a17a1(0x130)](marriagesFile,JSON['stringify'](_0x20aaf8,null,0x2));}let marriages=loadMarriages();let handler=async(_0x371482,{conn:_0x1ac0a5,command:_0x2ddd4f,usedPrefix:_0x58e259,args:_0x546c85})=>{const _0x38b401=_0xa19aa5;const _0x20f3d6=/^(marry)$/i[_0x38b401(0x14c)](_0x2ddd4f),_0x405aaa=/^(divorce)$/i['test'](_0x2ddd4f);async function _0x5bd077(_0x5612eb){const _0x2ebda8=_0x38b401;await _0x371482['reply']('✐\x20Ocurrió\x20un\x20error.'),console[_0x2ebda8(0x136)](_0x5612eb);}switch(!![]){case _0x20f3d6:let _0xd4ad70=_0x371482['sender'];if(marriages[_0xd4ad70]){await _0x1ac0a5[_0x38b401(0x113)](_0x371482[_0x38b401(0x11d)],'✧\x20Ya\x20estás\x20casado/a\x20con\x20*@'+marriages[_0xd4ad70]['split']('@')[0x0]+'*\x0a>\x20Puedes\x20divorciarte\x20con\x20el\x20comando:\x20*#divorce*',_0x371482,{'mentions':[marriages[_0xd4ad70]]});return;}if(!_0x371482[_0x38b401(0x127)]||_0x371482[_0x38b401(0x127)]['length']===0x0){await _0x1ac0a5['reply'](_0x371482[_0x38b401(0x11d)],_0x38b401(0x12c)+(_0x58e259+_0x2ddd4f)+'\x20@'+_0x1ac0a5['user'][_0x38b401(0x14a)]['split']('@')[0x0]+'*',_0x371482,{'mentions':[_0x1ac0a5[_0x38b401(0x148)][_0x38b401(0x14a)]]});return;}let _0x54b1f6=_0x371482[_0x38b401(0x127)][0x0];if(marriages[_0x54b1f6]){await _0x1ac0a5['reply'](_0x371482[_0x38b401(0x11d)],_0x38b401(0x117)+_0x54b1f6['split']('@')[0x0]+'\x20ya\x20está\x20casado/a\x20con:\x20*@'+marriages[_0x54b1f6][_0x38b401(0x147)]('@')[0x0]+_0x38b401(0x13b),_0x371482,{'mentions':[_0x54b1f6,marriages[_0x54b1f6]]});return;}if(_0xd4ad70===_0x54b1f6){await _0x371482[_0x38b401(0x113)](_0x38b401(0x135));return;}proposals[_0xd4ad70]=_0x54b1f6;await _0x1ac0a5[_0x38b401(0x113)](_0x371482['chat'],'♡\x20@'+_0xd4ad70['split']('@')[0x0]+',\x20@'+_0x54b1f6[_0x38b401(0x147)]('@')[0x0]+_0x38b401(0x137)+(_0x58e259+_0x2ddd4f)+_0x38b401(0x14d)+_0xd4ad70[_0x38b401(0x147)]('@')[0x0],_0x371482,{'mentions':[_0xd4ad70,_0x54b1f6]});break;case _0x405aaa:let _0x29621f=_0x371482[_0x38b401(0x126)];if(!marriages[_0x29621f]){await _0x371482[_0x38b401(0x113)](_0x38b401(0x11c));return;}let _0x1d18c0=marriages[_0x29621f];delete marriages[_0x29621f],delete marriages[_0x1d18c0],saveMarriages(marriages);await _0x1ac0a5[_0x38b401(0x113)](_0x371482[_0x38b401(0x11d)],_0x38b401(0x134)+_0x29621f[_0x38b401(0x147)]('@')[0x0]+'\x20y\x20@'+_0x1d18c0['split']('@')[0x0]+_0x38b401(0x12f),_0x371482,{'mentions':[_0x29621f,_0x1d18c0]});break;}};export default handler;
+const marriagesFile = path.resolve('./src/database/casados.json');
+let proposals = {};
+
+function loadMarriages() {
+    if (fs.existsSync(marriagesFile)) {
+        const data = fs.readFileSync(marriagesFile, 'utf-8');
+        return JSON.parse(data);
+    } else {
+        return {};
+    }
+}
+
+function saveMarriages(data) {
+    fs.writeFileSync(marriagesFile, JSON.stringify(data, null, 2));
+}
+
+let marriages = loadMarriages();
+
+function isYaemoriBotMD() {
+    try {
+        const packageJson = JSON.parse(fs.readFileSync('./package.json', 'utf-8'));
+        if (packageJson.name !== 'Mitsuri-Kanroji-Bot-MD') return false;
+        if (packageJson.repository.url !== 'git+https://github.com/2277meliodas/Mitsuri-Kanroji-Bot-MD.git') return false;
+        return true;
+    } catch (error) {
+        console.error('Error al leer package.json:', error);
+        return false;
+    }
+}
+
+let handler = async (message, { conn, command, usedPrefix, args }) => {
+    if (!isYaemoriBotMD()) {
+        await message.reply('✧ Comando no disponible por el momento.');
+        return;
+    }
+
+    const isMarryCommand = /^(marry)$/i.test(command);
+    const isDivorceCommand = /^(divorce)$/i.test(command);
+
+    async function handleError(error) {
+        await message.reply('✐ Ocurrió un error.');
+        console.error(error);
+    }
+
+
+            let sender = message.sender;
+            if (marriages[sender]) {
+                await conn.reply(
+                    message.chat,
+                    `✧ Ya estás casado/a con *@${marriages[sender].split('@')[0]}*\n> Puedes divorciarte con el comando: *#divorce*`,
+                    message,
+                    { mentions: [marriages[sender]] }
+                );
+                return;
+            }
+
+            if (!message.mentionedJid || message.mentionedJid.length === 0) {
+                await conn.reply(
+                    message.chat,
+                    `✧ Debes mencionar a alguien para aceptar o proponer matrimonio.\n> Ejemplo » *${usedPrefix + command} @usuario*`,
+                    message,
+                    { mentions: [conn.user.jid] }
+                );
+                return;
+            }
+
+            let mentioned = message.mentionedJid[0];
+            if (marriages[mentioned]) {
+                await conn.reply(
+                    message.chat,
+                    `✧ @${mentioned.split('@')[0]} ya está casado/a con *@${marriages[mentioned].split('@')[0]}*`,
+                    message,
+                    { mentions: [mentioned, marriages[mentioned]] }
+                );
+                return;
+            }
+
+            if (sender === mentioned) {
+                await message.reply('✧ ¡No puedes proponerte matrimonio a ti mismo!');
+                return;
+            }
+
+            if (proposals[mentioned] && proposals[mentioned] === sender) {
+                delete proposals[mentioned];
+                let senderName = conn.getName(sender);
+                let mentionedName = conn.getName(mentioned);
+
+                marriages[sender] = mentioned;
+                marriages[mentioned] = sender;
+                saveMarriages(marriages);
+
+                global.db.users[sender].partner = mentionedName;
+                global.db.users[mentioned].partner = senderName;
+
+                await conn.reply(
+                    message.chat,
+                    `✩.･:｡≻───── ⋆♡⋆ ─────.•:｡✩\n¡Se han Casado! ฅ^•ﻌ•^ฅ*:･ﾟ✧\n\n*•.¸♡ Esposo/a @${sender.split('@')[0]} ♡¸.•*\n*•.¸♡ Esposo/a @${mentioned.split('@')[0]}*`,
+                    message,
+                    { mentions: [sender, mentioned] }
+                );
+            } else {
+                let proposedTo = message.mentionedJid && message.mentionedJid[0] ? message.mentionedJid[0] : conn.user.jid;
+                proposals[sender] = mentioned;
+
+                await conn.reply(
+                    message.chat,
+                    `♡ @${proposedTo.split('@')[0]}, @${sender.split('@')[0]} te ha propuesto matrimonio, ¿aceptas?\n> ✐ Aceptar » *${usedPrefix + command}* @${sender.split('@')[0]}`,
+                    message,
+                    { mentions: [sender, proposedTo] }
+                );
+            }
+            break;
+
+        case isDivorceCommand:
+            let divorcingUser = message.sender;
+            if (!marriages[divorcingUser]) {
+                await message.reply('✧ Tú no estás casado/a con nadie.');
+                return;
+            }
+
+            let spouse = marriages[divorcingUser];
+            delete marriages[divorcingUser];
+            delete marriages[spouse];
+            saveMarriages(marriages);
+
+            global.db.users[divorcingUser].partner = '';
+            global.db.users[spouse].partner = '';
+
+            await conn.reply(
+                message.chat,
+                `✧ @${divorcingUser.split('@')[0]} y @${spouse.split('@')[0]} se han divorciado.`,
+                message,
+                { mentions: [divorcingUser, spouse] }
+            );
+            break;
+    }
+};
+
+handler.help = ['marry', 'divorce'];
+handler.tags = ['marry', 'divorce'];
+handler.command = ['marry', 'divorce', 'divorciarse'];
+handler.group = true;
+handler.register = true;
+
+export default handler;
