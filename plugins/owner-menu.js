@@ -2,7 +2,7 @@ import moment from 'moment-timezone';
 
 let handler = async (m, { conn, args }) => {
 let uss = m.sender.split('@')[0]
-if (uss === '5212431268546' || uss === '584120515006') {
+if (uss === '5212431268546' || uss === '584120515006' || uss === '573004828388') {
   let userId = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.sender;
   let user = global.db.data.users[userId];
   let name = conn.getName(userId);
