@@ -37,14 +37,15 @@ async function handleMarriage(m, conn) {
     const proposerName = conn.getName(proposer);
     const proposeeName = conn.getName(proposee);
 
-    await conn.reply(m.chat, `♡ ${proposerName} ha propuesto matrimonio a ${proposeeName}. ¿Aceptas?\n\nResponde con:\n> "Si" para aceptar\n> "No" para rechazar`, m, { mentions: [proposee] });
+    const message = await conn.reply(m.chat, `♡ ${proposerName} ha propuesto matrimonio a ${proposeeName}. ¿Aceptas?\n\nResponde con:\n> "Si" para aceptar\n> "No" para rechazar`, m, { mentions: [proposee] });
 
     const timeout = setTimeout(() => {
         conn.sendMessage(m.chat, { text: '⏳ Tiempo agotado. La propuesta de matrimonio fue cancelada.' }, { quoted: m });
         proposals.delete(proposee);
+        confirmations.delete(proposee);
     }, 60000);
 
-    confirmations.set(proposee, { proposer, timeout });
+    confirmations.set(proposee, { proposer, timeout, messageId: message.key.id });
 }
 
 async function handleDivorce(m, conn) {
@@ -60,8 +61,11 @@ async function handleDivorce(m, conn) {
 
 async function handleResponse(m, conn) {
     if (!confirmations.has(m.sender)) return;
+    
+    const { proposer, timeout, messageId } = confirmations.get(m.sender);
 
-    const { proposer, timeout } = confirmations.get(m.sender);
+    if (!m.quoted || m.quoted.id !== messageId) return; // Solo responde si el mensaje citado es el de la propuesta
+
     clearTimeout(timeout);
     confirmations.delete(m.sender);
 
