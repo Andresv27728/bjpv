@@ -1,8 +1,20 @@
 import moment from 'moment-timezone';
 import PhoneNumber from 'awesome-phonenumber';
 import fetch from 'node-fetch';
+import fs from 'fs';
+
+const loadMarriages = () => {
+    if (fs.existsSync('./src/database/marry.json')) {
+        const data = JSON.parse(fs.readFileSync('./src/database/marry.json', 'utf-8'));
+        global.db.data.marriages = data;
+    } else {
+        global.db.data.marriages = {};
+    }
+};
 
 let handler = async (m, { conn, args }) => {
+    loadMarriages();
+
     let userId;
     if (m.quoted && m.quoted.sender) {
         userId = m.quoted.sender;
@@ -15,32 +27,35 @@ let handler = async (m, { conn, args }) => {
     let name = conn.getName(userId);
     let cumpleanos = user.birth || 'No especificado';
     let genero = user.genre || 'No especificado';
-    let pareja = user.marry || 'Nadie';
     let description = user.description || 'Sin Descripción';
     let exp = user.exp || 0;
     let nivel = user.level || 0;
-    let role = user.role || 'Sin Rango';
+    let role = user.role || 'Esclavo';
     let coins = user.coin || 0;
     let bankCoins = user.bank || 0;
 
-    let perfil = await conn.profilePictureUrl(userId, 'image').catch(_ => 'https://files.catbox.moe/xr2m6u.jpg');
+    let perfil = await conn.profilePictureUrl(userId, 'image').catch(_ => 'https://files.catbox.moe/oue13b.jpg');
+
+    let isMarried = userId in global.db.data.marriages;
+    let partner = isMarried ? global.db.data.marriages[userId] : null;
+    let partnerName = partner ? conn.getName(partner) : 'Nadie';
 
     let profileText = `
-「✿」 *𝑃𝑒𝑟𝑓𝑖𝑙* 🌷@${userId.split('@')[0]}◤
+「👑」 *Perfil* ✰@${userId.split('@')[0]}✰
 ${description}
 
-✦↛𝐸𝑑𝑎𝑑 » ${user.age || 'Desconocida'}
-♛↛*𝐶𝑢𝑚𝑝𝑙𝑒𝑎𝑛̃𝑜𝑠* » ${cumpleanos}
-⚥↛*𝐺𝑒𝑛𝑒𝑟𝑜* » ${genero}
-♡↛*𝐶𝑎𝑠𝑎𝑑𝑜 𝑐𝑜𝑛* » ${isMarried ? partnerName : 'Nadie'}
+✎ Edad » ${user.age || 'Desconocida'}
+✎ *Cumpleaños* » ${cumpleanos}
+✎ *Género* » ${genero}
+✎ Casado con » ${isMarried ? partnerName : 'Nadie'}
 
-☆↛*𝐸𝑥𝑝𝑒𝑟𝑖𝑒𝑛𝑥𝑖𝑎* » ${exp.toLocaleString()}
-❖↛*𝑁𝑖𝑣𝑒𝑙* » ${nivel}
-✎↛𝑅𝑎𝑛𝑔𝑜 » ${role}
+♛ *Experiencia* » ${exp.toLocaleString()}
+♛ *Nivel* » ${nivel}
+♛ Rango » ${role}
 
-⛁↛*𝐶𝑜𝑖𝑛𝑠 𝐶𝑎𝑟𝑡𝑒𝑟𝑎* » ${coins.toLocaleString()} ${moneda}
-⛃↛*𝐶𝑜𝑖𝑛𝑠 𝐵𝑎𝑛𝑐𝑜* » ${bankCoins.toLocaleString()} ${moneda}
-❁↛*𝑃𝑟𝑒𝑚𝑖𝑢𝑚* » ${user.premium ? '✅' : '✖️'}
+⛁ *Coins Cartera* » ${coins.toLocaleString()} ${moneda}
+⛃ *Coins Banco* » ${bankCoins.toLocaleString()} ${moneda}
+✰ *Premium* » ${user.premium ? '✅' : '❌'}
   `.trim();
 
     await conn.sendMessage(m.chat, { 
@@ -48,7 +63,7 @@ ${description}
         contextInfo: {
             mentionedJid: [userId],
             externalAdReply: {
-                title: '✧ Perfil de Usuario ✧',
+                title: '✰ Perfil de Usuario ✰',
                 body: dev,
                 thumbnailUrl: perfil,
                 mediaType: 1,
