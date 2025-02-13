@@ -3,6 +3,8 @@
  - Dejen créditos aunque sea gracias.
 */
 
+
+
 import fs from 'fs';
 import path from 'path';
 
@@ -50,7 +52,7 @@ const handler = async (m, { conn, command }) => {
             proposals[proposer] = proposee;
             const proposerName = conn.getName(proposer);
             const proposeeName = conn.getName(proposee);
-            const confirmationMessage = `♡ ${proposerName} 🫦 te ha propuesto matrimonio. ${proposeeName}, ¿aceptas? •(=^●ω●^=)•\n\n*Debes responder con:*\n> *#acceptmarry* » para aceptar\n> *#declinemarry* » para rechazar.`;
+            const confirmationMessage = `♡ ${proposerName} te ha propuesto matrimonio. ${proposeeName}  ¿aceptas? •(=^●ω●^=)•\n\n*Debes Responder con:*\n> ✐"Si" » para aceptar\n> ✐"No" » para rechazar.`;
             await conn.reply(m.chat, confirmationMessage, m, { mentions: [proposee, proposer] });
 
             confirmation[proposee] = {
@@ -70,54 +72,40 @@ const handler = async (m, { conn, command }) => {
             saveMarriages();
 
             await conn.reply(m.chat, `✐ ${conn.getName(m.sender)} y ${conn.getName(partner)} se han divorciado.`, m);
-        } else if (isAccept) {
-            if (!(m.sender in confirmation)) return conn.reply(m.chat, '*《✧》No tienes ninguna propuesta de matrimonio pendiente.*', m);
-            const { proposer, timeout } = confirmation[m.sender];
-
-            delete proposals[proposer];
-            marriages[proposer] = m.sender;
-            marriages[m.sender] = proposer;
-            saveMarriages();
-
-            conn.sendMessage(m.chat, { 
-                text: `✩.･:｡≻───── ⋆♡⋆ ─────.•:｡✩
-¡Se han Casado! ฅ^•ﻌ•^ฅ*:･ﾟ✧\n\n*•.¸♡ Esposo ${conn.getName(proposer)}\n*•.¸♡ Esposa ${conn.getName(m.sender)}\n\n\`Disfruten de su luna de miel\`
-
-✩.･:｡≻───── ⋆♡⋆ ─────.•:｡✩`, 
-                mentions: [proposer, m.sender] 
-            }, { quoted: m });
-
-            clearTimeout(timeout);
-            delete confirmation[m.sender];
-
-        } else if (isDecline) {
-            if (!(m.sender in confirmation)) return conn.reply(m.chat, '*《✧》No tienes ninguna propuesta de matrimonio pendiente.*', m);
-            const { timeout } = confirmation[m.sender];
-
-            clearTimeout(timeout);
-            delete confirmation[m.sender];
-
-            return conn.sendMessage(m.chat, { text: '*《✧》Han rechazado la propuesta de matrimonio.*' }, { quoted: m });
         }
     } catch (error) {
         await conn.reply(m.chat, `《✧》 ${error.message}`, m);
     }
 }
 
-// Función para mostrar el perfil con estado de matrimonio
-handler.profile = (m, { userId, conn }) => {
-    let pareja = getSpouse(userId);
+handler.before = async (m) => {
+    if (m.isBaileys) return;
+    if (!(m.sender in confirmation)) return;
+    if (!m.text) return;
 
-    let profileText = `
-「✿」 *𝑃𝑒𝑟𝑓𝑖𝑙* 🌷@${userId.split('@')[0]}◤
+    const { proposer, timeout } = confirmation[m.sender];
 
-✦↛𝐸𝑑𝑎𝑑 » Desconocida
-⚥↛*𝐺𝑒𝑛𝑒𝑟𝑜* » Desconocido
-♡↛*𝐶𝑎𝑠𝑎𝑑𝑜 𝑐𝑜𝑛* » ${pareja}
-`.trim();
+    if (/^No$/i.test(m.text)) {
+        clearTimeout(timeout);
+        delete confirmation[m.sender];
+        return conn.sendMessage(m.chat, { text: '*《✧》Han rechazado tu propuesta de matrimonio.*' }, { quoted: m });
+    }
 
-    conn.reply(m.chat, profileText, m, { mentions: [pareja.replace('@', '')] });
-}
+    if (/^Si$/i.test(m.text)) {
+        delete proposals[proposer];
+        marriages[proposer] = m.sender;
+        marriages[m.sender] = proposer;
+        saveMarriages();
+
+        conn.sendMessage(m.chat, { text: `✩.･:｡≻───── ⋆♡⋆ ─────.•:｡✩
+¡Se han Casado! ฅ^•ﻌ•^ฅ*:･ﾟ✧\n\n*•.¸♡ Esposo ${conn.getName(proposer)}\n*•.¸♡ Esposa ${conn.getName(m.sender)}\n\n\`Disfruten de su luna de miel\`
+
+✩.･:｡≻───── ⋆♡⋆ ─────.•:｡✩`, mentions: [proposer, m.sender] }, { quoted: m });
+
+        clearTimeout(timeout);
+        delete confirmation[m.sender];
+    }
+};
 
 handler.tags = ['fun'];
 handler.help = ['marry *@usuario*', 'divorce', 'acceptmarry', 'declinemarry'];
