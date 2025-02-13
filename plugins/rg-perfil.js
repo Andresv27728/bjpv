@@ -49,7 +49,7 @@ var handler = async (m, { conn }) => {
 🌀 *Registrado:* ${registered ? '✅': '❌'}
 
 「 💰 *RECURSOS* 」
-🪙 *coins:* ${dragones || 0}
+🪙 *coins:* ${coins.toLocaleString()} ${moneda}
 🌟 *Nivel:* ${level || 0}
 ✨ *Experiencia:* ${exp || 0}
 ⚜️ *Rango:* ${role}
@@ -68,6 +68,7 @@ var handler = async (m, { conn }) => {
 ╰─────────────────⪨
 
 ╭────⪩ 𝐑𝐄𝐂𝐔𝐑𝐒𝐎𝐒 ⪨
+│⧼🪙⧽ *coins:* ${coins.toLocaleString()} ${moneda}
 │⧼🌟⧽ *ɴɪᴠᴇʟ:* ${level || 0}
 │⧼✨⧽ *ᴇxᴘᴇʀɪᴇɴᴄɪᴀ:* ${exp || 0}
 │⧼⚜️⧽ *ʀᴀɴɢᴏ:* ${role}
