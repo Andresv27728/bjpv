@@ -24,4 +24,4 @@ handler.help = ['wallpaper *[categoría]*'];
 handler.command = ['wallpaper'];
 handler.group = true;
 
-export default wallpaperCommand;
+export default handler;
