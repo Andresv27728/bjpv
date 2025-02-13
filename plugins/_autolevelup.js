@@ -19,9 +19,9 @@ handler.before = async function (m, { conn, usedPrefix }) {
     while (canLevelUp(user.level, user.exp, global.multiplier)) 
         user.level++;
     
-    if (before !== user.level) {
-        m.reply(`🍡𝑭𝑬𝑳𝑰𝑪𝑰𝑫𝑨𝑫𝑬𝑺🍨\n\nდ Nivel Anterior » *${before}*\n♡ Nivel Actual » *${user.level}*\n✦ Fecha » *${moment.tz('America/Bogota').format('DD/MM/YY')}*\n\n> *\`¡Has alcanzado un Nuevo Nivel!\`*`);
-
+if (before !== user.level) {
+    m.reply(`🍡𝑭𝑬𝑳𝑰𝑪𝑰𝑫𝑨𝑫𝑬𝑺🍨\n\nდ Nivel Anterior » *${before}*\n♡ Nivel Actual » *${user.level}*\n✦ Fecha » *${moment.tz('America/Bogota').format('DD/MM/YY')}*\n\n> *\`¡Parece que al fin lograste subir de nivel! Qué raro, pensé que nunca lo lograrías. Bien por ti, pero no te emociones demasiado.\`*`);
+}
         let especial = 'coin';
         let especial2 = 'exp';
         let especialCant = Math.floor(Math.random() * (9 - 6 + 1)) + 6;
