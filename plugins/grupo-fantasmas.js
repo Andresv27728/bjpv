@@ -29,8 +29,8 @@ m.reply(`🍡↛ *𝑅𝑒𝑣𝑖𝑠𝑖𝑜𝑛 𝑑𝑒 𝑖𝑛𝑎𝑐𝑡
 break
 
 case 'kickfantasmas':  
-if(total == 0) return conn.reply(m.chat, `🍬 Este grupo es activo no tiene fantasmas.`, m, fake, ) 
-await m.reply(`🍬 *Eliminación de inactivos*\n\n🍭 *Lista de fantasmas*\n${sider.map(v => '@' + v.replace(/@.+/, '')).join('\n')}\n\n⚠️ _El bot eliminara a los usuarios de la lista mencionada cada 10 segundos_`, null, { mentions: sider }) 
+if(total == 0) return conn.reply(m.chat, `🌷↛ 𝐸𝑠𝑡𝑒 𝑔𝑟𝑢𝑝𝑜 𝑒𝑠 𝑎𝑐𝑡𝑖𝑣𝑜, 𝑑𝑒𝑠𝑔𝑟𝑎𝑐𝑢𝑎𝑑𝑎𝑚𝑒𝑛𝑡𝑒 𝑛𝑜 𝑡𝑖𝑒𝑛𝑒 𝑓𝑎𝑛𝑡𝑎𝑠𝑚𝑎𝑠_°`, m, fake, ) 
+await m.reply(`🌷↛ *𝐸𝑥𝑡𝑒𝑟𝑚𝑖𝑛𝑎𝑐𝑖𝑜𝑛 𝑑𝑒 𝑙𝑜𝑠 𝑓𝑎𝑛𝑡𝑎𝑠𝑚𝑎𝑠*\n\n🍡↛ *𝐿𝑖𝑠𝑡𝑎 𝑑𝑒 𝑒𝑙𝑖𝑚𝑖𝑛𝑎𝑐𝑖𝑜𝑚 𝑑𝑒 𝑓𝑎𝑛𝑡𝑎𝑠𝑚𝑎𝑠*\n${sider.map(v => '@' + v.replace(/@.+/, '')).join('\n')}\n\n⚠️ _El bot eliminara a los usuarios de la lista mencionada cada 10 segundos_`, null, { mentions: sider }) 
 await delay(1 * 10000)
 let chat = global.db.data.chats[m.chat]
 chat.welcome = false
