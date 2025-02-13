@@ -1,5 +1,5 @@
-/* Código creado por Deyin
- - Mejorado y optimizado
+/* Código hecho por Destroy
+ - https://github.com/The-King-Destroy
  - Dejen créditos aunque sea gracias.
 */
 
@@ -46,7 +46,7 @@ const handler = async (m, { conn, command }) => {
             proposals[proposer] = proposee;
             const proposerName = conn.getName(proposer);
             const proposeeName = conn.getName(proposee);
-            const confirmationMessage = `♡ ${proposerName} te ha propuesto matrimonio. ${proposeeName}  ¿aceptas? •(=^●ω●^=)•\n\n*Debes responder con:*\n> *#acceptmarry* » para aceptar\n> *#declinemarry* » para rechazar.`;
+            const confirmationMessage = `♡ ${proposerName} te ha propuesto matrimonio. ${proposeeName}, ¿aceptas? •(=^●ω●^=)•\n\n*Debes responder con:*\n> *#acceptmarry* » para aceptar\n> *#declinemarry* » para rechazar.`;
             await conn.reply(m.chat, confirmationMessage, m, { mentions: [proposee, proposer] });
 
             confirmation[proposee] = {
@@ -54,8 +54,7 @@ const handler = async (m, { conn, command }) => {
                 timeout: setTimeout(() => {
                     conn.sendMessage(m.chat, { text: '*《✧》Se acabó el tiempo, no se obtuvo respuesta. La propuesta de matrimonio fue cancelada.*' }, { quoted: m });
                     delete confirmation[proposee];
-                }, 60000),
-                messageId: m.key.id
+                }, 60000)
             };
 
         } else if (isDivorce) {
@@ -68,10 +67,8 @@ const handler = async (m, { conn, command }) => {
 
             await conn.reply(m.chat, `✐ ${conn.getName(m.sender)} y ${conn.getName(partner)} se han divorciado.`, m);
         } else if (isAccept) {
-            if (!(m.sender in confirmation)) return;
-            const { proposer, timeout, messageId } = confirmation[m.sender];
-
-            if (!m.quoted || m.quoted.id !== messageId) return; // Solo responde si cita la propuesta
+            if (!(m.sender in confirmation)) return conn.reply(m.chat, '*《✧》No tienes ninguna propuesta de matrimonio pendiente.*', m);
+            const { proposer, timeout } = confirmation[m.sender];
 
             delete proposals[proposer];
             marriages[proposer] = m.sender;
@@ -90,10 +87,8 @@ const handler = async (m, { conn, command }) => {
             delete confirmation[m.sender];
 
         } else if (isDecline) {
-            if (!(m.sender in confirmation)) return;
-            const { timeout, messageId } = confirmation[m.sender];
-
-            if (!m.quoted || m.quoted.id !== messageId) return; // Solo responde si cita la propuesta
+            if (!(m.sender in confirmation)) return conn.reply(m.chat, '*《✧》No tienes ninguna propuesta de matrimonio pendiente.*', m);
+            const { timeout } = confirmation[m.sender];
 
             clearTimeout(timeout);
             delete confirmation[m.sender];
