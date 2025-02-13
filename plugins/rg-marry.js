@@ -7,9 +7,9 @@ import fs from 'fs';
 import path from 'path';
 
 const marriagesFile = path.resolve('src/database/marry.json');
-const proposals = new Map();
-const confirmations = new Map();
-const marriages = loadMarriages();
+let proposals = {}; 
+let marriages = loadMarriages();
+const confirmation = {};
 
 function loadMarriages() {
     return fs.existsSync(marriagesFile) ? JSON.parse(fs.readFileSync(marriagesFile, 'utf8')) : {};
@@ -19,88 +19,94 @@ function saveMarriages() {
     fs.writeFileSync(marriagesFile, JSON.stringify(marriages, null, 2));
 }
 
-async function handleMarriage(m, conn) {
-    const proposee = m.quoted?.sender || m.mentionedJid?.[0];
-    const proposer = m.sender;
-
-    if (!proposee) {
-        if (marriages[proposer]) {
-            return conn.reply(m.chat, `Ya estás casado con *${conn.getName(marriages[proposer])}*.\nUsa *#divorce* para divorciarte.`, m);
-        }
-        return conn.reply(m.chat, 'Debes mencionar a alguien para proponer matrimonio.', m);
-    }
-    if (marriages[proposer]) return conn.reply(m.chat, `Ya estás casado con ${conn.getName(marriages[proposer])}.`, m);
-    if (marriages[proposee]) return conn.reply(m.chat, `${conn.getName(proposee)} ya está casado con ${conn.getName(marriages[proposee])}.`, m);
-    if (proposer === proposee) return conn.reply(m.chat, '¡No puedes casarte contigo mismo!', m);
-
-    proposals.set(proposee, proposer);
-    const proposerName = conn.getName(proposer);
-    const proposeeName = conn.getName(proposee);
-
-    const message = await conn.reply(m.chat, `♡ ${proposerName} ha propuesto matrimonio a ${proposeeName}.\n\nUsa *#acceptmarry* para aceptar o *#declinemarry* para rechazar.`, m, { mentions: [proposee] });
-
-    const timeout = setTimeout(() => {
-        conn.sendMessage(m.chat, { text: '⏳ Tiempo agotado. La propuesta de matrimonio fue cancelada.' }, { quoted: m });
-        proposals.delete(proposee);
-        confirmations.delete(proposee);
-    }, 60000);
-
-    confirmations.set(proposee, { proposer, timeout, messageId: message.key.id });
-}
-
-async function handleDivorce(m, conn) {
-    if (!marriages[m.sender]) return conn.reply(m.chat, 'No estás casado con nadie.', m);
-
-    const partner = marriages[m.sender];
-    delete marriages[m.sender];
-    delete marriages[partner];
-    saveMarriages();
-
-    await conn.reply(m.chat, `💔 ${conn.getName(m.sender)} y ${conn.getName(partner)} se han divorciado.`, m);
-}
-
-async function handleAcceptance(m, conn) {
-    if (!confirmations.has(m.sender)) return;
-
-    const { proposer, timeout, messageId } = confirmations.get(m.sender);
-    if (!m.quoted || m.quoted.id !== messageId) return; // Solo responde si cita la propuesta
-
-    clearTimeout(timeout);
-    confirmations.delete(m.sender);
-    proposals.delete(m.sender);
-
-    marriages[proposer] = m.sender;
-    marriages[m.sender] = proposer;
-    saveMarriages();
-
-    return conn.sendMessage(m.chat, { 
-        text: `🎉 ¡Se han casado!\n\n❤️ ${conn.getName(proposer)} 💍 ${conn.getName(m.sender)}\n\n¡Felicidades! 🎊`, 
-        mentions: [proposer, m.sender] 
-    }, { quoted: m });
-}
-
-async function handleRejection(m, conn) {
-    if (!confirmations.has(m.sender)) return;
-
-    const { timeout, messageId } = confirmations.get(m.sender);
-    if (!m.quoted || m.quoted.id !== messageId) return; // Solo responde si cita la propuesta
-
-    clearTimeout(timeout);
-    confirmations.delete(m.sender);
-    proposals.delete(m.sender);
-
-    return conn.sendMessage(m.chat, { text: '💔 Han rechazado la propuesta de matrimonio.' }, { quoted: m });
-}
-
 const handler = async (m, { conn, command }) => {
-    if (/^marry$/i.test(command)) return handleMarriage(m, conn);
-    if (/^divorce$/i.test(command)) return handleDivorce(m, conn);
-    if (/^acceptmarry$/i.test(command)) return handleAcceptance(m, conn);
-    if (/^declinemarry$/i.test(command)) return handleRejection(m, conn);
-};
+    const isPropose = /^marry$/i.test(command);
+    const isDivorce = /^divorce$/i.test(command);
+    const isAccept = /^acceptmarry$/i.test(command);
+    const isDecline = /^declinemarry$/i.test(command);
+
+    const userIsMarried = (user) => marriages[user] !== undefined;
+
+    try {
+        if (isPropose) {
+            const proposee = m.quoted?.sender || m.mentionedJid?.[0];
+            const proposer = m.sender;
+
+            if (!proposee) {
+                if (userIsMarried(proposer)) {
+                    return await conn.reply(m.chat, `《✧》 Ya estás casado con *${conn.getName(marriages[proposer])}*\n> Puedes divorciarte con el comando: *#divorce*`, m);
+                } else {
+                    throw new Error('Debes mencionar a alguien para aceptar o proponer matrimonio.\n> Ejemplo » *#marry @⁨Yuki Suou.⁩*');
+                }
+            }
+            if (userIsMarried(proposer)) throw new Error(`Ya estás casado con ${conn.getName(marriages[proposer])}.`);
+            if (userIsMarried(proposee)) throw new Error(`${conn.getName(proposee)} ya está casado con ${conn.getName(marriages[proposee])}.`);
+            if (proposer === proposee) throw new Error('¡No puedes proponerte matrimonio a ti mismo!');
+
+            proposals[proposer] = proposee;
+            const proposerName = conn.getName(proposer);
+            const proposeeName = conn.getName(proposee);
+            const confirmationMessage = `♡ ${proposerName} te ha propuesto matrimonio. ${proposeeName}  ¿aceptas? •(=^●ω●^=)•\n\n*Debes responder con:*\n> *#acceptmarry* » para aceptar\n> *#declinemarry* » para rechazar.`;
+            await conn.reply(m.chat, confirmationMessage, m, { mentions: [proposee, proposer] });
+
+            confirmation[proposee] = {
+                proposer,
+                timeout: setTimeout(() => {
+                    conn.sendMessage(m.chat, { text: '*《✧》Se acabó el tiempo, no se obtuvo respuesta. La propuesta de matrimonio fue cancelada.*' }, { quoted: m });
+                    delete confirmation[proposee];
+                }, 60000),
+                messageId: m.key.id
+            };
+
+        } else if (isDivorce) {
+            if (!userIsMarried(m.sender)) throw new Error('No estás casado con nadie.');
+
+            const partner = marriages[m.sender];
+            delete marriages[m.sender];
+            delete marriages[partner];
+            saveMarriages();
+
+            await conn.reply(m.chat, `✐ ${conn.getName(m.sender)} y ${conn.getName(partner)} se han divorciado.`, m);
+        } else if (isAccept) {
+            if (!(m.sender in confirmation)) return;
+            const { proposer, timeout, messageId } = confirmation[m.sender];
+
+            if (!m.quoted || m.quoted.id !== messageId) return; // Solo responde si cita la propuesta
+
+            delete proposals[proposer];
+            marriages[proposer] = m.sender;
+            marriages[m.sender] = proposer;
+            saveMarriages();
+
+            conn.sendMessage(m.chat, { 
+                text: `✩.･:｡≻───── ⋆♡⋆ ─────.•:｡✩
+¡Se han Casado! ฅ^•ﻌ•^ฅ*:･ﾟ✧\n\n*•.¸♡ Esposo ${conn.getName(proposer)}\n*•.¸♡ Esposa ${conn.getName(m.sender)}\n\n\`Disfruten de su luna de miel\`
+
+✩.･:｡≻───── ⋆♡⋆ ─────.•:｡✩`, 
+                mentions: [proposer, m.sender] 
+            }, { quoted: m });
+
+            clearTimeout(timeout);
+            delete confirmation[m.sender];
+
+        } else if (isDecline) {
+            if (!(m.sender in confirmation)) return;
+            const { timeout, messageId } = confirmation[m.sender];
+
+            if (!m.quoted || m.quoted.id !== messageId) return; // Solo responde si cita la propuesta
+
+            clearTimeout(timeout);
+            delete confirmation[m.sender];
+
+            return conn.sendMessage(m.chat, { text: '*《✧》Han rechazado la propuesta de matrimonio.*' }, { quoted: m });
+        }
+    } catch (error) {
+        await conn.reply(m.chat, `《✧》 ${error.message}`, m);
+    }
+}
 
 handler.tags = ['fun'];
-handler.help = ['marry @usuario', 'divorce', 'acceptmarry', 'declinemarry'];
+handler.help = ['marry *@usuario*', 'divorce', 'acceptmarry', 'declinemarry'];
 handler.command = ['marry', 'divorce', 'acceptmarry', 'declinemarry'];
 handler.group = true;
 
