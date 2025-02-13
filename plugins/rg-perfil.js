@@ -1,11 +1,13 @@
-let handler = async (m, { conn, args }) => {
-    loadMarriages();
+import moment from 'moment-timezone';
+import PhoneNumber from 'awesome-phonenumber';
+import fetch from 'node-fetch';
 
+let handler = async (m, { conn, args }) => {
     let userId;
     if (m.quoted && m.quoted.sender) {
-        userId = m.quoted.sender; // Si la solicitud es sobre un mensaje citado
+        userId = m.quoted.sender;
     } else {
-        userId = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.sender; // Si no, toma el ID del remitente
+        userId = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.sender;
     }
 
     let user = global.db.data.users[userId];
@@ -13,19 +15,14 @@ let handler = async (m, { conn, args }) => {
     let name = conn.getName(userId);
     let cumpleanos = user.birth || 'No especificado';
     let genero = user.genre || 'No especificado';
+    let pareja = user.marry || 'Nadie';
     let description = user.description || 'Sin Descripción';
     let exp = user.exp || 0;
     let nivel = user.level || 0;
-    let role = user.role || 'Esclavo';
+    let role = user.role || 'Sin Rango';
     let coins = user.coin || 0;
     let bankCoins = user.bank || 0;
-
     let perfil = await conn.profilePictureUrl(userId, 'image').catch(_ => 'https://files.catbox.moe/xr2m6u.jpg');
-
-    let isMarried = userId in global.db.data.marriages;
-    let partner = isMarried ? global.db.data.marriages[userId] : null;
-    let partnerName = partner ? conn.getName(partner) : 'Nadie';
-
     let profileText = `
 「🌟」 *Perfil* ✰@${userId.split('@')[0]}✰
 ${description}
@@ -49,7 +46,7 @@ ${description}
         contextInfo: {
             mentionedJid: [userId],
             externalAdReply: {
-                title: '✰ Perfil de Usuario ✰',
+                title: '✧ Perfil de Usuario ✧',
                 body: dev,
                 thumbnailUrl: perfil,
                 mediaType: 1,
@@ -60,8 +57,8 @@ ${description}
     }, { quoted: m });
 };
 
-handler.help = ['profile', 'perfil'];  // Aquí agregamos 'perfil'
+handler.help = ['profile'];
 handler.tags = ['rg'];
-handler.command = ['profile', 'perfil'];  // Aquí agregamos 'perfil'
+handler.command = ['profile', 'perfil'];
 
 export default handler;
