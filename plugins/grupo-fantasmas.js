@@ -24,8 +24,8 @@ const delay = time => new Promise(res=>setTimeout(res,time))
 switch (command) {
 
 case 'fantasmas': 
-if(total == 0) return conn.reply(m.chat, `🍬 Este grupo es activo, no tiene fantasmas.`, m, fake, ) 
-m.reply(`🍬 *Revisión de inactivos*\n\n🍭 *Lista de fantasmas*\n${sider.map(v => '@' + v.replace(/@.+/, '')).join('\n')}\n\n*📝 NOTA:*\nEsto no es al 100% acertado, el bot inicia el conteo de mensajes a partir de que se active en este número`, null, { mentions: sider }) 
+if(total == 0) return conn.reply(m.chat, `🌷↛ 𝐸𝑠𝑡𝑒 𝑔𝑡𝑢𝑝𝑜 𝑒𝑠 𝑎𝑐𝑡𝑖𝑣𝑜, 𝑛𝑜 𝑒𝑥𝑡𝑖𝑠𝑡𝑒𝑛 𝑓𝑎𝑛𝑡𝑎𝑠𝑚𝑎𝑠_°`, m, fake, ) 
+m.reply(`🍡↛ *𝑅𝑒𝑣𝑖𝑠𝑖𝑜𝑛 𝑑𝑒 𝑖𝑛𝑎𝑐𝑡𝑖𝑣𝑜𝑠* ↚🌷\n\n🍨↛ *𝐿𝑖𝑠𝑡𝑎𝑑𝑜 𝑑𝑒 𝑙𝑜𝑠 𝑓𝑎𝑛𝑡𝑎𝑠𝑚𝑎𝑠* ↚👻\n${sider.map(v => '@' + v.replace(/@.+/, '')).join('\n')}\n\n*📝 NOTA:*\nEsto no es al 100% acertado, el bot inicia el conteo de mensajes a partir de que se active en este número`, null, { mentions: sider }) 
 break
 
 case 'kickfantasmas':  
