@@ -4,7 +4,7 @@
 
 import axios from 'axios';
 
-const apiKey = "TU_API_KEY_DE_PEXELS";
+const apiKey = "https://api.lolwallpapers.net/alpha";
 const defaultCategory = "anime";
 
 const handler = async (m, { conn, args }) => {
