@@ -1,44 +1,31 @@
+import moment from 'moment-timezone';
 import PhoneNumber from 'awesome-phonenumber';
 import fetch from 'node-fetch';
-import fs from 'fs';
 
-const loadMarriages = () => {
-    if (fs.existsSync('./src/database/marry.json')) {
-        const data = JSON.parse(fs.readFileSync('./src/database/marry.json', 'utf-8'));
-        global.db.data.marriages = data;
-    } else {
-        global.db.data.marriages = {};
-    }
-};
-
-var handler = async (m, { conn }) => {
-    loadMarriages();
-
-    let who;
+let handler = async (m, { conn, args }) => {
+    let userId;
     if (m.quoted && m.quoted.sender) {
-        who = m.quoted.sender;
+        userId = m.quoted.sender;
     } else {
-        who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender;
+        userId = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.sender;
     }
 
-    let pp = await conn.profilePictureUrl(who, 'image').catch(_ => imagen1);
-    let { premium, level, genre, birth, description, dragones, exp, lastclaim, registered, regTime, age, role } = global.db.data.users[who] || {};
-    let username = conn.getName(who);
+    let user = global.db.data.users[userId];
 
-    genre = genre === 0 ? 'No especificado' : genre || 'No especificado';
-    age = registered ? (age || 'Desconocido') : 'Sin especificar';
-    birth = birth || 'No Establecido';
-    description = description || 'Sin Descripción';
-    role = role || 'Aldeano';
+    let name = conn.getName(userId);
+    let cumpleanos = user.birth || 'No especificado';
+    let genero = user.genre || 'No especificado';
+    let pareja = user.marry || 'Nadie';
+    let description = user.description || 'Sin Descripción';
+    let exp = user.exp || 0;
+    let nivel = user.level || 0;
+    let role = user.role || 'Sin Rango';
+    let coins = user.coin || 0;
+    let bankCoins = user.bank || 0;
 
-    let isMarried = who in global.db.data.marriages;
-    let partner = isMarried ? global.db.data.marriages[who] : null;
-    let partnerName = partner ? conn.getName(partner) : 'Nadie';
-    /*let api = await axios.get(`https://deliriussapi-oficial.vercel.app/tools/country?text=${PhoneNumber('+' + who.replace('@s.whatsapp.net', '')).getNumber('international')}`);
-    let userNationalityData = api.data.result;
-    let userNationality = userNationalityData ? `${userNationalityData.name} ${userNationalityData.emoji}` : 'Desconocido';*/
+    let perfil = await conn.profilePictureUrl(userId, 'image').catch(_ => 'https://files.catbox.moe/xr2m6u.jpg');
 
-    let noprem = `
+    let profileText = `
 「✿」 *𝑃𝑒𝑟𝑓𝑖𝑙* 🌷@${userId.split('@')[0]}◤
 ${description}
 
@@ -54,32 +41,25 @@ ${description}
 ⛁↛*𝐶𝑜𝑖𝑛𝑠 𝐶𝑎𝑟𝑡𝑒𝑟𝑎* » ${coins.toLocaleString()} ${moneda}
 ⛃↛*𝐶𝑜𝑖𝑛𝑠 𝐵𝑎𝑛𝑐𝑜* » ${bankCoins.toLocaleString()} ${moneda}
 ❁↛*𝑃𝑟𝑒𝑚𝑖𝑢𝑚* » ${user.premium ? '✅' : '✖️'}
-`.trim();
+  `.trim();
 
-    let prem = `╭──⪩ 𝐔𝐒𝐔𝐀𝐑𝐈𝐎 𝐏𝐑𝐄𝐌𝐈𝐔𝐌 ⪨
-│⧼👤⧽ *ᴜsᴜᴀʀɪᴏ:* *${username}*
-│⧼💠⧽ *ᴇᴅᴀᴅ:* *${age}*
-│⧼⚧️⧽ *ɢᴇɴᴇʀᴏ:* *${genre}*
-│⧼🎂⧽ *ᴄᴜᴍᴘʟᴇᴀɴ̃ᴏs:* ${birth}
-│⧼👩‍❤️‍👩⧽ *ᴄᴀsᴀᴅᴏ:* ${isMarried ? partnerName : 'Nadie'}
-│⧼📜⧽ *ᴅᴇsᴄʀɪᴘᴄɪᴏɴ:* ${description}
-│⧼🌀⧽ *ʀᴇɢɪsᴛʀᴀᴅᴏ:* ${registered ? '✅': '❌'}
-
-╰─────────────────⪨
-
-╭────⪩ 𝐑𝐄𝐂𝐔𝐑𝐒𝐎𝐒 ⪨
-│⧼🪙⧽ *coins:* ${coins.toLocaleString()} ${moneda}
-│⧼🌟⧽ *ɴɪᴠᴇʟ:* ${level || 0}
-│⧼✨⧽ *ᴇxᴘᴇʀɪᴇɴᴄɪᴀ:* ${exp || 0}
-│⧼⚜️⧽ *ʀᴀɴɢᴏ:* ${role}
-╰───⪨ *𝓤𝓼𝓾𝓪𝓻𝓲𝓸 𝓓𝓮𝓼𝓽𝓪𝓬𝓪𝓭𝓸* ⪩`.trim();
-
-    conn.sendFile(m.chat, pp, 'perfil.jpg', `${premium ? prem.trim() : noprem.trim()}`, m, { mentions: [who] });
-}
+    await conn.sendMessage(m.chat, { 
+        text: profileText,
+        contextInfo: {
+            mentionedJid: [userId],
+            externalAdReply: {
+                title: '✧ Perfil de Usuario ✧',
+                body: dev,
+                thumbnailUrl: perfil,
+                mediaType: 1,
+                showAdAttribution: true,
+                renderLargerThumbnail: true
+            }
+        }
+    }, { quoted: m });
+};
 
 handler.help = ['profile'];
-handler.register = true;
-handler.group = true;
 handler.tags = ['rg'];
 handler.command = ['profile', 'perfil'];
 
