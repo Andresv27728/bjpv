@@ -39,21 +39,21 @@ var handler = async (m, { conn }) => {
     let userNationality = userNationalityData ? `${userNationalityData.name} ${userNationalityData.emoji}` : 'Desconocido';*/
 
     let noprem = `
-「 👤 *PERFIL DE USUARIO* 」
-☁️ *Nombre:* ${username}
-💠 *Edad:* ${age}
-⚧️ *Genero:* ${genre}
-🎂 *Cumpleaños:* ${birth} 
-👩‍❤️‍👩 *Casad@:* ${isMarried ? partnerName : 'Nadie'}
-📜 *Descripción:* ${description}
-🌀 *Registrado:* ${registered ? '✅': '❌'}
+「✿」 *𝑃𝑒𝑟𝑓𝑖𝑙* 🌷@${userId.split('@')[0]}◤
+${description}
 
-「 💰 *RECURSOS* 」
-🪙 *coins:* ${coins.toLocaleString()} ${moneda}
-🌟 *Nivel:* ${level || 0}
-✨ *Experiencia:* ${exp || 0}
-⚜️ *Rango:* ${role}
-👑 *Premium:* ${premium ? '✅': '❌'}
+✦↛𝐸𝑑𝑎𝑑 » ${user.age || 'Desconocida'}
+♛↛*𝐶𝑢𝑚𝑝𝑙𝑒𝑎𝑛̃𝑜𝑠* » ${cumpleanos}
+⚥↛*𝐺𝑒𝑛𝑒𝑟𝑜* » ${genero}
+♡↛*𝐶𝑎𝑠𝑎𝑑𝑜 𝑐𝑜𝑛* » ${isMarried ? partnerName : 'Nadie'}
+
+☆↛*𝐸𝑥𝑝𝑒𝑟𝑖𝑒𝑛𝑥𝑖𝑎* » ${exp.toLocaleString()}
+❖↛*𝑁𝑖𝑣𝑒𝑙* » ${nivel}
+✎↛𝑅𝑎𝑛𝑔𝑜 » ${role}
+
+⛁↛*𝐶𝑜𝑖𝑛𝑠 𝐶𝑎𝑟𝑡𝑒𝑟𝑎* » ${coins.toLocaleString()} ${moneda}
+⛃↛*𝐶𝑜𝑖𝑛𝑠 𝐵𝑎𝑛𝑐𝑜* » ${bankCoins.toLocaleString()} ${moneda}
+❁↛*𝑃𝑟𝑒𝑚𝑖𝑢𝑚* » ${user.premium ? '✅' : '✖️'}
 `.trim();
 
     let prem = `╭──⪩ 𝐔𝐒𝐔𝐀𝐑𝐈𝐎 𝐏𝐑𝐄𝐌𝐈𝐔𝐌 ⪨
