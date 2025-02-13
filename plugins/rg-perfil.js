@@ -1,25 +1,11 @@
-import moment from 'moment-timezone';
-import PhoneNumber from 'awesome-phonenumber';
-import fetch from 'node-fetch';
-import fs from 'fs';
-
-const loadMarriages = () => {
-    if (fs.existsSync('./src/database/marry.json')) {
-        const data = JSON.parse(fs.readFileSync('./src/database/marry.json', 'utf-8'));
-        global.db.data.marriages = data;
-    } else {
-        global.db.data.marriages = {};
-    }
-};
-
 let handler = async (m, { conn, args }) => {
     loadMarriages();
 
     let userId;
     if (m.quoted && m.quoted.sender) {
-        userId = m.quoted.sender;
+        userId = m.quoted.sender; // Si la solicitud es sobre un mensaje citado
     } else {
-        userId = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.sender;
+        userId = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.sender; // Si no, toma el ID del remitente
     }
 
     let user = global.db.data.users[userId];
