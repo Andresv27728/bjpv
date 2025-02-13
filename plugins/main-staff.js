@@ -1,7 +1,5 @@
-import moment from 'moment-timezone';
-
-let handler = async (m, { conn, args }) => {
-
+let handler = async (m, { conn, command, usedPrefix }) => {
+let img = './src/catalogo.jpg'
   let staff = `
 ✨ *EQUIPO DE AYUDANTES* ✨
 👑 *Dueño* ${creador}
@@ -34,33 +32,28 @@ let handler = async (m, { conn, args }) => {
 🌪️ 𝓛𝓮𝓰𝓷𝓪
 🔖 *Rol:* Moderador 
 👾 *GitHub:* https://github.com/Legna-chan
-  `.trim();
+  `
+await conn.sendFile(m.chat, img, 'yuki.jpg', staff.trim(), fkontak, true, {
+contextInfo: {
+'forwardingScore': 200,
+'isForwarded': false,
+/*externalAdReply: {
+showAdAttribution: true,
+renderLargerThumbnail: false,
+title: packname,
+body: dev,
+mediaType: 1,
+sourceUrl: channel,
+thumbnailUrl: icono
+}}*/
+}
+}, { mentions: m.sender })
+m.react(emoji)
 
-  await conn.sendMessage(m.chat, { 
-      text: staff,
-      contextInfo: {
-          isForwarded: true,
-          forwardedNewsletterMessageInfo: {
-              newsletterJid: channelRD.id,
-              newsletterName: channelRD.name,
-              serverMessageId: -1,
-          },
-          forwardingScore: 999,
-          externalAdReply: {
-              title: `✨ Developers`,
-              body: dev,
-              thumbnailUrl: test,
-              mediaType: 1,
-              showAdAttribution: true,
-              renderLargerThumbnail: true,
-          },
-      },
-  }, { quoted: m });
+}
+handler.help = ['staff']
+handler.command = ['colaboradores', 'staff']
+handler.register = true
+handler.tags = ['main']
 
-};
-
-handler.help = ['staff'];
-handler.tags = ['main'];
-handler.command = ['ayudantes', 'colaboradores', 'staff'];
-
-export default handler;
+export default handler
