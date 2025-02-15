@@ -8,12 +8,12 @@ let handler = async (m, { conn, text }) => {
   const match = text.match(groupLinkPattern);
 
   if (!match) {
-    await conn.sendMessage(m.chat, { text: '❌ *No enviaste un enlace válido de grupo de WhatsApp.*' });
+    await conn.sendMessage(m.chat, { text: '🥀 *No enviaste un enlace válido de grupo de WhatsApp.*' });
     return;
   }
 
   const groupId = match[1];
-  const message = "〔👑 *${botname}* 👑〕\n\n*Enlace recibido correctamente.*";
+  const message = "🌺 *𝑴𝒊𝒕𝒔𝒖𝒓𝒊 𝑲𝒂𝒏𝒓𝒐𝒋𝒊-𝑴𝑫* 🌺\n\n> *Enlace recibido correctamente.*";
 
   try {
    
@@ -23,7 +23,7 @@ let handler = async (m, { conn, text }) => {
     await conn.sendMessage(m.chat, { text: message });
   } catch (error) {
     console.error('Error al aceptar el enlace del grupo:', error);
-    await conn.sendMessage(m.chat, { text: '❌ *Hubo un error al intentar unirse al grupo.*' });
+    await conn.sendMessage(m.chat, { text: '🥀 *Hubo un error al intentar unirse al grupo.*' });
   }
 };
 
