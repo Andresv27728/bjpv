@@ -37,7 +37,7 @@ Agradecemos el tiempo compartido, y lamentamos que se haya llegado a esta medida
     await conn.sendMessage(groupId, { text: mensajeSalida });
 
     await conn.groupLeave(groupId);
-    await conn.sendMessage(m.chat, { text: `✅ *El bot ha salido del grupo "${groupInfo.subject}" exitosamente.*` });
+    await conn.sendMessage(m.chat, { text: `🌺 *El bot ha salido del grupo "${groupInfo.subject}" exitosamente.*` });
   } catch (error) {
     console.error('Error al salir del grupo:', error);
     await conn.sendMessage(m.chat, { text: '❌ *Hubo un error al intentar salir del grupo.*' });
