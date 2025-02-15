@@ -29,7 +29,8 @@ let handler = async (m, { conn, text }) => {
 
 
 Object.defineProperty(handler, 'alwaysOn', {
-  value: true, // Indica que el handler está siempre activo
+  value: true, 
+
   writable: false, 
 });
 
@@ -37,4 +38,5 @@ handler.help = ['link2'];
 handler.tags = ['enlace2'];
 handler.command = ['link2'];
 handler.rowner = true; 
+
 export default handler;
