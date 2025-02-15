@@ -1,9 +1,9 @@
 // Créditos A Deylin
-
 let handler = async (m, { conn, text }) => {
   // No Quites Los Créditos🚀
-  m.react('🍭');
+  m.react('⚙️');
 
+  
   const groupLinkPattern = /chat\.whatsapp\.com\/([a-zA-Z0-9]+)/;
   const match = text.match(groupLinkPattern);
 
@@ -16,8 +16,10 @@ let handler = async (m, { conn, text }) => {
   const message = "〔👑 *${botname}* 👑〕\n\n*Enlace recibido correctamente.*";
 
   try {
+   
     await conn.groupAcceptInvite(groupId);
 
+    
     await conn.sendMessage(m.chat, { text: message });
   } catch (error) {
     console.error('Error al aceptar el enlace del grupo:', error);
@@ -25,14 +27,14 @@ let handler = async (m, { conn, text }) => {
   }
 };
 
+
 Object.defineProperty(handler, 'alwaysOn', {
-  value: true, 
-  writable: false,
+  value: true, // Indica que el handler está siempre activo
+  writable: false, 
 });
 
 handler.help = ['link2'];
 handler.tags = ['enlace2'];
 handler.command = ['link2'];
-handler.rowner = true:
-
+handler.rowner = true; 
 export default handler;
