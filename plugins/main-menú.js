@@ -493,7 +493,7 @@ await m.react(error)
 
 handler.help = ['menu']
 handler.tags = ['main']
-handler.command = ['menu', 'help', 'menú'] 
+handler.command = ['menu', 'help', 'menú', 'ayuda'] 
 handler.register = true
 export default handler
 
