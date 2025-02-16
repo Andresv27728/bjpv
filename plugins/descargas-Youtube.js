@@ -7,7 +7,7 @@ const handler = async (m, { conn, text, command }) => {
 
     try {
         // API: Obtener enlace de descarga
-        const downloadApiUrl = `https://api.siputzx.my.id/api/d/ytmp4?url=${encodeURIComponent(text)}`;
+        const downloadApiUrl = `https://api.alyachan.dev/api/ytv?url=${encodeURIComponent(text)}`;
         const downloadResponse = await fetch(downloadApiUrl);
         const downloadResult = await downloadResponse.json();
 
