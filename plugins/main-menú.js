@@ -1,4 +1,3 @@
-import fs from 'fs, false'
 import fetch from 'node-fetch'
 import { xpRange } from '../lib/levelling.js'
 const { levelling } = '../lib/levelling.js'
