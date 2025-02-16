@@ -474,7 +474,7 @@ handler.help = ['menu']
 handler.tags = ['main']
 handler.command = ['menu', 'help', 'menú', 'ayuda'] 
 handler.register = true
-handler.owneravando = true
+handler.exec = true
 export default handler
 
 const more = String.fromCharCode(8206)
