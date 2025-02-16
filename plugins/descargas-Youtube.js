@@ -37,6 +37,6 @@ const handler = async (m, { conn, text, command }) => {
     }
 };
 
-handler.command = /descargaytmpi;
+handler.command = ['ytdl', 'ytmp4dl']
 
 export default handler;
