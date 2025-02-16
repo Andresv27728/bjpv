@@ -15,7 +15,7 @@ let _muptime
 if (process.send) {
 process.send('uptime')
 _muptime = await new Promise(resolve => {
-process.once('message', resolve)
+process.once('message', resolve) = false
 setTimeout(resolve, 1000)
 }) * 1000
 }
