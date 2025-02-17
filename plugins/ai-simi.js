@@ -3,7 +3,7 @@ import axios from 'axios';
 import fetch from 'node-fetch';
 
 const handler = async (m, { conn, text, command, args, usedPrefix }) => {
-    if (!text) return conn.reply(m.chat, '🍬 Te faltó el texto para hablar con la Bot.', m);
+    if (!text) return conn.reply(m.chat, '🍨 Te faltó el texto para hablar con la Bot.', m);
 
     try {
         // await m.react(emojis);
@@ -14,10 +14,10 @@ const handler = async (m, { conn, text, command, args, usedPrefix }) => {
     }
 };
 
-handler.help = ['yuki', 'bot'];
+handler.help = ['mitsuri', 'bot'];
 handler.tags = ['ai'];
 handler.register = true;
-handler.command = ['bot', 'yuki'];
+handler.command = ['bot', 'mit'];
 export default handler;
 
 async function simitalk(ask, apikeyyy = "iJ6FxuA9vxlvz5cKQCt3", language = "es") {
