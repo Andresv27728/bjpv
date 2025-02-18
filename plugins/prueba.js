@@ -14,22 +14,17 @@ FN:${name}
 ORG:${empresa};
 TITLE:CEO & Fundador
 TEL;waid=${numcreador}:${PhoneNumber('+' + numcreador).getNumber('international')}
+EMAIL:correo@empresa.com
+URL:https://www.tuempresa.com
+ADR:;;Dirección de tu empresa;;;;
 END:VCARD`.trim();
 
-    let businessProfile = {
-        contacts: [{
-            vcard
-        }],
-        businessProfile: {
-            name: name,
-            description: "Bienvenid@ al perfil de Deylin",
-            website: ["https://www.tuempresa.com"], // Agrega tu sitio web si tienes
-            email: "correo@empresa.com", // Agrega tu correo si deseas
-            address: "Dirección de tu empresa",
-        }
-    };
-
-    await conn.sendMessage(m.chat, businessProfile, { quoted: m });
+    await conn.sendMessage(m.chat, { 
+        contacts: { 
+            displayName: name, 
+            contacts: [{ vcard }]
+        } 
+    }, { quoted: m });
 }
 
 handler.help = ['owner'];
@@ -38,4 +33,4 @@ handler.command = ['owner', 'creator', 'creador2', 'dueño'];
 
 export default handler;
 
-// Código creado por deylibaquedano801@gmail.com
+// Código creado por Deyin
