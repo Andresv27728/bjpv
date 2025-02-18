@@ -60,12 +60,12 @@ global.author = 'Made By ✰💣↚𝐾𝑎𝑡𝑠𝑢𝑘𝑖 𝐵𝑎𝑘𝑢
 global.dev = '© ⍴᥆ᥕᥱrᥱძ ᑲᥡ ✰💣↚𝐾𝑎𝑡𝑠𝑢𝑘𝑖 𝐵𝑎𝑘𝑢𝑔𝑜↛💥✰'
 global.textbot = '🍧𝐌𝐢𝐭𝐬𝐮𝐫𝐢 𝐊𝐚𝐧𝐫𝐨𝐣𝐢-𝐌𝐃🌺 • Powered By ✰💣↚𝐾𝑎𝑡𝑠𝑢𝑘𝑖 𝐵𝑎𝑘𝑢𝑔𝑜↛💥✰'
 global.numcreador = '584120515006'
-global.moneda = 'Yenes'
+global.moneda = 'Coins'
 global.welcom1 = 'Edita Con #setwelcome'
 global.welcom2 = 'Edita Con #setbye'
 global.banner = 'https://qu.ax/ODCGx.jpg'
 global.catalogo = 'https://qu.ax/mzzqQ.jpg'
-global.test = 'https://tinyurl.com/25ru293g'
+global.test = 'https://tinyurl.com/26c7eh9r'
 
 //*─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─*
 
@@ -127,7 +127,7 @@ global.rpg = {
     string = string.toLowerCase();
     const emot = {
       level: '🌟 Nivel',
-      coin: '💸 Coin',
+      coin: '🪙 Coin',
       exp: '✨ Experiencia',
       bank: '🏦 Banco',
       diamond: '💎 Diamante',
@@ -154,7 +154,7 @@ global.rpgg = {
     string = string.toLowerCase();
     const emott = {
       level: '🌟',
-      coin: '💸',
+      coin: '🪙,
       exp: '✨',
       bank: '🏦',
       diamond: '💎',
