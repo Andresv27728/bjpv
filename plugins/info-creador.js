@@ -7,7 +7,7 @@ async function handler(m, { conn }) {
     let name = await conn.getName(ownerJid) || 'Deylin'; 
     let about = (await conn.fetchStatus(ownerJid).catch(() => {}))?.status || 'Sin descripción';
 
-    let empresa = 'Deylin - Servicios Tecnológicos';
+    let empresa = 'Avaricia - Servicios Tecnológicos';
 
     let vcard = `
 BEGIN:VCARD
@@ -39,6 +39,6 @@ END:VCARD`.trim();
 
 handler.help = ['owner']; 
 handler.tags = ['main']; 
-handler.command = ['owner', 'creator', 'creador2', 'dueño'];
+handler.command = ['owner', 'creator', 'creador', 'dueño'];
 
 export default handler;
