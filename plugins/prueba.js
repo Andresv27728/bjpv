@@ -4,17 +4,20 @@ async function handler(m, { conn }) {
     let numcreador = '50488198573'; // Número del creador
     let ownerJid = `${numcreador}@s.whatsapp.net`;
     let name = conn.getName(ownerJid) || 'Deylin';
+    let empresa = 'Deylin - Servicios Tecnológicos'; // Nombre de empresa
 
     let vcard = `
 BEGIN:VCARD
 VERSION:3.0
 N:;${name};;;
 FN:${name}
+ORG:${empresa};
+TITLE:CEO & Fundador
 TEL;waid=${numcreador}:${PhoneNumber('+' + numcreador).getNumber('international')}
 END:VCARD`.trim();
 
     await conn.sendMessage(m.chat, { 
-        contacts: {
+        contacts: { 
             displayName: name,
             contacts: [{ vcard }]
         }
