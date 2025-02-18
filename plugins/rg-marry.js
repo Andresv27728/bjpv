@@ -1,4 +1,6 @@
 /* Código creado por Deyin */
+/* https://github.com/deylinqff */
+// deja créditos
 
 import fs from 'fs';
 import path from 'path';
