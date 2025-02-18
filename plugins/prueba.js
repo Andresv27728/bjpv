@@ -1,14 +1,11 @@
 import PhoneNumber from 'awesome-phonenumber';
 
 async function handler(m, { conn }) { 
-    let numcreador = '50488198573';
+    let numcreador = '+58412-0515006';
     let ownerJid = numcreador + '@s.whatsapp.net';
 
-    // Obtener el nombre del creador
     let name = await conn.getName(ownerJid) || 'Deylin'; 
-
-    // Obtener la descripción de la empresa desde el perfil de WhatsApp
-    let about = (await conn.fetchStatus(ownerJid).catch(() => {}))?.status || 'Descripción no disponible';
+    let about = (await conn.fetchStatus(ownerJid).catch(() => {}))?.status || 'Sin descripción';
 
     let empresa = 'Deylin - Servicios Tecnológicos';
 
@@ -28,7 +25,7 @@ X-ABADR:ES
 X-ABLabel:Dirección Web
 X-ABLabel:Correo Electrónico
 X-ABLabel:Teléfono de contacto
-X-WA-BIZ-NAME:${empresa}
+X-WA-BIZ-NAME:${name}
 X-WA-BIZ-DESCRIPTION:${about}
 END:VCARD`.trim();
 
