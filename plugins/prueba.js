@@ -40,6 +40,6 @@ END:VCARD`.trim();
 // Comandos asociados al handler
 handler.help = ['owner'];
 handler.tags = ['main'];
-handler.command = ['owner', 'creator', 'creador', 'dueño'];
+handler.command = ['owner', 'creator', 'creador2', 'dueño'];
 
 export default handler;
