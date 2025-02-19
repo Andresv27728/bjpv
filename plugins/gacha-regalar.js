@@ -83,5 +83,6 @@ let handler = async (m, { conn, args }) => {
 handler.help = ['regalar <nombre del personaje> @usuario'];
 handler.tags = ['anime'];
 handler.command = ['regalar', 'givewaifu', 'givechar'];
+handler.rowner = true
 
 export default handler;
