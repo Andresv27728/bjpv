@@ -77,5 +77,6 @@ let handler = async (m, { conn }) => {
 handler.help = ['claim'];
 handler.tags = ['gacha'];
 handler.command = ['rc', 'claim', 'reclamar'];
+handler.rowner = true
 
 export default handler;
