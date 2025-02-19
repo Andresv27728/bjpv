@@ -42,5 +42,6 @@ let handler = async (m, { conn, args }) => {
 handler.help = ['topwaifus [página]'];
 handler.tags = ['anime'];
 handler.command = ['topwaifus', 'waifustop', 'waifusboard'];
+handler.rowner = true
 
 export default handler;
