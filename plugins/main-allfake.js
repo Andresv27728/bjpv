@@ -31,10 +31,10 @@ console.log(`Error : ${e}`)
 global.creador = 'Wa.me/573004828388'
 global.ofcbot = `${conn.user.jid.split('@')[0]}`
 global.asistencia = 'Wa.me/584120515006'
-global.namechannel = '↫ 💠Chat principal🌼'
-global.namechannel2 = 'grᥙ⍴᥆ ძᥱ s᥆⍴᥆r𝗍ᥱ mі𝗍sᥙrі-kᥲᥒr᥆ȷі-ᑲ᥆𝗍'
-global.namegrupo = '_°🤖-𝐵𝑜𝑡 𝑆𝑜𝑢𝑡 𝑀𝑖𝑡𝑠𝑢𝑟𝑖 𝐾𝑎𝑛𝑟𝑜𝑗𝑖-🍡_°'
-global.namecomu = 'mі𝗍sᥙrі-kᥲᥒr᥆ȷі-ᑲ᥆𝗍-᥆𝖿іᥴіᥲᥣ'
+global.namechannel = '°_💐𝑀𝑖𝑡𝑠𝑢𝑟𝑖 𝐾𝑎𝑛𝑟𝑜𝑗𝑖_𝑴𝑫💠_°'
+global.namechannel2 = '🍨𝑴𝒊𝒕𝒔𝒖𝒓𝒊 𝑲𝒂𝒏𝒓𝒐𝒋𝒊 𝑻𝒆𝒙𝒕🩷'
+global.namegrupo = '💠Chat principal🌼'
+global.namecomu = '_°🤖-𝐵𝑜𝑡 𝑆𝑜𝑢𝑡 𝑀𝑖𝑡𝑠𝑢𝑟𝑖 𝐾𝑎𝑛𝑟𝑜𝑗𝑖-🍡_°'
 global.listo = '🍡 *Aquí tienes ฅ^•ﻌ•^ฅ*'
 global.fotoperfil = await conn.profilePictureUrl(m.sender, 'image').catch(_ => 'https://files.catbox.moe/xr2m6u.jpg')
 
