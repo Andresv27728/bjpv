@@ -1,44 +1,28 @@
-import PhoneNumber from 'awesome-phonenumber';
+const handler = async (m, { conn }) => {
+  await conn.sendMessage(m.chat, {
+    text: "✨ *Elige una opción:*",
+    footer: "Kirito-Bot",
+    buttons: [
+      {
+        buttonId: ".menu",
+        buttonText: { displayText: "📜 Menú" },
+        type: 1
+      },
+      {
+        buttonId: ".profile",
+        buttonText: { displayText: "👤 Perfil" },
+        type: 1
+      }
+    ],
+    headerType: 1
+  }, { quoted: m });
 
-async function handler(m, { conn }) { 
-    let numcreador = '584120515006';
-    let ownerJid = numcreador + '@s.whatsapp.net';
+  return m.react('✅');
+};
 
-    let name = await conn.getName(ownerJid) || 'Deylin'; 
-    let about = (await conn.fetchStatus(ownerJid).catch(() => {}))?.status || 'Sin descripción';
-
-    let empresa = 'Deylin - Servicios Tecnológicos';
-
-    let vcard = `
-BEGIN:VCARD
-VERSION:3.0
-N:;${name};;;
-FN:${name}
-ORG:${empresa};
-TITLE:CEO & Fundador
-TEL;waid=${numcreador}:${new PhoneNumber('+' + numcreador).getNumber('international')}
-EMAIL:correo@empresa.com
-URL:https://www.tuempresa.com
-NOTE:${about}
-ADR:;;Dirección de tu empresa;;;;
-X-ABADR:ES
-X-ABLabel:Dirección Web
-X-ABLabel:Correo Electrónico
-X-ABLabel:Teléfono de contacto
-X-WA-BIZ-NAME:${name}
-X-WA-BIZ-DESCRIPTION:${about}
-END:VCARD`.trim();
-
-    await conn.sendMessage(m.chat, { 
-        contacts: { 
-            displayName: name, 
-            contacts: [{ vcard }]
-        } 
-    }, { quoted: m });
-}
-
-handler.help = ['owner']; 
-handler.tags = ['main']; 
-handler.command = ['owner', 'creator', 'creador2', 'dueño'];
+handler.command = ['botones'];
+handler.help = ['botones'];
+handler.tags = ['info'];
+handler.register = true;
 
 export default handler;
