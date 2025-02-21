@@ -20,12 +20,12 @@ const handler = async (m, { conn, text }) => {
       caption: 'Imagen generada con éxito. Elige una opción:',
       buttons: [
         {
-          buttonId: '.menu',
-          buttonText: { displayText: 'Menú' },
+          buttonId: '.imgg gato',
+          buttonText: { displayText: '😻 gato' },
         },
         {
-          buttonId: '.profile',
-          buttonText: { displayText: 'Perfil' },
+          buttonId: '.imgg perro',
+          buttonText: { displayText: '🐶 perro' },
         },
       ],
       footer: '¡Disfruta!',
