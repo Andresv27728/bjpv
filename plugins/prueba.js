@@ -1,9 +1,23 @@
-const handler = async (m, { conn, command }) => {
-  if (command === 'botones') {
-    const body = 'Elige un botón para continuar:';
+import fetch from 'node-fetch';
 
-    await conn.sendMessage(m.chat, {
-      text: body,
+const handler = async (m, { conn, text }) => {
+  if (!text) {
+    await conn.sendMessage(m.chat, { text: '*🌺 𝑭𝒂𝒍𝒕𝒂 𝒆𝒍 𝒕𝒆𝒙𝒕𝒐 𝒑𝒂𝒓𝒂 𝒄𝒓𝒆𝒂𝒓 𝒍𝒂 𝒊𝒎𝒂𝒈𝒆𝒏✎*' }, { quoted: m });
+    return;
+  }
+
+  m.react('✨');
+  await conn.sendMessage(m.chat, { text: `*🌹 𝒄𝒓𝒆𝒂𝒏𝒅𝒐 𝒊𝒎𝒂𝒈𝒆𝒏 𝒅𝒆 ✎ ${text}*` }, { quoted: m });
+
+  try {
+    const res = await fetch(`https://eliasar-yt-api.vercel.app/api/ai/text2img?prompt=${encodeURIComponent(text)}`);
+    if (!res.ok) throw new Error();
+
+    const buffer = await res.buffer();
+    m.react('🪄');
+    await conn.sendMessage(m.chat, { 
+      image: buffer, 
+      caption: 'Imagen generada con éxito. Elige una opción:',
       buttons: [
         {
           buttonId: '.menu',
@@ -14,16 +28,16 @@ const handler = async (m, { conn, command }) => {
           buttonText: { displayText: 'Perfil' },
         },
       ],
-      headerType: 1, // Tipo de encabezado, aquí es el texto que aparece arriba del mensaje
-    });
-  } else {
-    throw "Comando no reconocido.";
+      footer: '¡Disfruta!',
+      viewOnce: true,
+    }, { quoted: m });
+  } catch (e) {
+    await conn.sendMessage(m.chat, { text: '*🚨 Ha ocurrido un error 😔*' }, { quoted: m });
   }
 };
 
-handler.help = ['botones'];
-handler.command = ['botones'];
-handler.tags = ['general'];
-handler.register = true;
+handler.tags = ['tools'];
+handler.help = ['genearimg'];
+handler.command = ['imgIA', 'imgg', 'Imgia'];
 
 export default handler;
