@@ -11,7 +11,7 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
   }
 
   const videoInfo = search.all[0];
-  const body = `「✦」ძᥱsᥴᥲrgᥲᥒძ᥆ *<${videoInfo.title}>*\n\n> ✦ ᥴᥲᥒᥲᥣ » *${videoInfo.author.name || 'Desconocido'}*\n*°⊰᯽⊱┈──╌❊╌──┈⊰᯽⊱°*\n> ✰ ᥎іs𝗍ᥲs » *${videoInfo.views}*\n*°⊰᯽⊱┈──╌❊╌──┈⊰᯽⊱°*\n> ⴵ ძᥙrᥲᥴі᥆ᥒ » *${videoInfo.timestamp}*\n*°⊰᯽⊱┈──╌❊╌──┈⊰᯽⊱°*\n> ✐ ⍴ᥙᑲᥣіᥴᥲძ᥆ » *${videoInfo.ago}*\n*°⊰᯽⊱┈──╌❊╌──┈⊰᯽⊱°*\n> 🜸 ᥣіᥒk » ${videoInfo.url}\n`;
+  const body = `「✦」ძᥱsᥴᥲrgᥲᥒძ᥆ *<${videoInfo.title}>*\n\n> ✦ ᥴᥲᥒᥲᥣ » *${videoInfo.author.name || 'Desconocido'}*\n*°♫彡｡.:・¤ﾟ♫彡｡.:・¤ﾟ♫彡°*\n> ✰ ᥎іs𝗍ᥲs » *${videoInfo.views}*\n*°♫彡｡.:・¤ﾟ♫彡｡.:・¤ﾟ♫彡°*\n> ⴵ ძᥙrᥲᥴі᥆ᥒ » *${videoInfo.timestamp}*\n*°♫彡｡.:・¤ﾟ♫彡｡.:・¤ﾟ♫彡°*\n> ✐ ⍴ᥙᑲᥣіᥴᥲძ᥆ » *${videoInfo.ago}*\n*°♫彡｡.:・¤ﾟ♫彡｡.:・¤ﾟ♫彡°*\n> 🜸 ᥣіᥒk » ${videoInfo.url}\n`;
 
   if (command === 'play' || command === 'play2' || command === 'playvid') {
     await conn.sendMessage(m.chat, {
