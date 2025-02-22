@@ -8,7 +8,7 @@ await conn.reply(m.chat, '*🍡↛𝑴𝒊𝒕𝒔𝒖𝒓𝒊 𝑲𝒂𝒏𝒓�
 handler.help = ['unbanchat'];
 handler.tags = ['grupo'];
 handler.command = ['on','activar','desbanchat']
-handler.admin = true 
+handler.rowner = true 
 handler.botAdmin = true
 handler.group = true
 
