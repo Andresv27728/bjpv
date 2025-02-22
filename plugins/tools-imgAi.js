@@ -17,7 +17,22 @@ const handler = async (m, { conn, text }) => {
 
     const buffer = await res.buffer();
     m.react('🪄');
-    await conn.sendMessage(m.chat, { image: buffer }, { quoted: m });
+    await conn.sendMessage(m.chat, { 
+      image: buffer, 
+      caption: 'Imagen generada con éxito. Elige una opción:',
+      buttons: [
+        {
+          buttonId: '.imgg gato',
+          buttonText: { displayText: '😻 gato' },
+        },
+        {
+          buttonId: '.imgg perro',
+          buttonText: { displayText: '🐶 perro' },
+        },
+      ],
+      footer: '¡Disfruta!',
+      viewOnce: true,
+    }, { quoted: m });
   } catch (e) {
     await conn.sendMessage(m.chat, { text: '*🚨 Ha ocurrido un error 😔*' }, { quoted: m });
   }
@@ -25,6 +40,6 @@ const handler = async (m, { conn, text }) => {
 
 handler.tags = ['tools'];
 handler.help = ['genearimg'];
-handler.command = ['imgIA', 'imgia', 'Imgia'];
+handler.command = ['imgIA', 'imgg', 'Imgia'];
 
 export default handler;
