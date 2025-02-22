@@ -9,7 +9,7 @@ handler.tags = ['grupo']
 handler.command = ['off']
 
 handler.botAdmin = true
-handler.admin = true 
+handler.rowner = true 
 handler.group = true
 
 export default handler
