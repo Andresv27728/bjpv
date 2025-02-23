@@ -16,7 +16,7 @@ let handler = async (m, { conn, args }) => {
 ᥲ𝗊ᥙí 𝗍іᥱᥒᥱs ᥣᥲ ᥣіs𝗍ᥲ ძᥱ ᥴ᥆mᥲᥒძ᥆s
 ╭┈ ↷
 │☁️ Cliente » @${userId.split('@')[0]}
-│💸 ${moneda} » ${coins}
+│🪙 ${moneda} » ${coins}
 │✨ Experiencia » ${exp.toLocaleString()}
 │🌟 Nivel » ${nivel}
 │⚜️ Rango » ${role}
@@ -315,7 +315,7 @@ let handler = async (m, { conn, args }) => {
 »  ⊹˚• \`Grupos\` •˚⊹
 
 🍬 Comandos de grupos para una mejor gestión de ellos.
-ᰔᩚ *#config • #on*
+ᰔᩚ *#config*
 > ✦ Ver opciones de configuración de grupos.
 ᰔᩚ *#hidetag*
 > ✦ Envia un mensaje mencionando a todos los usuarios
@@ -357,10 +357,10 @@ let handler = async (m, { conn, args }) => {
 > ✦ Quitar advertencias.
 ᰔᩚ *#advlist • #listadv*
 > ✦ Ver lista de usuarios advertidos.
-ᰔᩚ *#banchat*
-> ✦ Banear el Bot en un chat o grupo.
-ᰔᩚ *#unbanchat*
-> ✦ Desbanear el Bot del chat o grupo.
+ᰔᩚ *#off*
+> ✦ Apaga el bot en un chat.
+ᰔᩚ *#activar*
+> ✦ Activa nuevamente el bot en un chat.
 ᰔᩚ *#mute* [mension / etiquetar]
 > ✦ El bot elimina los mensajes del usuario.
 ᰔᩚ *#unmute* [mension / etiquetar]
