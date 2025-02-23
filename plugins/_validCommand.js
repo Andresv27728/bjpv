@@ -30,7 +30,7 @@ export async function before(m) {
       buttons: [
         {
           buttonId: '.menu',
-          buttonText: { displayText: '🌟 Ver Menú' },
+          buttonText: { displayText: '⚡ 𝑉𝑒𝑟 𝑀𝑒𝑛𝑢_°' },
         },
       ],
       footer: '★𝑀𝑖𝑡𝑠𝑢𝑟𝑖 𝐾𝑎𝑛𝑟𝑜𝑗𝑖-𝑀𝐷⁂',
