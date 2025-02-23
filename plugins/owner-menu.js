@@ -108,10 +108,10 @@ Lista de comandos exclusiva para owners*
 > ✦ Quitar advertencias.
 ᰔᩚ *#advlist • #listadv*
 > ✦ Ver lista de usuarios advertidos.
-ᰔᩚ *#banchat*
-> ✦ Banear el Bot en un chat o grupo.
-ᰔᩚ *#unbanchat*
-> ✦ Desbanear el Bot del chat o grupo.
+ᰔᩚ *#off*
+> ✦ Desactiva el bot en un chat.
+ᰔᩚ *#activar*
+> ✦ Activa el bot en el chat nuevamente .
 ᰔᩚ *#mute* [mension / etiquetar]
 > ✦ El bot elimina los mensajes del usuario.
 ᰔᩚ *#unmute* [mension / etiquetar]
