@@ -1,6 +1,6 @@
 const handler = async (m, { isPrems, conn }) => {
   if (!global.db.data.users[m.sender]) {
-    throw `🍬 Usuario no encontrado.`;
+    throw `🌷↛ 𝑈𝑠𝑢𝑎𝑟𝑖𝑜 𝑛𝑜 𝑟𝑒𝑔𝑖𝑠𝑡𝑟𝑎𝑑𝑜, 𝑟𝑒𝑔𝑖𝑠𝑡𝑟𝑎𝑡𝑒 𝑝𝑎𝑟𝑎 𝑢𝑠𝑎𝑟 𝑒𝑙 𝑐𝑜𝑚𝑎𝑛𝑑𝑜 𝑐𝑜𝑛 *verifi* 𝑜 *registrar*_°`;
   }
 
   const lastCofreTime = global.db.data.users[m.sender].lastcofre;
@@ -8,7 +8,7 @@ const handler = async (m, { isPrems, conn }) => {
 
   if (Date.now() < timeToNextCofre) {
     const tiempoRestante = timeToNextCofre - Date.now();
-    const mensajeEspera = `🍬 Ya reclamaste tu cofre\n⏰️ Regresa en: *${msToTime(tiempoRestante)}* para volver a reclamar.`;
+    const mensajeEspera = `🌷↛ 𝑌𝑎 ℎ𝑎𝑏𝑖𝑎𝑠 𝑟𝑒𝑐𝑙𝑎𝑚𝑎𝑑𝑜 𝑡𝑢 𝑐𝑜𝑓𝑟𝑒\n⌛ 𝑉𝑢𝑒𝑙𝑣𝑒 𝑎 𝑖𝑛𝑡𝑒𝑛𝑡𝑎𝑟𝑙𝑜 𝑒𝑛 𝑢𝑛 𝑎𝑝𝑟𝑜𝑥𝑖𝑛𝑎𝑑𝑜 𝑑𝑒: *${msToTime(tiempoRestante)}* 𝑃𝑎𝑟𝑎 𝑞𝑢𝑒 𝑣𝑢𝑒𝑙𝑣𝑎𝑠 𝑎 𝑟𝑒𝑐𝑙𝑎𝑚𝑎𝑟 𝑡𝑢 𝑐𝑜𝑓𝑟𝑒_°`;
     await conn.sendMessage(m.chat, { text: mensajeEspera }, { quoted: m });
     return;
   }
