@@ -27,7 +27,7 @@ let handler = async (m, { conn, text }) => {
             pjVentaObj[nombrePersonaje].precio = precio
             await fs.writeFile('./src/database/pj_venta.json', JSON.stringify(pjVentaObj, null, 2))
 
-            let mensaje = `✅ *Has actualizado el precio de ${nombrePersonaje} a ${precio} Yenes ¥.*\n\n` +
+            let mensaje = `✅ *Has actualizado el precio de ${nombrePersonaje} a ${precio} Coins ¥.*\n\n` +
                 `El nuevo precio ha sido establecido correctamente.`
 
             await conn.sendMessage(m.chat, { text: mensaje }, { quoted: m })
@@ -89,7 +89,7 @@ let handler = async (m, { conn, text }) => {
 
             await fs.writeFile('./src/database/userData.json', JSON.stringify(userDataObj, null, 2))
 
-            let mensaje = `✅ *Has puesto en venta a ${nombrePersonaje} por ${precio} Yenes ¥.*\n\n` +
+            let mensaje = `✅ *Has puesto en venta a ${nombrePersonaje} por ${precio} Coins ¥.*\n\n` +
                 `El personaje está ahora disponible para otros usuarios. ¡Buena suerte con la venta!`
 
             await conn.sendMessage(m.chat, { text: mensaje }, { quoted: m })
