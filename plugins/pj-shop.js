@@ -48,7 +48,7 @@ async function getInfo(pagina) {
             `   🏹 *Tipo:* ${pj.tipo}\n` +
             `   🌟 *Rareza:* ${pj.rareza}\n` +
             `   ⚡ *Poder:* ${pj.poder}\n` +
-            `   💰 *Valor:* ${pj.valor} Yenes ¥\n` +
+            `   🪙 *Valor:* ${pj.valor} Coins ¥\n` +
             `   🗡️ *Ataques:*\n` + 
             `${Object.entries(pj.ataques).map(([nombre, daño]) => `     - ${nombre}: ${daño} daño`).join('\n')}\n` +
             `   🖼️ *Imágenes:*\n   ${pj.img.join('\n   ')}\n`
@@ -92,7 +92,7 @@ async function getVenta(pagina) {
             `   🏹 *Tipo:* ${pj.tipo}\n` +
             `   🌟 *Rareza:* ${pj.rareza}\n` +
             `   ⚡ *Poder:* ${pj.poder}\n` +
-            `   💰 *Valor:* ${pj.valor} Yenes ¥\n` +
+            `   🪙 *Valor:* ${pj.valor} Coins ¥\n` +
             `   🖼️ *Imágenes:*\n   ${pj.img}\n`
         ).join('\n')
 
