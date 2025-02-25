@@ -29,7 +29,7 @@ let handler = async (m, { conn, text, command, usedPrefix }) => {
 
   if (coin > users.coin) return conn.reply(m.chat, `${emoji2} No tienes suficientes ${moneda} para realizar esa apuesta.`, m)
 
-  await conn.reply(m.chat, `${emoji} Apostaste ${coin} *💸 ${moneda}* al color ${color}. Espera *⏱ 10 segundos* para conocer el resultado.`, m)
+  await conn.reply(m.chat, `${emoji} Apostaste ${coin} *🪙 ${moneda}* al color ${color}. Espera *⏱ 10 segundos* para conocer el resultado.`, m)
 
   setTimeout(() => {
     let result = Math.random()
@@ -43,10 +43,10 @@ let handler = async (m, { conn, text, command, usedPrefix }) => {
 
     if (win) {
       users.coin += coin
-      conn.reply(m.chat, `${emoji} ¡Ganaste! Obtuviste ${coin} *💸 ${moneda}*. Total: ${users.coin} *💸 ${moneda}*.`, m)
+      conn.reply(m.chat, `${emoji} ¡Ganaste! Obtuviste ${coin} *🪙 ${moneda}*. Total: ${users.coin} *🪙 ${moneda}*.`, m)
     } else {
       users.coin -= coin
-      conn.reply(m.chat, `${emoji2} Perdiste. Se restaron ${coin} *💸 ${moneda}*. Total: ${users.coin} *💸 ${moneda}*.`, m)
+      conn.reply(m.chat, `${emoji2} Perdiste. Se restaron ${coin} *🪙 ${moneda}*. Total: ${users.coin} *🪙 ${moneda}*.`, m)
     }
 
 
