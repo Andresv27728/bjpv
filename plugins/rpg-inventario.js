@@ -14,7 +14,7 @@ let handler = async (m, { conn, usedPrefix }) => {
     let premium = user.premium ? '✅' : '❌';
 
     let text = `╭━〔 Inventario de ${name} 〕⬣\n` +
-               `┋ 💸 *${moneda} en Cartera:* ${user.coin || 0}\n` +  
+               `┋ 🪙 *${moneda} en Cartera:* ${user.coin || 0}\n` +  
                `┋ 🏦 *${moneda} en Banco:* ${user.bank || 0}\n` + 
                `┋ ♦️ *Esmeraldas:* ${user.emerald || 0}\n` + 
                `┋ 🔩 *Hierro:* ${user.iron || 0}\n` +  
@@ -37,7 +37,7 @@ let handler = async (m, { conn, usedPrefix }) => {
 
 handler.help = ['inventario', 'inv'];
 handler.tags = ['rpg'];
-handler.command = ['inventario', 'inv']; 
+handler.command = ['inventario', 'in']; 
 handler.register = true;
 
 export default handler;
