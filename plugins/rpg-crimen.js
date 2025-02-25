@@ -26,7 +26,7 @@ case 0:
 users[senderId].coin += amountTaken
 users[randomUserId].coin -= amountTaken
 conn.sendMessage(m.chat, {
-text: `🍬 ¡Lograste cometer tu crimen con exito!, acabas de robar *${amountTaken} ${moneda} 💸* a @${randomUserId.split("@")[0]}\n\nSe suman *+${amountTaken} ${moneda} 💸* a ${senderName}.`,
+text: `🍬 ¡Lograste cometer tu crimen con exito!, acabas de robar *${amountTaken} ${moneda} 🪙* a @${randomUserId.split("@")[0]}\n\nSe suman *+${amountTaken} ${moneda} 🪙* a ${senderName}.`,
 contextInfo: { 
 mentionedJid: [randomUserId],
 }}, { quoted: m })
@@ -34,14 +34,14 @@ break
 case 1:
 let amountSubtracted = Math.min(Math.floor(Math.random() * (senderCoin - minAmount + 1)) + minAmount, maxAmount)
 users[senderId].coin -= amountSubtracted
-conn.reply(m.chat, `🍭 No fuiste cuidadoso y te atraparon mientras cometias tu cirme, se restaron *-${amountSubtracted} ${moneda} 💸* a ${senderName}.`, m, rcanal)
+conn.reply(m.chat, `🍭 No fuiste cuidadoso y te atraparon mientras cometias tu cirme, se restaron *-${amountSubtracted} ${moneda} 🪙* a ${senderName}.`, m, rcanal)
 break
 case 2:
 let smallAmountTaken = Math.min(Math.floor(Math.random() * (randomUserCoin / 2 - minAmount + 1)) + minAmount, maxAmount)
 users[senderId].coin += smallAmountTaken
 users[randomUserId].coin -= smallAmountTaken
 conn.sendMessage(m.chat, {
-text: `🍬 Lograste cometer tu crimen con exito, pero te descubrieron y solo lograste tomar *${smallAmountTaken} ${moneda} 💸* de @${randomUserId.split("@")[0]}\n\nSe suman *+${smallAmountTaken} ${moneda} 💸* a ${senderName}.`,
+text: `🍬 Lograste cometer tu crimen con exito, pero te descubrieron y solo lograste tomar *${smallAmountTaken} ${moneda} 🪙* de @${randomUserId.split("@")[0]}\n\nSe suman *+${smallAmountTaken} ${moneda} 🪙* a ${senderName}.`,
 contextInfo: { 
 mentionedJid: [randomUserId],
 }}, { quoted: m })
