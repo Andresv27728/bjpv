@@ -25,7 +25,7 @@ let handler = async (m, { conn, text }) => {
             let userCoins = global.db.data.users[userId].coin || 0
 
             if (userCoins < precio) {
-                return conn.reply(m.chat, `❌ No tienes suficientes Yenes para comprar a *${nombre}*.\n¥ Yenes necesarios: ${precio}\n🪙 Tus Yenes: ${userCoins}`, m)
+                return conn.reply(m.chat, `❌ No tienes suficientes Coins para comprar a *${nombre}*.\n¥ Coins necesarias: ${precio}\n🪙 Tus Coins: ${userCoins}`, m)
             }
 
             global.db.data.users[userId].coin -= precio
@@ -65,7 +65,7 @@ let handler = async (m, { conn, text }) => {
                 `🏹 *Tipo:* ${datos.tipo}\n` +
                 `🌟 *Rareza:* ${datos.valor > 50000 ? 'Legendario' : 'Común'}\n` +
                 `⚡ *Poder:* ${datos.power}\n` +
-                `💰 *Costo:* ${precio} Yenes ¥\n\n` +
+                `🪙 *Costo:* ${precio} Coins ¥\n\n` +
                 `¡Disfruta de tu nuevo personaje!`
 
             if (datos.img) {
@@ -92,7 +92,7 @@ let handler = async (m, { conn, text }) => {
             let precio = datos.valor
 
             if (userCoins < precio) {
-                return conn.reply(m.chat, `❌ No tienes suficientes Yenes para comprar a *${nombre}*.\n¥ Yenes necesarios: ${precio}\n🪙 Tus Yenes: ${userCoins}`, m)
+                return conn.reply(m.chat, `❌ No tienes suficientes Coins para comprar a *${nombre}*.\n¥ Coins necesarias: ${precio}\n🪙 Tus Coins: ${userCoins}`, m)
             }
 
             global.db.data.users[userId].coin -= precio
@@ -134,7 +134,7 @@ let handler = async (m, { conn, text }) => {
                 `🏹 *Tipo:* ${datos.tipo}\n` +
                 `🌟 *Rareza:* ${datos.rareza}\n` +
                 `⚡ *Poder:* ${datos.poder}\n` +
-                `💰 *Costo:* ${precio} Yenes ¥\n\n` +
+                `🪙 *Costo:* ${precio} Coins ¥\n\n` +
                 `¡Disfruta de tu nuevo personaje!`
 
             if (imagen) {
