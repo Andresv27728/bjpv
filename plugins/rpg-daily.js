@@ -17,7 +17,7 @@ var handler = async (m, { conn }) => {
 Recursos:
 ✨ Xp : *+${exp}*
 💎 Diamantes : *+${d}*
-💸 ${moneda} : *+${coin}*`, m);
+🪙 ${moneda} : *+${coin}*`, m);
 
     global.db.data.users[m.sender].lastclaim = Date.now();
 }
