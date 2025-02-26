@@ -65,7 +65,7 @@ global.welcom1 = 'Edita Con #setwelcome'
 global.welcom2 = 'Edita Con #setbye'
 global.banner = 'https://qu.ax/ODCGx.jpg'
 global.catalogo = 'https://qu.ax/mzzqQ.jpg'
-global.test = 'https://tinyurl.com/26c7eh9r'
+global.test = 'https://qu.ax/diYdy.jpg'
 
 //*─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─*
 
