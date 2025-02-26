@@ -1,12 +1,12 @@
 const { generateWAMessageFromContent, proto } = (await import('@whiskeysockets/baileys')).default;
 
-const packname = 'Mi Paquete'; 
-const dev = 'Desarrollador'; 
-const channel = 'https://example.com';
+// Definir las variables no definidas
+const packname = 'Mi Paquete'; // Cambia esto por el nombre de tu paquete
+const dev = 'Desarrollador'; // Cambia esto por el nombre del desarrollador
+const channel = 'https://example.com'; // Cambia esto por la URL de tu canal
 
 var handler = async (m, { conn, text }) => {
-    conn.sendMessage(m.chat, {
-        text: '🍭 Buscando un facto, espere un momento...',
+    conn.reply(m.chat, '🍭 Buscando un facto, espere un momento...', m, {
         contextInfo: {
             externalAdReply: {
                 mediaUrl: null,
@@ -15,34 +15,31 @@ var handler = async (m, { conn, text }) => {
                 title: packname || 'Título por defecto',
                 body: dev || 'Desarrollador por defecto',
                 previewType: 0,
-                thumbnail: null, 
+                thumbnail: null, // Sin miniatura
                 sourceUrl: channel || null
             }
         }
     });
 
     const randomFact = pickRandom(global.factos);
-    conn.sendMessage(m.chat, {
+
+    let buttons = [
+        { buttonId: '/facto', buttonText: { displayText: '🔄 Otro Facto' }, type: 1 }
+    ];
+
+    let buttonMessage = {
         text: `*┏━_͜͡-͜͡-͜͡-͜͡-͜͡-͜͡-͜͡⚘-͜͡-͜͡-͜͡-͜͡-͜͡-͜͡-͜͡⚘-͜͡-͜͡-͜͡-͜͡-͜͡-͜͡-͜͡⚘-͜͡-͜͡-͜͡-͜͡-͜͡-͜͡_͜͡━┓*\n\n❥ *"${randomFact}"*\n\n*┗━_͜͡-͜͡-͜͡-͜͡-͜͡-͜͡-͜͡⚘-͜͡-͜͡-͜͡-͜͡-͜͡-͜͡-͜͡⚘-͜͡-͜͡-͜͡-͜͡-͜͡-͜͡-͜͡⚘-͜͡-͜͡-͜͡-͜͡-͜͡-͜͡_͜͡━┛*`,
-        buttons: [
-            {
-                buttonId: '.imgg gato',
-                buttonText: { displayText: '😻 gato' },
-                type: 1
-            },
-            {
-                buttonId: '.imgg perro',
-                buttonText: { displayText: '🐶 perro' },
-                type: 1
-            }
-        ],
+        footer: 'Presiona el botón para otro facto',
+        buttons: buttons,
         headerType: 1
-    });
+    };
+
+    await conn.sendMessage(m.chat, buttonMessage, { quoted: m });
 };
 
 handler.help = ['facto'];
 handler.tags = ['fun'];
-handler.command = ['fac'];
+handler.command = ['facto'];
 handler.fail = null;
 handler.exp = 0;
 handler.register = true;
@@ -53,6 +50,7 @@ function pickRandom(list) {
     return list[Math.floor(Math.random() * list.length)];
 }
 
+// Definir el array global de factos
 global.factos = [
     "Eres la razón por la que hay instrucciones en los champús.",
     "Si fueras un libro, serías el que nadie quiere leer.",
@@ -80,7 +78,7 @@ global.factos = [
     "Si fueras una aplicación, serías una que nadie quiere descargar.",
     "Eres como una sombra: siempre estás ahí, pero no eres bienvenido.",
     "Tu cerebro es como un disco duro lleno: no puede almacenar más.",
-    "Eres como un tren descarrilado: solo causas caos.",
+    "Eres como un tren descarrilado: solo causan caos.",
     "Si fueras un clima, serías una tormenta: oscuro y destructivo.",
     "Eres como una cadena de mensajes: nadie te quiere, pero todos te reciben.",
     "Tu vida es como un rompecabezas con piezas que nunca encajan.",
