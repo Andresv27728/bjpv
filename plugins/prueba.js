@@ -35,7 +35,7 @@ var handler = async (m, { conn }) => {
 
 handler.help = ['facto'];
 handler.tags = ['fun'];
-handler.command = ['facto'];
+handler.command = ['fac'];
 handler.fail = null;
 handler.exp = 0;
 handler.register = true;
