@@ -1,10 +1,10 @@
-const { generateWAMessageFromContent, proto } = (await import('@whiskeysockets/baileys')).default;
+const { default: baileys } = await import('@whiskeysockets/baileys');
 
 const packname = 'Mi Paquete';
 const dev = 'Desarrollador';
 const channel = 'https://example.com';
 
-var handler = async (m, { conn, text }) => {
+var handler = async (m, { conn }) => {
     await conn.sendMessage(m.chat, { 
         text: '🍭 Buscando un facto, espere un momento...',
         contextInfo: {
@@ -25,19 +25,17 @@ var handler = async (m, { conn, text }) => {
         { buttonId: '.imgg perro', buttonText: { displayText: '🐶 Perro' }, type: 1 }
     ];
 
-    const buttonMessage = {
+    await conn.sendMessage(m.chat, {
         text: `📌 *Facto:* \n\n❝ ${randomFact} ❞\n\n📍 Elige una opción:`,
         footer: '🤖 Kirito-Bot',
         buttons: buttons,
         headerType: 1
-    };
-
-    await conn.sendMessage(m.chat, buttonMessage, { quoted: m });
+    }, { quoted: m });
 };
 
 handler.help = ['facto'];
 handler.tags = ['fun'];
-handler.command = ['fac'];
+handler.command = ['facto'];
 handler.fail = null;
 handler.exp = 0;
 handler.register = true;
