@@ -19,28 +19,40 @@ export async function before(m, { conn, groupMetadata }) {
     img = await (await fetch(defaultImage)).buffer();
   }
 
-  let message, buttons;
   if (m.messageStubType === WAMessageStubType.GROUP_PARTICIPANT_ADD) {
-    message = `🍨 *Bienvenido a ${groupMetadata.subject}*\n\n👋 ${taguser}\n${global.welcom1}\n\n> 🍡 Usa *#help* para ver los comandos.`;
+    let bienvenida = `🍨 *Bienvenido a ${groupMetadata.subject}*\n\n👋 ${taguser}\n${global.welcom1}\n\n> 🍡 Usa *#help* para ver los comandos.`;
+
+    await conn.sendMessage(m.chat, {
+      image: img,
+      caption: bienvenida,
+      mentions: [who],
+      footer: '★ 𝑴𝑖𝑡𝑠𝑢𝑟𝑖 𝐾𝑎𝑛𝑟𝑜𝑗𝑖-𝑀𝐷⁂',
+      buttons: [
+        {
+          buttonId: '.menu',
+          buttonText: { displayText: '⚡ Ver Menú' },
+          type: 1
+        }
+      ]
+    }, { quoted: m });
+
   } else if (m.messageStubType === WAMessageStubType.GROUP_PARTICIPANT_REMOVE || m.messageStubType === WAMessageStubType.GROUP_PARTICIPANT_LEAVE) {
-    message = `💐 *Adiós de ${groupMetadata.subject}*\n\n🚪 ${taguser}\n${global.welcom2}\n\n🥀 Nunca te quisimos aquí.\n> 💐 Usa *#help* para ver los comandos.`;
+    let bye = `💐 *Adiós de ${groupMetadata.subject}*\n\n🚪 ${taguser}\n${global.welcom2}\n\n🥀 Nunca te quisimos aquí.\n> 💐 Usa *#help* para ver los comandos.`;
+
+    await conn.sendMessage(m.chat, {
+      image: img,
+      caption: bye,
+      mentions: [who],
+      footer: '★ 𝑴𝑖𝑡𝑠𝑢𝑟𝑖 𝐾𝑎𝑛𝑟𝑜𝑗𝑖-𝑀𝐷⁂',
+      buttons: [
+        {
+          buttonId: '.menu',
+          buttonText: { displayText: '⚡ Ver Menú' },
+          type: 1
+        }
+      ]
+    }, { quoted: m });
   }
-
-  buttons = [
-    {
-      buttonId: '.menu',
-      buttonText: { displayText: '⚡ Ver Menú' },
-      type: 1
-    }
-  ];
-
-  await conn.sendMessage(m.chat, {
-    image: img,
-    caption: message,
-    mentions: [who],
-    footer: '★ 𝑴𝑖𝑡𝑠𝑢𝑟𝑖 𝐾𝑎𝑛𝑟𝑜𝑗𝑖-𝑀𝐷⁂',
-    buttons: buttons
-  }, { quoted: m });
 
   return true;
 }
