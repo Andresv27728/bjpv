@@ -23,17 +23,20 @@ var handler = async (m, { conn, text }) => {
 
     const randomFact = pickRandom(global.factos);
     conn.reply(m.chat, `*┏━_͜͡-͜͡-͜͡-͜͡-͜͡-͜͡-͜͡⚘-͜͡-͜͡-͜͡-͜͡-͜͡-͜͡-͜͡⚘-͜͡-͜͡-͜͡-͜͡-͜͡-͜͡-͜͡⚘-͜͡-͜͡-͜͡-͜͡-͜͡-͜͡_͜͡━┓*\n\n❥ *"${randomFact}"*\n\n*┗━_͜͡-͜͡-͜͡-͜͡-͜͡-͜͡-͜͡⚘-͜͡-͜͡-͜͡-͜͡-͜͡-͜͡-͜͡⚘-͜͡-͜͡-͜͡-͜͡-͜͡-͜͡-͜͡⚘-͜͡-͜͡-͜͡-͜͡-͜͡-͜͡_͜͡━┛*`,
-buttons: [
+      buttons: [
         {
-          buttonId: '.menu',
-          buttonText: { displayText: '⚡ 𝑉𝑒𝑟 𝑀𝑒𝑛𝑢_°' },
+          buttonId: `.yta ${videoInfo.url}`,
+          buttonText: {
+            displayText: '🌷 𝑨𝒖𝒅𝒊𝒐',
+          },
+        },
+        {
+          buttonId: `.ytv ${videoInfo.url}`,
+          buttonText: {
+            displayText: '🍡 𝑽𝒊𝒅𝒆𝒐',
+          },
         },
       ],
-      footer: '★𝑀𝑖𝑡𝑠𝑢𝑟𝑖 𝐾𝑎𝑛𝑟𝑜𝑗𝑖-𝑀𝐷⁂',
-      viewOnce: true,
-    }, { quoted: m });
-  }
-}
 
 handler.help = ['facto'];
 handler.tags = ['fun'];
