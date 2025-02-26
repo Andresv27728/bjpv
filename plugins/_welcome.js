@@ -31,3 +31,13 @@ export async function before(m, { conn, participants, groupMetadata }) {
 
   return true
 }
+      buttons: [
+        {
+          buttonId: '.imgg gato',
+          buttonText: { displayText: '😻 gato' },
+        },
+        {
+          buttonId: '.imgg perro',
+          buttonText: { displayText: '🐶 perro' },
+        },
+      ],
