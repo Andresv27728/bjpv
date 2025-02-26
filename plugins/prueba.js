@@ -6,8 +6,8 @@ const dev = 'Desarrollador'; // Cambia esto por el nombre del desarrollador
 const channel = 'https://example.com'; // Cambia esto por la URL de tu canal
 
 var handler = async (m, { conn, text }) => {
-    conn.sendMessage(m.chat, {
-        text: '🍭 Buscando un facto, espere un momento...',
+    await conn.sendMessage(m.chat, { 
+        text: '🍭 Buscando un facto, espere un momento...', 
         contextInfo: {
             externalAdReply: {
                 mediaUrl: null,
@@ -24,24 +24,15 @@ var handler = async (m, { conn, text }) => {
 
     const randomFact = pickRandom(global.factos);
 
-    const buttons = [
-        {
-            buttonId: '.imgg gato',
-            buttonText: { displayText: '😻 gato' },
-            type: 1
-        },
-        {
-            buttonId: '.imgg perro',
-            buttonText: { displayText: '🐶 perro' },
-            type: 1
-        }
+    const templateButtons = [
+        { index: 1, quickReplyButton: { displayText: '😻 Gato', id: '.imgg gato' } },
+        { index: 2, quickReplyButton: { displayText: '🐶 Perro', id: '.imgg perro' } }
     ];
 
     const buttonMessage = {
-        text: `*┏━_͜͡-͜͡⚘-͜͡━┓*\n\n❥ *"${randomFact}"*\n\n*┗━_͜͡-͜͡⚘-͜͡━┛*`,
-        footer: 'Elige una opción:',
-        buttons: buttons,
-        headerType: 1
+        text: `*📌 Facto:* \n\n"${randomFact}"\n\nElige una opción:`,
+        footer: '🤖 Kirito-Bot',
+        templateButtons: templateButtons
     };
 
     await conn.sendMessage(m.chat, buttonMessage);
@@ -49,7 +40,7 @@ var handler = async (m, { conn, text }) => {
 
 handler.help = ['facto'];
 handler.tags = ['fun'];
-handler.command = ['fac'];
+handler.command = ['facto'];
 handler.fail = null;
 handler.exp = 0;
 handler.register = true;
@@ -87,4 +78,31 @@ global.factos = [
     "Tu vida es un meme, pero nadie se ríe.",
     "Si fueras una aplicación, serías una que nadie quiere descargar.",
     "Eres como una sombra: siempre estás ahí, pero no eres bienvenido.",
-    "
+    "Tu cerebro es como un disco duro lleno: no puede almacenar más.",
+    "Eres como un tren descarrilado: solo causan caos.",
+    "Si fueras un clima, serías una tormenta: oscuro y destructivo.",
+    "Eres como una cadena de mensajes: nadie te quiere, pero todos te reciben.",
+    "Tu vida es como un rompecabezas con piezas que nunca encajan.",
+    "Si fueras una película, serías una secuela que nadie pidió.",
+    "Eres la razón por la que los gatos miran fijamente a la nada.",
+    "Si fueras un meme, serías uno que nadie comparte.",
+    "Tu vida es como un spoiler: nadie quiere saber cómo termina.",
+    "Eres como una contraseña débil: fácil de olvidar.",
+    "Si fueras un postre, serías uno sin azúcar.",
+    "Eres como una nube: siempre estás ahí, pero no sirves para nada.",
+    "Tu vida es como un error 404: no se encuentra.",
+    "Si fueras un deporte, serías uno que nadie practica.",
+    "Eres como una canción mal cantada: todos quieren que pares.",
+    "Tu vida es como un mal sueño: todos quieren despertar.",
+    "Si fueras un videojuego, serías uno que nadie juega.",
+    "Eres como una película de terror: todos quieren evitarte.",
+    "Tu vida es como un mal restaurante: nadie quiere volver.",
+    "Si fueras un libro, serías uno que nadie recomienda.",
+    "Eres como una película sin final: todos se aburren.",
+    "Tu vida es como un mal chiste: nadie se ríe.",
+    "Si fueras un día festivo, serías uno que nadie celebra.",
+    "Eres como una mala señal de tráfico: todos te ignoran.",
+    "Tu vida es como un mal café: nadie lo quiere tomar.",
+    "Si fueras un superhéroe, serías uno sin poderes.",
+    "Eres como una mala película: todos quieren salir del cine."
+];
