@@ -27,16 +27,7 @@ export async function before(m, { conn, participants, groupMetadata }) {
    └───────────────┈ ⳹ \n> 💐 Puedes usar *#help* para ver la lista de comandos.`
       await conn.sendMessage(m.chat, { image: img, caption: bye, mentions: [who] })
     }
-  }      buttons: [
-        {
-          buttonId: '.imgg gato',
-          buttonText: { displayText: '😻 gato' },
-        },
-        {
-          buttonId: '.imgg perro',
-          buttonText: { displayText: '🐶 perro' },
-        },
-      ],
+  }
 
   return true
 }
