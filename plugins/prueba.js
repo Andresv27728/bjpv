@@ -1,41 +1,38 @@
 const { generateWAMessageFromContent, proto } = (await import('@whiskeysockets/baileys')).default;
 
-// Definir las variables no definidas
-const packname = 'Mi Paquete'; // Cambia esto por el nombre de tu paquete
-const dev = 'Desarrollador'; // Cambia esto por el nombre del desarrollador
-const channel = 'https://example.com'; // Cambia esto por la URL de tu canal
+const packname = 'Mi Paquete';
+const dev = 'Desarrollador';
+const channel = 'https://example.com';
 
 var handler = async (m, { conn, text }) => {
     await conn.sendMessage(m.chat, { 
-        text: '🍭 Buscando un facto, espere un momento...', 
+        text: '🍭 Buscando un facto, espere un momento...',
         contextInfo: {
             externalAdReply: {
-                mediaUrl: null,
-                mediaType: 1,
                 showAdAttribution: true,
-                title: packname || 'Título por defecto',
-                body: dev || 'Desarrollador por defecto',
+                title: packname,
+                body: dev,
                 previewType: 0,
-                thumbnail: null,
-                sourceUrl: channel || null
+                sourceUrl: channel
             }
         }
-    });
+    }, { quoted: m });
 
     const randomFact = pickRandom(global.factos);
 
-    const templateButtons = [
-        { index: 1, quickReplyButton: { displayText: '😻 Gato', id: '.imgg gato' } },
-        { index: 2, quickReplyButton: { displayText: '🐶 Perro', id: '.imgg perro' } }
+    const buttons = [
+        { buttonId: '.imgg gato', buttonText: { displayText: '😻 Gato' }, type: 1 },
+        { buttonId: '.imgg perro', buttonText: { displayText: '🐶 Perro' }, type: 1 }
     ];
 
     const buttonMessage = {
-        text: `*📌 Facto:* \n\n"${randomFact}"\n\nElige una opción:`,
+        text: `📌 *Facto:* \n\n❝ ${randomFact} ❞\n\n📍 Elige una opción:`,
         footer: '🤖 Kirito-Bot',
-        templateButtons: templateButtons
+        buttons: buttons,
+        headerType: 1
     };
 
-    await conn.sendMessage(m.chat, buttonMessage);
+    await conn.sendMessage(m.chat, buttonMessage, { quoted: m });
 };
 
 handler.help = ['facto'];
@@ -51,7 +48,6 @@ function pickRandom(list) {
     return list[Math.floor(Math.random() * list.length)];
 }
 
-// Definir el array global de factos
 global.factos = [
     "Eres la razón por la que hay instrucciones en los champús.",
     "Si fueras un libro, serías el que nadie quiere leer.",
