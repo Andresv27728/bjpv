@@ -1,41 +1,42 @@
-const { default: baileys } = await import('@whiskeysockets/baileys');
+const { generateWAMessageFromContent, proto } = (await import('@whiskeysockets/baileys')).default;
 
-const packname = 'Mi Paquete';
-const dev = 'Desarrollador';
-const channel = 'https://example.com';
+// Definir las variables no definidas
+const packname = 'Mi Paquete'; // Cambia esto por el nombre de tu paquete
+const dev = 'Desarrollador'; // Cambia esto por el nombre del desarrollador
+const channel = 'https://example.com'; // Cambia esto por la URL de tu canal
 
-var handler = async (m, { conn }) => {
-    await conn.sendMessage(m.chat, { 
-        text: '🍭 Buscando un facto, espere un momento...',
+var handler = async (m, { conn, text }) => {
+    conn.reply(m.chat, '🍭 Buscando un facto, espere un momento...', m, {
         contextInfo: {
             externalAdReply: {
+                mediaUrl: null,
+                mediaType: 1,
                 showAdAttribution: true,
-                title: packname,
-                body: dev,
+                title: packname || 'Título por defecto',
+                body: dev || 'Desarrollador por defecto',
                 previewType: 0,
-                sourceUrl: channel
+                thumbnail: null, // Sin miniatura
+                sourceUrl: channel || null
             }
         }
-    }, { quoted: m });
+    });
 
     const randomFact = pickRandom(global.factos);
-
-    const buttons = [
-        { buttonId: '.imgg gato', buttonText: { displayText: '😻 Gato' }, type: 1 },
-        { buttonId: '.imgg perro', buttonText: { displayText: '🐶 Perro' }, type: 1 }
-    ];
-
-    await conn.sendMessage(m.chat, {
-        text: `📌 *Facto:* \n\n❝ ${randomFact} ❞\n\n📍 Elige una opción:`,
-        footer: '🤖 Kirito-Bot',
-        buttons: buttons,
-        headerType: 1
-    }, { quoted: m });
-};
+    conn.reply(m.chat, `*┏━_͜͡-͜͡-͜͡-͜͡-͜͡-͜͡-͜͡⚘-͜͡-͜͡-͜͡-͜͡-͜͡-͜͡-͜͡⚘-͜͡-͜͡-͜͡-͜͡-͜͡-͜͡-͜͡⚘-͜͡-͜͡-͜͡-͜͡-͜͡-͜͡_͜͡━┓*\n\n❥ *"${randomFact}"*\n\n*┗━_͜͡-͜͡-͜͡-͜͡-͜͡-͜͡-͜͡⚘-͜͡-͜͡-͜͡-͜͡-͜͡-͜͡-͜͡⚘-͜͡-͜͡-͜͡-͜͡-͜͡-͜͡-͜͡⚘-͜͡-͜͡-͜͡-͜͡-͜͡-͜͡_͜͡━┛*`, m);
+};       buttons: [
+        {
+          buttonId: '.imgg gato',
+          buttonText: { displayText: '😻 gato' },
+        },
+        {
+          buttonId: '.imgg perro',
+          buttonText: { displayText: '🐶 perro' },
+        },
+      ],
 
 handler.help = ['facto'];
 handler.tags = ['fun'];
-handler.command = ['fac'];
+handler.command = ['facto'];
 handler.fail = null;
 handler.exp = 0;
 handler.register = true;
@@ -46,6 +47,7 @@ function pickRandom(list) {
     return list[Math.floor(Math.random() * list.length)];
 }
 
+// Definir el array global de factos
 global.factos = [
     "Eres la razón por la que hay instrucciones en los champús.",
     "Si fueras un libro, serías el que nadie quiere leer.",
