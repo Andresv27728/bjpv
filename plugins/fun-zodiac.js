@@ -1,52 +1,45 @@
-let handler = (m, { usedPrefix, command, text }) => {
-if (!text) return conn.reply(m.chat, `🍬 Por favor, ingresa tu fecha de nacimiento de esta manera.\nEjemplo: ${usedPrefix + command} 2007 06 01`, m, rcanal, )
+let handler = (m, { usedPrefix, command, text, conn }) => {
+    let mentionedJid = m.mentionedJid[0] || text;
+    if (!mentionedJid) return conn.reply(m.chat, `⚠️ Menciona a alguien para asustarlo.\nEjemplo: ${usedPrefix + command} @usuario`, m);
 
-    const date = new Date(text)
-    if (date == 'Fecha invalida, prueba con el siguiente formato AAAA MM DD Ejemplo: 2003 02 07 ') throw date
-    const d = new Date()
-    const [tahun, bulan, tanggal] = [d.getFullYear(), d.getMonth() + 1, d.getDate()]
-    const birth = [date.getFullYear(), date.getMonth() + 1, date.getDate()]
+    const progreso = [
+        "*🕒 Iniciando acceso a la cuenta...*",
+        "■□□□□□ 20% [Conectando a servidor...]",
+        "■■□□□□ 30% [Accediendo a base de datos...]",
+        "■■■□□□ 50% [Recuperando credenciales...]",
+        "■■■■□□ 60% [Desencriptando mensajes...]",
+        "■■■■■□ 80% [Extrayendo archivos...]",
+        "■■■■■■ 100% [Listo para ejecución]",
+        "⚠️ *ERROR 502* ⚠️\n`Fallo en la conexión con el servidor`",
+        "☠️ *¡Vulnerabilidad encontrada en el sistema!* ☠️",
+        "📡 *Interceptando mensajes en tiempo real...*",
+        "🛑 *Sistema comprometido. Contactando administrador...*",
+        "🚨 *Acceso root obtenido. Eliminando archivos...*",
+        "💀 *Redireccionando tráfico de WhatsApp...*",
+        "🛠 *Instalando malware en dispositivo...*",
+        "✅ *Proceso finalizado.*",
+    ];
 
-    const zodiac = getZodiac(birth[1], birth[2])
-    const ageD = new Date(d - date)
-    const age = ageD.getFullYear() - new Date(1970, 0, 1).getFullYear()
+    // Enviar mensajes de progreso uno por uno con delay
+    const enviarMensajes = async () => {
+        for (let i = 0; i < progreso.length; i++) {
+            await conn.reply(m.chat, progreso[i], m);
+            await delay(1500);
+        }
 
-    const birthday = [tahun + (birth[1] < bulan), ...birth.slice(1)]
-    const cekusia = bulan === birth[1] && tanggal === birth[2] ? `${age} - Feliz cumpleaños ☁️` : age
+        // Mensaje final
+        conn.reply(m.chat, `⚠️ *ATENCIÓN* ⚠️\n\n@${mentionedJid.replace(/@s.whatsapp.net/g, '')} tu cuenta de WhatsApp ha sido hackeada. Todos tus datos han sido enviados a un servidor remoto. No hay vuelta atrás...`, m, {
+            mentions: [mentionedJid]
+        });
+    };
 
-    const teks = `
-Fecha de nacimiento: : ${birth.join('-')}
-Proximo cumpleaños : ${birthday.join('-')}
-Edad : ${cekusia}
-Signo zodical : ${zodiac}
-`.trim()
-    m.reply(teks)
-}
-handler.help = ['zodiac *2002 02 25*']
-handler.tags = ['fun']
-handler.group = true;
-handler.register = true
-handler.command = ['zodia','zodiac']
+    enviarMensajes();
+};
 
-export default handler
+handler.help = ['asustar @usuario'];
+handler.tags = ['diversion'];
+handler.command = ['asustar', 'hackear'];
 
-const zodiak = [
-    ["Capricornio", new Date(1970, 0, 1)],
-    ["Acuario", new Date(1970, 0, 20)],
-    ["Piscis", new Date(1970, 1, 19)],
-    ["Aries", new Date(1970, 2, 21)],
-    ["Tauro", new Date(1970, 3, 21)],
-    ["Geminis", new Date(1970, 4, 21)],
-    ["Cancer", new Date(1970, 5, 22)],
-    ["Leo", new Date(1970, 6, 23)],
-    ["Virgo", new Date(1970, 7, 23)],
-    ["Libra", new Date(1970, 8, 23)],
-    ["Scorpion", new Date(1970, 9, 23)],
-    ["Sagitario", new Date(1970, 10, 22)],
-    ["Capricornio", new Date(1970, 11, 22)]
-].reverse()
+export default handler;
 
-function getZodiac(month, day) {
-    let d = new Date(1970, month - 1, day)
-    return zodiak.find(([_,_d]) => d >= _d)[0]
-}
+const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
