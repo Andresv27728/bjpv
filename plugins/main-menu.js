@@ -115,8 +115,6 @@ let handler = async (m, { conn, args }) => {
 > ✦ Descargar vídeos de Pinterest. 
 ᰔᩚ *#mega • #mg* + [enlacé]
 > ✦ Descargar un archivo de MEGA.
-ᰔᩚ *#play • #play2*
-> ✦ Descarga música/video de YouTube.
 ᰔᩚ *#ytmp3 • #ytmp4*
 > ✦ Descarga música/video de YouTube mediante url.
 ᰔᩚ *#fb • #facebook*
