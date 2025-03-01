@@ -18,16 +18,22 @@ const handler = async (m, { conn, text }) => {
     const buffer = await res.buffer();
     m.react('🪄');
 
+    // 1️⃣ Enviar la imagen primero
     await conn.sendMessage(m.chat, { 
       image: buffer, 
-      caption: '🌟 Imagen generada con éxito. Elige una opción:',
+      caption: '🌟 Imagen generada con éxito. Ahora elige una opción:',
+    }, { quoted: m });
+
+    // 2️⃣ Enviar los botones en un mensaje separado
+    await conn.sendMessage(m.chat, { 
+      text: '📌 *Menú de Opciones* \nSelecciona lo que deseas hacer:',
+      footer: '📍 Kirito-Bot',
       buttons: [
+        { buttonId: '.imgg nueva', buttonText: { displayText: '🔄 Generar Nueva Imagen' }, type: 1 },
         { buttonId: '.imgg gato', buttonText: { displayText: '😻 Ver Gato' }, type: 1 },
         { buttonId: '.imgg perro', buttonText: { displayText: '🐶 Ver Perro' }, type: 1 },
-        { buttonId: '.imgg nueva', buttonText: { displayText: '🔄 Generar Nueva' }, type: 1 },
       ],
-      footer: '📍 Kirito-Bot',
-      headerType: 4
+      headerType: 1
     }, { quoted: m });
 
   } catch (e) { 
@@ -37,6 +43,6 @@ const handler = async (m, { conn, text }) => {
 
 handler.tags = ['tools']; 
 handler.help = ['genearimg']; 
-handler.command = ['iaimg', 'img', 'imgia'];
+handler.command = ['iaimg', 'imgg', 'imgia'];
 
 export default handler;
