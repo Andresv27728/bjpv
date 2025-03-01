@@ -10,16 +10,20 @@ const handler = async (m, { conn }) => {
 
 Presiona un botón para continuar.`;
 
-  await conn.sendMessage(m.chat, { 
+  const buttons = [
+    { buttonId: '.menuprincipal', buttonText: { displayText: '📜 Menú Principal' }, type: 1 },
+    { buttonId: '.comandos', buttonText: { displayText: '📌 Ver Comandos' }, type: 1 },
+    { buttonId: '.soporte', buttonText: { displayText: '🛠️ Soporte' }, type: 1 }
+  ];
+
+  const buttonMessage = {
     text: menuText,
     footer: '📍 Kirito-Bot',
-    buttons: [
-      { buttonId: '.menuprincipal', buttonText: { displayText: '📜 Menú Principal' }, type: 1 },
-      { buttonId: '.comandos', buttonText: { displayText: '📌 Ver Comandos' }, type: 1 },
-      { buttonId: '.soporte', buttonText: { displayText: '🛠️ Soporte' }, type: 1 },
-    ],
+    buttons: buttons,
     headerType: 1
-  }, { quoted: m });
+  };
+
+  await conn.sendMessage(m.chat, buttonMessage, { quoted: m });
 };
 
 handler.help = ['menu'];
