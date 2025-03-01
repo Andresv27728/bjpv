@@ -1,42 +1,60 @@
-let handler = async (m, { conn, args }) => {
-    let mentionedJid = m.mentionedJid[0] || args[0];
-    if (!mentionedJid) throw '⚠️ Menciona a alguien para asustarlo.';
+// Créditos a https://github.com/deylinqff
 
-    const progreso = [
-        "*🕒 Iniciando acceso a la cuenta...*",
-        "■□□□□□ 20% [Conectando a servidor...]",
-        "■■□□□□ 30% [Accediendo a base de datos...]",
-        "■■■□□□ 50% [Recuperando credenciales...]",
-        "■■■■□□ 60% [Desencriptando mensajes...]",
-        "■■■■■□ 80% [Extrayendo archivos...]",
-        "■■■■■■ 100% [Listo para ejecución]",
-        "⚠️ *ERROR 502* ⚠️\n`Fallo en la conexión con el servidor`",
-        "☠️ *¡Vulnerabilidad encontrada en el sistema!* ☠️",
-        "📡 *Interceptando mensajes en tiempo real...*",
-        "🛑 *Sistema comprometido. Contactando administrador...*",
-        "🚨 *Acceso root obtenido. Eliminando archivos...*",
-        "💀 *Redireccionando tráfico de WhatsApp...*",
-        "🛠 *Instalando malware en dispositivo...*",
-        "✅ *Proceso finalizado.*",
-    ];
+import fetch from 'node-fetch';
 
-    // Enviar mensajes de progreso uno por uno con delay
-    for (let i = 0; i < progreso.length; i++) {
-        await conn.sendMessage(m.chat, { text: progreso[i] }, { quoted: m });
-        await delay(1500);
-    }
-
-    // Mensaje final
+const handler = async (m, { conn, text }) => {
+  if (!text) {
     await conn.sendMessage(m.chat, { 
-        text: `⚠️ *ATENCIÓN* ⚠️\n\n@${mentionedJid.split('@')[0]} tu cuenta de WhatsApp ha sido hackeada. Todos tus datos han sido enviados a un servidor remoto. No hay vuelta atrás...`, 
-        mentions: [mentionedJid] 
+      text: '*🌺 𝑭𝒂𝒍𝒕𝒂 𝒆𝒍 𝒕𝒆𝒙𝒕𝒐 𝒑𝒂𝒓𝒂 𝒄𝒓𝒆𝒂𝒓 𝒍𝒂 𝒊𝒎𝒂𝒈𝒆𝒏✎*' 
     }, { quoted: m });
+    return;
+  }
+
+  m.react('✨');
+  await conn.sendMessage(m.chat, { 
+    text: `*🌹 𝒄𝒓𝒆𝒂𝒏𝒅𝒐 𝒊𝒎𝒂𝒈𝒆𝒏 𝒅𝒆 ✎ ${text}*` 
+  }, { quoted: m });
+
+  try {
+    const res = await fetch(`https://eliasar-yt-api.vercel.app/api/ai/text2img?prompt=${encodeURIComponent(text)}`);
+    if (!res.ok) throw new Error();
+
+    const buffer = await res.buffer();
+    m.react('🪄');
+
+    const listMessage = {
+      image: buffer, 
+      caption: 'Imagen generada con éxito. Selecciona una opción:',
+      footer: '📍 Kirito-Bot',
+      title: 'Menú de Opciones',
+      buttonText: 'Abrir Menú',
+      sections: [
+        {
+          title: '🐾 Animales',
+          rows: [
+            { title: '🐱 Gato', rowId: '.imgg gato', description: 'Ver imágenes de gatos' },
+            { title: '🐶 Perro', rowId: '.imgg perro', description: 'Ver imágenes de perros' },
+          ],
+        },
+        {
+          title: '🎨 Generador IA',
+          rows: [
+            { title: '🔍 Nueva Imagen', rowId: '.imgg nueva', description: 'Generar otra imagen IA' },
+            { title: '📤 Compartir', rowId: '.compartir', description: 'Compartir la imagen generada' },
+          ],
+        },
+      ],
+      viewOnce: true,
+    };
+
+    await conn.sendMessage(m.chat, listMessage, { quoted: m });
+  } catch (e) {
+    await conn.sendMessage(m.chat, { text: '*🚨 Ha ocurrido un error 😔*' }, { quoted: m });
+  }
 };
 
-handler.help = ['hackear'];
-handler.tags = ['diversion'];
-handler.command = ['hacke', 'hackear', 'hackea'];
+handler.tags = ['tools'];
+handler.help = ['genearimg'];
+handler.command = ['iaimg', 'img', 'imgia'];
 
 export default handler;
-
-const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
