@@ -10,11 +10,16 @@ const handler = async (m, { conn }) => {
 
 Presiona un botón para continuar.`;
 
-  const buttons = [
-    { buttonId: '.menuprincipal', buttonText: { displayText: '📜 Menú Principal' }, type: 1 },
-    { buttonId: '.comandos', buttonText: { displayText: '📌 Ver Comandos' }, type: 1 },
-    { buttonId: '.soporte', buttonText: { displayText: '🛠️ Soporte' }, type: 1 }
-  ];
+  buttons: [  
+    {  
+      buttonId: '.imgg gato',  
+      buttonText: { displayText: '😻 gato' },  
+    },  
+    {  
+      buttonId: '.imgg perro',  
+      buttonText: { displayText: '🐶 perro' },  
+    },  
+  ],  
 
   await conn.sendMessage(m.chat, {
     text: menuText,
