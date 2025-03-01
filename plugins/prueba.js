@@ -8,7 +8,7 @@ const handler = async (m, { conn }) => {
 2️⃣ *Información del bot*
 3️⃣ *Soporte y contacto*
 
-Presiona el botón de abajo para ver más opciones.`;
+Presiona un botón para continuar.`;
 
   await conn.sendMessage(m.chat, { 
     text: menuText,
