@@ -10,21 +10,24 @@ const handler = async (m, { conn }) => {
 
 Presiona un botón para continuar.`;
 
-  buttons: [  
+  const buttons = [  
     {  
       buttonId: '.imgg gato',  
-      buttonText: { displayText: '😻 gato' },  
+      buttonText: { displayText: '😻 Gato' },  
+      type: 1  
     },  
     {  
       buttonId: '.imgg perro',  
-      buttonText: { displayText: '🐶 perro' },  
-    },  
-  ],  
+      buttonText: { displayText: '🐶 Perro' },  
+      type: 1  
+    }  
+  ];  
 
   await conn.sendMessage(m.chat, {
     text: menuText,
     footer: '📍 Kirito-Bot',
-    templateButtons: buttons
+    buttons: buttons,
+    headerType: 1
   }, { quoted: m });
 };
 
