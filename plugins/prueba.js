@@ -25,19 +25,21 @@ const handler = async (m, { conn, text }) => {
     // 1️⃣ Enviar la imagen primero
     await conn.sendMessage(m.chat, { 
       image: buffer, 
-      caption: '🌟 *Imagen generada con éxito.*\nSelecciona una opción a continuación:'
+      caption: '🌟 *Imagen generada con éxito.*\nPresiona el botón de abajo para ver más opciones:'
     }, { quoted: m });
 
-    // 2️⃣ Enviar el botón con el menú separado
+    // 2️⃣ Enviar el botón de menú con opciones
+    const templateButtons = [
+      { index: 1, quickReplyButton: { displayText: '📷 Nueva Imagen', id: '.imgg nueva' } },
+      { index: 2, quickReplyButton: { displayText: '🐱 Ver Gato', id: '.imgg gato' } },
+      { index: 3, quickReplyButton: { displayText: '🐶 Ver Perro', id: '.imgg perro' } },
+      { index: 4, quickReplyButton: { displayText: '📤 Compartir Imagen', id: '.compartir' } },
+    ];
+
     await conn.sendMessage(m.chat, { 
       text: '📌 *Menú de Opciones* \nSelecciona una categoría:',
       footer: '📍 Kirito-Bot',
-      templateButtons: [
-        { index: 1, quickReplyButton: { displayText: '📷 Nueva Imagen', id: '.imgg nueva' } },
-        { index: 2, quickReplyButton: { displayText: '🐱 Ver Gato', id: '.imgg gato' } },
-        { index: 3, quickReplyButton: { displayText: '🐶 Ver Perro', id: '.imgg perro' } },
-        { index: 4, quickReplyButton: { displayText: '📤 Compartir Imagen', id: '.compartir' } },
-      ],
+      templateButtons
     }, { quoted: m });
 
   } catch (e) {
