@@ -24,6 +24,6 @@ Presiona el botón de abajo para ver más opciones.`;
 
 handler.help = ['menu'];
 handler.tags = ['main'];
-handler.command = ['menu', 'menú', 'help', 'ayuda'];
+handler.command = ['me', 'menú', 'help', 'ayuda'];
 
 export default handler;
