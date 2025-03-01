@@ -16,14 +16,11 @@ Presiona un botón para continuar.`;
     { buttonId: '.soporte', buttonText: { displayText: '🛠️ Soporte' }, type: 1 }
   ];
 
-  const buttonMessage = {
+  await conn.sendMessage(m.chat, {
     text: menuText,
     footer: '📍 Kirito-Bot',
-    buttons: buttons,
-    headerType: 1
-  };
-
-  await conn.sendMessage(m.chat, buttonMessage, { quoted: m });
+    templateButtons: buttons
+  }, { quoted: m });
 };
 
 handler.help = ['menu'];
