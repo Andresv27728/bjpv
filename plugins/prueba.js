@@ -43,6 +43,6 @@ const handler = async (m, { conn, text }) => {
 
 handler.tags = ['tools']; 
 handler.help = ['genearimg']; 
-handler.command = ['iaimg', 'imgg', 'imgia'];
+handler.command = ['iaimg', 'img', 'imgia'];
 
 export default handler;
