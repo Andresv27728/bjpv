@@ -22,12 +22,18 @@ const handler = async (m, { conn, text }) => {
     const buffer = await res.buffer();
     m.react('🪄');
 
-    const listMessage = {
+    // Enviar la imagen generada primero
+    await conn.sendMessage(m.chat, { 
       image: buffer, 
-      caption: 'Imagen generada con éxito. Selecciona una opción:',
+      caption: '🌟 *Imagen generada con éxito.*\nSelecciona una opción a continuación:'
+    }, { quoted: m });
+
+    // Luego enviar el menú interactivo
+    const listMessage = {
+      text: '📌 *Menú de Opciones* \nSelecciona una categoría:',
       footer: '📍 Kirito-Bot',
-      title: 'Menú de Opciones',
-      buttonText: 'Abrir Menú',
+      title: 'Menú Principal',
+      buttonText: '🔽 Abrir Menú',
       sections: [
         {
           title: '🐾 Animales',
@@ -44,10 +50,10 @@ const handler = async (m, { conn, text }) => {
           ],
         },
       ],
-      viewOnce: true,
     };
 
     await conn.sendMessage(m.chat, listMessage, { quoted: m });
+
   } catch (e) {
     await conn.sendMessage(m.chat, { text: '*🚨 Ha ocurrido un error 😔*' }, { quoted: m });
   }
