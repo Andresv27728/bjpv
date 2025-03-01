@@ -22,37 +22,23 @@ const handler = async (m, { conn, text }) => {
     const buffer = await res.buffer();
     m.react('🪄');
 
-    // Enviar la imagen generada primero
+    // 1️⃣ Enviar la imagen primero
     await conn.sendMessage(m.chat, { 
       image: buffer, 
       caption: '🌟 *Imagen generada con éxito.*\nSelecciona una opción a continuación:'
     }, { quoted: m });
 
-    // Luego enviar el menú interactivo
-    const listMessage = {
+    // 2️⃣ Enviar el botón con el menú separado
+    await conn.sendMessage(m.chat, { 
       text: '📌 *Menú de Opciones* \nSelecciona una categoría:',
       footer: '📍 Kirito-Bot',
-      title: 'Menú Principal',
-      buttonText: '🔽 Abrir Menú',
-      sections: [
-        {
-          title: '🐾 Animales',
-          rows: [
-            { title: '🐱 Gato', rowId: '.imgg gato', description: 'Ver imágenes de gatos' },
-            { title: '🐶 Perro', rowId: '.imgg perro', description: 'Ver imágenes de perros' },
-          ],
-        },
-        {
-          title: '🎨 Generador IA',
-          rows: [
-            { title: '🔍 Nueva Imagen', rowId: '.imgg nueva', description: 'Generar otra imagen IA' },
-            { title: '📤 Compartir', rowId: '.compartir', description: 'Compartir la imagen generada' },
-          ],
-        },
+      templateButtons: [
+        { index: 1, quickReplyButton: { displayText: '📷 Nueva Imagen', id: '.imgg nueva' } },
+        { index: 2, quickReplyButton: { displayText: '🐱 Ver Gato', id: '.imgg gato' } },
+        { index: 3, quickReplyButton: { displayText: '🐶 Ver Perro', id: '.imgg perro' } },
+        { index: 4, quickReplyButton: { displayText: '📤 Compartir Imagen', id: '.compartir' } },
       ],
-    };
-
-    await conn.sendMessage(m.chat, listMessage, { quoted: m });
+    }, { quoted: m });
 
   } catch (e) {
     await conn.sendMessage(m.chat, { text: '*🚨 Ha ocurrido un error 😔*' }, { quoted: m });
@@ -61,6 +47,6 @@ const handler = async (m, { conn, text }) => {
 
 handler.tags = ['tools'];
 handler.help = ['genearimg'];
-handler.command = ['iaimg', 'img', 'imgia'];
+handler.command = ['iaimg', 'imgg', 'imgia'];
 
 export default handler;
