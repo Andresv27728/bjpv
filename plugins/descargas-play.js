@@ -113,7 +113,7 @@ await conn.sendMessage(m.chat, { video: { url: result.download.url }, fileName: 
 }
 } catch (e1) {
 try {    
-const axeelApi = `https://axeel.my.id/api/download/video?url=${yt_play[0].url}`;
+const axeelApi = `https://api-alya.vercel.app/get_video?url=${yt_play[0].url}`;
 const axeelRes = await fetch(axeelApi);
 const axeelJson = await axeelRes.json();
 if (axeelJson && axeelJson.downloads?.url) {
