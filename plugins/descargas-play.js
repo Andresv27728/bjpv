@@ -22,7 +22,7 @@ let { data } = await res.json();
 await conn.sendMessage(m.chat, { audio: { url: data.dl }, mimetype: 'audio/mpeg' }, { quoted: m ||null });
 } catch (e1) {
 try {  
-const axeelUrl = `https://axeel.my.id/api/download/audio?url=${yt_play[0].url}`;
+const axeelUrl = `https://api-alya.vercel.app/get_audio?url=${yt_play[0].url}`;
 const axeelResponse = await fetch(axeelUrl);
 const axeelData = await axeelResponse.json();
 if (!axeelData || !axeelData.downloads?.url) throw new Error();
