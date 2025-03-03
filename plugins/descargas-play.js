@@ -17,7 +17,7 @@ await conn.sendFile(m.chat, yt_play[0].thumbnail, 'error.jpg', `${yt_play[0].tit
 *⏰ Duración:* ${secondString(yt_play[0].duration.seconds)}
 *👉🏻Aguarde un momento en lo que envío su audio*`, m, null);
 try {
-const res = await fetch(`https://api.siputzx.my.id/api/d/ytmp4?url=${yt_play[0].url}`);
+const res = await fetch(`https://api-alya.vercel.app/get_audio?url=${yt_play[0].url}`);
 let { data } = await res.json();
 await conn.sendMessage(m.chat, { audio: { url: data.dl }, mimetype: 'audio/mpeg' }, { quoted: m ||null });
 } catch (e1) {
