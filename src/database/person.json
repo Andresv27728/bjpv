@@ -229,6 +229,25 @@
        },
        "valor": 85000,
        "poder": 10800
+
+       },
+    "Son Goku": {
+       "tipo": "ataque",
+       "rareza": "legendaria",
+       "img": [
+         "https://files.catbox.moe/k2q8a9.jpg"
+       ],
+       "usser": null,
+       "status": false,
+       "ataques": {
+         "Kamehameha": 400,
+         "Super Sayayin":  1000,
+         "Super Sayayin blue": 2500,
+         "Ultra instinto": 10000,
+         "Genkidama": 1299
+       },
+       "valor": 85000,
+       "poder"14299
     }
 }
       
