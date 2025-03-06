@@ -89,20 +89,23 @@ if (!bot.jadibotmd) return m.reply('💛 Este Comando Se Encuentra Desactivado P
         txt += `└  ❀  *4* : Escriba el Código\n\n`
         txt += `*❖ Nota:* Este Código solo funciona en el número en el que se solicitó.`;
 
-        let buttons = [
-          {
-            buttonId: 'copy_code',
-            buttonText: { displayText: `📋 Copiar Código` },
-            type: 1
-          }
-        ];
+let buttons = [
+  {
+    buttonId: 'copy_code',
+    buttonText: { displayText: `📋 Copiar Código` },
+    type: 2, // Tipo 2 es para copiar texto en Baileys
+    copyText: codeBot // Aquí se asigna el código que se copiará al presionar el botón
+  }
+];
 
-        let buttonMessage = {
-          text: txt,
-          footer: 'Sub Bot Vinculación',
-          buttons: buttons,
-          headerType: 1
-        };
+let buttonMessage = {
+  text: txt,
+  footer: 'Sub Bot Vinculación',
+  buttons: buttons,
+  headerType: 1
+};
+
+await parent.sendMessage(m.chat, buttonMessage, {});
 
         await parent.sendMessage(m.chat, buttonMessage, {});
         await parent.reply(m.chat, codeBot, m);
