@@ -36,6 +36,6 @@ iniciarSubBot();`;
 
 handler.help = ['serbot', 'serbot code2'];
 handler.tags = ['serbot'];
-handler.command = ['jadibot', 'serbot'];
+handler.command = ['jadibot', 'serbot32'];
 
 export default handler;
