@@ -1,70 +1,51 @@
-const { Client, LocalAuth } = require('whatsapp-web.js');
+import baileys from '@whiskeysockets/baileys';
 
-let codes = {};
+let codes = {}; // Almacena los códigos generados
 
-const client = new Client({
-    authStrategy: new LocalAuth(),
-    puppeteer: { headless: true }
-});
+const handler = async (m, { conn, text }) => {
+    const args = text.trim().split(' ');
 
-function generateCode() {
-    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    let code = '';
-    for (let i = 0; i < 6; i++) {
-        code += characters.charAt(Math.floor(Math.random() * characters.length));
-    }
-    return code;
-}
-
-client.on('ready', () => {
-    console.log('Bot está listo y funcionando!');
-});
-
-client.on('message', async (message) => {
-    const text = message.body.trim();
-    const sender = message.from;
-
-    if (text.startsWith('!codigo')) {
-        const code = generateCode();
-        const coins = Math.floor(Math.random() * 1000) + 100;
-        codes[code] = { coins: coins, users: [] };
-
-        message.reply(`¡Código generado! El código es *${code}*. Puedes canjear *${coins}* coins. Solo 5 personas pueden usarlo.`);
-    }
-
-    if (text.startsWith('!canjear')) {
-        const code = text.split(' ')[1];
-        if (!code || !codes[code]) {
-            return message.reply('¡Código inválido! Asegúrate de ingresar el código correctamente.');
+    if (args[0] === 'codigo') {
+        if (args.length < 2 || isNaN(args[1]) || parseInt(args[1]) <= 0) {
+            return conn.sendMessage(m.chat, { text: '❌ Por favor, ingrese una cantidad válida de coins.\nEjemplo: *codigo 500*' }, { quoted: m });
         }
 
-        const codeData = codes[code];
+        let amount = parseInt(args[1]);
+        let code = Math.random().toString(36).substring(2, 10).toUpperCase();
+        codes[code] = { coins: amount, claimedBy: [] };
 
-        if (codeData.users.length >= 5) {
-            return message.reply('Este código ya ha sido canjeado por 5 usuarios.');
-        }
-
-        if (codeData.users.includes(sender)) {
-            return message.reply('Ya has canjeado este código.');
-        }
-
-        codeData.users.push(sender);
-        message.reply(`¡Has canjeado el código exitosamente! Recibes *${codeData.coins}* coins.`);
+        conn.sendMessage(m.chat, { text: `✅ Código generado: *${code}*\nEste código puede ser canjeado por ${amount} coins y puede ser utilizado por 50 personas.` }, { quoted: m });
     }
-});
 
-client.initialize();
+    if (args[0] === 'canjear') {
+        if (args.length < 2) {
+            return conn.sendMessage(m.chat, { text: '❌ Debes ingresar un código para canjearlo.\nEjemplo: *canjear ABC123*' }, { quoted: m });
+        }
 
-function pickRandom(list) {
-    return list[Math.floor(Math.random() * list.length)];
-}
+        let code = args[1];
 
-handler.help = ['codigo']
-handler.tags = ['economy']
-handler.command = ['codigo']
-handler.register = true
-handler.group = true
-export default handler
+        if (!codes[code]) {
+            return conn.sendMessage(m.chat, { text: '❌ ¡Código inválido! Asegúrate de ingresarlo correctamente.' }, { quoted: m });
+        }
 
-function pickRamdom(list) {
-return list[Math.floor(Math.ramdom() * list.length)]}
+        let codeData = codes[code];
+
+        if (codeData.claimedBy.length >= 50) {
+            return conn.sendMessage(m.chat, { text: '❌ Este código ya ha sido canjeado por 50 personas.' }, { quoted: m });
+        }
+
+        if (codeData.claimedBy.includes(m.sender)) {
+            return conn.sendMessage(m.chat, { text: '❌ Ya has canjeado este código.' }, { quoted: m });
+        }
+
+        codeData.claimedBy.push(m.sender);
+        conn.sendMessage(m.chat, { text: `🎉 ¡Has canjeado el código exitosamente! Recibes *${codeData.coins}* coins.` }, { quoted: m });
+    }
+};
+
+handler.help = ['codigo <cantidad>', 'canjear <código>'];
+handler.tags = ['economy'];
+handler.command = ['codigo', 'canjear'];
+handler.rowner = true;
+
+export default handler;
