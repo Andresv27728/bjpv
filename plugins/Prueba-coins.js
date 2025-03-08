@@ -16,7 +16,7 @@ let handler = async (m, { conn, text }) => {
 
 handler.help = ['codigo <cantidad de llamas>'];
 handler.tags = ['owner'];
-handler.command = ['codigo']
+handler.command = ['código']
 handler.rowner = true;
 
 export default handler;
