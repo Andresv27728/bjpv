@@ -1,4 +1,4 @@
-```canje
+
 const { Client, LocalAuth } = require('whatsapp-web.js');
 
 let codes = {};
@@ -65,4 +65,3 @@ export default handler
 
 function pickRamdom(list) {
 return list[Math.floor(Math.ramdom() * list.length)]}
-```
