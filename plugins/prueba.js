@@ -59,7 +59,6 @@ function pickRandom(list) {
     return list[Math.floor(Math.random() * list.length)];
 }
 
-// Definición del handler (según lo requiera el sistema)
 const handler = {
     help: ['codigo'],
     tags: ['economy'],
