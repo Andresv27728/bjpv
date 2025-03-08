@@ -1,12 +1,14 @@
-import baileys from '@whiskeysockets/baileys';
+import { default as baileys } from '@whiskeysockets/baileys';
 
 let codes = {}; // Almacena los códigos generados
 
 const handler = async (m, { conn, text }) => {
+    console.log("Handler ejecutado");
     const args = text.trim().split(' ');
 
     // Comando para generar código
     if (args[0] === 'codigo') {
+        console.log("Comando 'codigo' detectado");
         if (args.length < 2 || isNaN(args[1]) || parseInt(args[1]) <= 0) {
             return conn.sendMessage(m.chat, { text: '❌ Por favor, ingresa una cantidad válida de coins.\nEjemplo: *codigo 500*' }, { quoted: m });
         }
@@ -15,11 +17,13 @@ const handler = async (m, { conn, text }) => {
         let code = Math.random().toString(36).substring(2, 10).toUpperCase();
         codes[code] = { coins: amount, users: [] };
 
+        console.log(`Código generado: ${code}, Valor: ${amount}`);
         conn.sendMessage(m.chat, { text: `✅ ¡Código generado!\n🔹 Código: *${code}*\n💰 Valor: *${amount}* coins\n👥 Límite: 5 personas.` }, { quoted: m });
     }
 
     // Comando para canjear código
     if (args[0] === 'canjear') {
+        console.log("Comando 'canjear' detectado");
         if (args.length < 2) {
             return conn.sendMessage(m.chat, { text: '❌ Debes ingresar un código para canjearlo.\nEjemplo: *canjear ABC123*' }, { quoted: m });
         }
@@ -41,6 +45,7 @@ const handler = async (m, { conn, text }) => {
         }
 
         codeData.users.push(m.sender);
+        console.log(`Código ${code} canjeado por ${m.sender}`);
         conn.sendMessage(m.chat, { text: `🎉 ¡Has canjeado el código exitosamente! Recibes *${codeData.coins}* coins.` }, { quoted: m });
     }
 };
