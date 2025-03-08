@@ -59,12 +59,12 @@ function pickRandom(list) {
     return list[Math.floor(Math.random() * list.length)];
 }
 
-const handler = {
-    help: ['codigo'],
-    tags: ['economy'],
-    command: ['codigo'],
-    register: true,
-    group: true
-};
+handler.help = ['codigo']
+handler.tags = ['economy']
+handler.command = ['codigo']
+handler.register = true
+handler.group = true
+export default handler
 
-module.exports = handler;
+function pickRamdom(list) {
+return list[Math.floor(Math.ramdom() * list.length)]}
