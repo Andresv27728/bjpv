@@ -4,14 +4,14 @@ const handler = async (m, { conn }) => {
     buttons: [
       {
         buttonId: 'servicios',
-        buttonText: { displayText: '#serbot --code' },
+        buttonText: { displayText: '#serbot --code 💐' },
       },
       {
         buttonId: 'contacto',
-        buttonText: { displayText: '#serbot' },
+        buttonText: { displayText: '#serbot 🐝' },
       },
        ],
-    footer: '¡MITSURI - CANROJI - BOT!',
+    footer: '¡MITSURI - KANROJI - BOT!',
     viewOnce: true,
   }, { quoted: m });
 };
