@@ -30,7 +30,7 @@ let crm3 = "SBpbmZvLWRvbmFyLmpz"
 let crm4 = "IF9hdXRvcmVzcG9uZGVyLmpzIGluZm8tYm90Lmpz"
 let drm1 = ""
 let drm2 = ""
-let rtx = `★ *𝗞𝗜𝗥𝗜𝗧𝗢 - 𝗕𝗢𝗧 𝗠𝗗* ★
+let rtx = `★ *𝗠𝗜𝗧𝗦𝗨𝗥𝗜 - 𝗞𝗔𝗡𝗥𝗢𝗝𝗜 - 𝗕𝗢𝗧 𝗠𝗗* ★
 
 ✦ *Conexión Sub-Bot Modo QR* ✦
 
@@ -42,7 +42,7 @@ let rtx = `★ *𝗞𝗜𝗥𝗜𝗧𝗢 - 𝗕𝗢𝗧 𝗠𝗗* ★
 
 ⚠ *Este código QR expira en 45 segundos. No pierdas tiempo.*`;
 
-let rtx2 = `★ *𝗞𝗜𝗥𝗜𝗧𝗢 - 𝗕𝗢𝗧 𝗠𝗗* ★
+let rtx2 = `★ *𝗠𝗜𝗧𝗦𝗨𝗥𝗜 - 𝗞𝗔𝗡𝗥𝗢𝗝𝗜 - 𝗕𝗢𝗧 𝗠𝗗* ★
 
 ✦ *Conexión Sub-Bot Modo Código* ✦
 
