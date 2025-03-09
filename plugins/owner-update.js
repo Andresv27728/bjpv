@@ -1,29 +1,49 @@
-import { exec } from 'child_process';
+import { execSync } from 'child_process';
 
-let handler = async (m, { conn }) => {
-  m.reply('🌷↛𝐴𝑐𝑡𝑢𝑎𝑙𝑖𝑧𝑎𝑛𝑑𝑜 𝑒𝑙 𝑏𝑜𝑡, 𝑒𝑠𝑝𝑒𝑟𝑒 𝑢𝑛 𝑚𝑜𝑚𝑒𝑛𝑡𝑜_°...');
+let handler = async (m, { conn, usedPrefix, command, args }) => {
 
-  exec('git pull', (err, stdout, stderr) => {
-    if (err) {
-      conn.reply(m.chat, `✖️ 𝐸𝑅𝑅𝑂𝑅:↛𝑁𝑜 𝑠𝑒 𝑝𝑢𝑑𝑜 𝑟𝑒𝑎𝑙𝑖𝑧𝑎𝑟 𝑙𝑎 𝑎𝑐𝑡𝑢𝑎𝑙𝑖𝑧𝑎𝑐𝑖𝑜𝑛_°.\nRazón: ${err.message}`, m, fake);
-      return;
+  await conn.reply(m.chat, '💐 Procesando solicitud de actualización...', m, fake); 
+
+  m.react('🐝'); 
+  try {
+    const stdout = execSync('git pull' + (m.fromMe && args.length ? ' ' + args.join(' ') : ''));
+    let messager = stdout.toString();
+
+    if (messager.includes('💐 Ya estoy actualizado.')) messager = '💐 Ya estoy actualizado a la última versión.';
+    if (messager.includes('💐 Actualizando.')) messager = '🐝 Procesando, espere un momento mientras me actualizo.\n\n' + stdout.toString();
+
+    await conn.reply(m.chat, messager, m, fake); 
+  } catch { 
+    try {
+      const status = execSync('git status --porcelain');
+
+      if (status.length > 0) {
+        const conflictedFiles = status.toString().split('\n').filter(line => line.trim() !== '').map(line => {
+          if (line.includes('.npm/') || line.includes('.cache/') || line.includes('tmp/') || line.includes('kiritoSession/') || line.includes('npm-debug.log')) {
+            return null;
+          }
+          return '*→ ' + line.slice(3) + '*';
+        }).filter(Boolean);
+
+        if (conflictedFiles.length > 0) {
+          const errorMessage = `🐝 Se han hecho cambios locales que entran en conflicto con las actualizaciones del repositorio. Para actualizar, reinstala el bot o realiza las actualizaciones manualmente.\n\n✰ *ARCHIVOS EN CONFLICTO*\n\n${conflictedFiles.join('\n')}`;
+          await conn.reply(m.chat, errorMessage, m, fake); 
+        }
+      }
+    } catch (error) {
+      console.error(error);
+      let errorMessage2 = '⚠️ Ocurrió un error inesperado.';
+      if (error.message) {
+        errorMessage2 += '\n⚠️ Mensaje de error: ' + error.message;
+      }
+      await conn.reply(m.chat, errorMessage2, m, fake); 
     }
-
-    if (stderr) {
-      console.warn('Advertencia durante la actualización:', stderr);
-    }
-
-    if (stdout.includes('Already up to date.')) {
-      conn.reply(m.chat, '🍡↛𝐸𝑙 𝑏𝑜𝑡 𝑦𝑎 𝑒𝑠𝑡𝑎 𝑎𝑐𝑡𝑢𝑎𝑙𝑖𝑧𝑎𝑑𝑜_°.', m, fake);
-    } else {
-      conn.reply(m.chat, `🌷↛𝐴𝑐𝑡𝑢𝑎𝑙𝑖𝑧𝑎𝑐𝑖𝑜𝑛 𝑟𝑒𝑎𝑙𝑖𝑧𝑎𝑑𝑎 𝑐𝑜𝑛 *𝐸𝑋𝐼𝑇𝑂_°*.\n\n${stdout}`, m, fake);
-    }
-  });
+  }
 };
 
-handler.help = ['update'];
+handler.help = ['update', 'actualizar'];
 handler.tags = ['owner'];
-handler.command = ['update'];
+handler.command = ['update', 'actualizar'];
 handler.rowner = true;
 
 export default handler;
