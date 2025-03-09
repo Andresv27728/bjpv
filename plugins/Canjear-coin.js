@@ -1,45 +1,37 @@
+let handler = async (m, { conn, text }) => {
+    let code = text.trim().toUpperCase();
 
-const { Client, LocalAuth } = require('whatsapp-web.js');
-
-let codes = {};
-let userCoins = {}; // Almacenamos las coins de los usuarios
-
-const client = new Client({
-    authStrategy: new LocalAuth(),
-    puppeteer: { headless: true }
-});
-
-function generateCode() {
-    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    let code = '';
-    for (let i = 0; i < 6; i++) {
-        code += characters.charAt(Math.floor(Math.random() * characters.length));
+    if (!code) {
+        return conn.reply(m.chat, `${emoji} Por favor, ingrese un código para canjear.`, m);
     }
-    return code;
+
+    let codesDB = global.db.data.codes || {};
+    let user = global.db.data.users[m.sender];
+
+    if (!codesDB[code]) {
+        return conn.reply(m.chat, `${emoji2} Código no válido.`, m);
+    }
+
+    if (codesDB[code].claimedBy.includes(m.sender)) {
+        return conn.reply(m.chat, `${emoji2} Ya has canjeado este código.`, m);
+    }
+
+    if (codesDB[code].claimedBy.length >= 5) {
+        return conn.reply(m.chat, `${emoji2} Este código fue agotado completamente... Espera a que el creador ponga otro código.`, m);
+    }
+
+    user.coin += codesDB[code].coin;
+    codesDB[code].claimedBy.push(m.sender);
+
+    let remaining = 50 - codesDB[code].claimedBy.length;
+
+    conn.reply(m.chat, `${emoji} Has canjeado el código con éxito. Has recibido ${codesDB[code].coin} ${moneda}.\nQuedan ${remaining} vacantes para canjear el código.`, m);
 }
 
-function addCoinsToUser(user, coins) {
-    if (!userCoins[user]) {
-        userCoins[user] = 0;
-    }
-    userCoins[user] += coins;
-}
+handler.help = ['canjear <código>'];
+handler.tags = ['economia'];
+handler.command = ['canjear'];
+handler.group = true;
+handler.register = true;
 
-client.on('ready', () => {
-    console.log('Bot está listo y funcionando!');
-});
-
-client.on('message', async (message) => {
-    const text = message.body.trim();
-    const sender = message.from;
-
-    if (text.startsWith('!codigo')) {
-        const code = generateCode();
-        const coins = Math.floor(Math.random() * 1000) + 100;
-        codes[code] = { coins: coins, users: [] };
-
-        message.reply(`¡Código generado! El código es *code*. Puedes canjear *{coins}* coins. Solo 5 personas pueden usarlo.`);
-    }
-
-    if (text.startsWith('!canjear')) {
-        const code = text.split(' ')[1];
+export default handler;
