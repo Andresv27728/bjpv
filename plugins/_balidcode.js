@@ -1,3 +1,6 @@
+// Creado por Deylin no quites creditos.
+
+
 const handler = async (m, { conn }) => {
   await conn.sendMessage(m.chat, { 
     text: 'Uso correcto del comando:',
