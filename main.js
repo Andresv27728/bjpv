@@ -483,8 +483,3 @@ await purgeOldFiles()
 console.log(chalk.bold.cyanBright(`\n╭» 🟠 ARCHIVOS 🟠\n│→ ARCHIVOS RESIDUALES ELIMINADAS\n╰― ― ― ― ― ― ― ― ― ― ― ― ― ― ― ― ― ― ― 🗑️♻️`))}, 1000 * 60 * 10)
 
 _quickTest().then(() => conn.logger.info(chalk.bold(`🍬  H E C H O\n`.trim()))).catch(console.error)
-
-async function joinChannels(conn) {
-for (const channelId of Object.values(global.ch)) {
-await conn.newsletterFollow(channelId).catch(() => {})
-}}
