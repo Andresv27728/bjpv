@@ -215,14 +215,21 @@ if (opts['autocleartmp'] && (global.support || {}).find) (tmp = [os.tmpdir(), 't
 if (opts['server']) (await import('./server.js')).default(global.conn, PORT);
 
 async function connectionUpdate(update) {
-const {connection, lastDisconnect, isNewLogin} = update;
-global.stopped = connection;
-if (isNewLogin) conn.isInit = true;
-const code = lastDisconnect?.error?.output?.statusCode || lastDisconnect?.error?.output?.payload?.statusCode;
-if (code && code !== DisconnectReason.loggedOut && conn?.ws.socket == null) {
-await global.reloadHandler(true).catch(console.error);
-global.timestamp.connect = new Date;
+const { connection, lastDisconnect } = update;
+if (connection === 'close') {
+const shouldReconnect = (lastDisconnect.error as Boom)?.output?.statusCode !== DisconnectReason.loggedOut;
+console.log('Conexión cerrada debido a ', lastDisconnect.error, ', reconectando ', shouldReconnect);
+if (shouldReconnect && lastDisconnect.error?.output?.statusCode === DisconnectReason.badSession) {
+console.log('Sesión inválida, borrando archivo creds.json y reconectando...');
+// Borra el archivo creds.json y vuelve a autenticar
+fs.unlinkSync('creds.json');
+  startSock(); 
+} else if (shouldReconnect) {
+  startSock();}
+     }
 }
+
+  
 if (global.db.data == null) loadDatabase();
 if (update.qr != 0 && update.qr != undefined || methodCodeQR) {
 if (opcion == '1' || methodCodeQR) {
