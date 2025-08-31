@@ -2,7 +2,7 @@ node:internal/modules/package_json_reader:256
   throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);
         ^
 
-Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'yargs' imported from /app/index.js
+Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'cfonts' imported from /app/index.js
     at Object.getPackageJSONURL (node:internal/modules/package_json_reader:256:9)
     at packageResolve (node:internal/modules/esm/resolve:768:81)
     at moduleResolve (node:internal/modules/esm/resolve:854:18)
