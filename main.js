@@ -215,33 +215,40 @@ if (opts['autocleartmp'] && (global.support || {}).find) (tmp = [os.tmpdir(), 't
 if (opts['server']) (await import('./server.js')).default(global.conn, PORT);
 
 async function connectionUpdate(update) {
-const { connection, lastDisconnect } = update;
-if (connection === 'close') {
-const shouldReconnect = (lastDisconnect.error as Boom)?.output?.statusCode !== DisconnectReason.loggedOut;
-console.log('Conexión cerrada debido a ', lastDisconnect.error, ', reconectando ', shouldReconnect);
-if (shouldReconnect && lastDisconnect.error?.output?.statusCode === DisconnectReason.badSession) {
-console.log('Sesión inválida, borrando archivo creds.json y reconectando...');
-// Borra el archivo creds.json y vuelve a autenticar
-fs.unlinkSync('creds.json');
-  startSock(); 
-} else if (shouldReconnect) {
-  startSock();}
-     }
-}
+    const { connection, lastDisconnect } = update
+    if (connection === 'close') {
+        const shouldReconnect = lastDisconnect.error?.output?.statusCode !== DisconnectReason.loggedOut
+        console.log('Conexión cerrada debido a ', lastDisconnect.error, ', reconectando ', shouldReconnect)
+        if (shouldReconnect && lastDisconnect.error?.output?.statusCode === DisconnectReason.badSession) {
+            console.log('Sesión inválida, borrando archivo creds.json y reconectando...');
+            try {
+                if (fs.existsSync(join(global.sessions, 'creds.json'))) {
+                    fs.unlinkSync(join(global.sessions, 'creds.json'));
+                }
+            } catch (err) {
+                console.error('Failed to delete creds.json:', err);
+            }
+            await global.reloadHandler(true).catch(console.error)
+        } else if (shouldReconnect) {
+            await global.reloadHandler(true).catch(console.error)
+        }
+    }
 
-  
-if (global.db.data == null) loadDatabase();
-if (update.qr != 0 && update.qr != undefined || methodCodeQR) {
-if (opcion == '1' || methodCodeQR) {
-console.log(chalk.bold.yellow(`\n✅ ESCANEA EL CÓDIGO QR EXPIRA EN 45 SEGUNDOS`))}
-}
-if (connection == 'open') {
-console.log(boxen(chalk.bold(' ¡CONECTADO CON WHATSAPP! '), { borderStyle: 'round', borderColor: 'green', title: chalk.green.bold('● CONEXIÓN ●'), titleAlignment: '', float: '' }))
-await joinChannels(conn)}
-let reason = new Boom(lastDisconnect?.error)?.output?.statusCode
-if (connection === 'close') {
-if (reason === DisconnectReason.badSession) {
-console.log(chalk.bold.cyanBright(`\n⚠️ SIN CONEXIÓN, BORRE LA CARPETA ${global.sessions} Y ESCANEA EL CÓDIGO QR ⚠️`))
+    if (global.db.data == null) loadDatabase()
+
+    if (update.qr != 0 && update.qr != undefined || methodCodeQR) {
+        if (opcion == '1' || methodCodeQR) {
+            console.log(chalk.bold.yellow(`\n✅ ESCANEA EL CÓDIGO QR EXPIRA EN 45 SEGUNDOS`))
+        }
+    }
+    if (connection == 'open') {
+        console.log(boxen(chalk.bold(' ¡CONECTADO CON WHATSAPP! '), { borderStyle: 'round', borderColor: 'green', title: chalk.green.bold('● CONEXIÓN ●'), titleAlignment: '', float: '' }))
+        await joinChannels(conn)
+    }
+    let reason = new Boom(lastDisconnect?.error)?.output?.statusCode
+    if (connection === 'close') {
+        if (reason === DisconnectReason.badSession) {
+        console.log(chalk.bold.cyanBright(`\n⚠️ SIN CONEXIÓN, BORRE LA CARPETA ${global.sessions} Y ESCANEA EL CÓDIGO QR ⚠️`))
 } else if (reason === DisconnectReason.connectionClosed) {
 console.log(chalk.bold.magentaBright(`\n╭┄┄┄┄┄┄┄┄┄┄┄┄┄┄ • • • ┄┄┄┄┄┄┄┄┄┄┄┄┄┄ ☹\n┆ ⚠️ CONEXION CERRADA, RECONECTANDO....\n╰┄┄┄┄┄┄┄┄┄┄┄┄┄┄ • • • ┄┄┄┄┄┄┄┄┄┄┄┄┄┄ ☹`))
 await global.reloadHandler(true).catch(console.error)

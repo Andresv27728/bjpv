@@ -3,7 +3,7 @@ import { createRequire } from 'module';
 import { fileURLToPath } from 'url';
 import { setupMaster, fork } from 'cluster';
 import { watchFile, unwatchFile } from 'fs';
-import cfonts from 'cfonts';
+// import cfonts from 'cfonts';
 import { createInterface } from 'readline';
 import yargs from 'yargs';
 import chalk from 'chalk';
@@ -11,33 +11,33 @@ console.log('\n✰ Iniciando Mitsuri Kanroji MD ✰');
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const require = createRequire(__dirname);
 const { name, description, author, version } = require(join(__dirname, './package.json'));
-const { say } = cfonts;
+// const { say } = cfonts;
 const rl = createInterface(process.stdin, process.stdout);
-say('Mitsuri-Kanroji-MD', {
-font: 'block',
-align: 'center',
-colors: ['yellow']
-});
-say(`Multi Device`, {
-font: 'chrome',
-align: 'center',
-colors: ['redBright']
-});
-say(`Developed By • Katsuki Bakugo`, {
-font: 'console',
-align: 'center',
-colors: ['blueBright']
-});
+// say('Mitsuri-Kanroji-MD', {
+// font: 'block',
+// align: 'center',
+// colors: ['yellow']
+// });
+// say(`Multi Device`, {
+// font: 'chrome',
+// align: 'center',
+// colors: ['redBright']
+// });
+// say(`Developed By • Katsuki Bakugo`, {
+// font: 'console',
+// align: 'center',
+// colors: ['blueBright']
+// });
 var isRunning = false;
 function start(file) {
 if (isRunning) return;
 isRunning = true;
 let args = [join(__dirname, file), ...process.argv.slice(2)];
-say([process.argv[0], ...args].join(' '), {
-font: 'console',
-align: 'center',
-colors: ['candy']
-});
+// say([process.argv[0], ...args].join(' '), {
+// font: 'console',
+// align: 'center',
+// colors: ['candy']
+// });
 setupMaster({
 exec: args[0],
 args: args.slice(1),
