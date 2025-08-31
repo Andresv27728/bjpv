@@ -40,8 +40,8 @@ global.baileys = 'V 6.7.9'
 global.languaje = 'Español'
 global.vs = '2.1.5'
 global.vsJB = '5.0'
-global.nameqr = '𝑴𝒊𝒕𝒔𝒖𝒓𝒊 𝑲𝒂𝒏𝒓𝒐𝒋𝒊-𝑴𝑫'
-global.namebot = '🍡𝑀𝑖𝑡𝑠𝑢𝑟𝑖 𝐾𝑎𝑛𝑟𝑜𝑗𝑖-𝑀𝐷💐'
+global.nameqr = 'YO SOY YO'
+global.namebot = 'YO SOY YO'
 global.sessions = 'Sessions'
 global.jadi = 'JadiBots' 
 global.yukiJadibts = true
@@ -49,16 +49,16 @@ global.yukiJadibts = true
 //*─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─*
 
 global.packsticker =`°.⎯⃘̶⎯̸⎯ܴ⎯̶᳞͇ࠝ⎯⃘̶⎯̸⎯ܴ⎯̶᳞͇ࠝ⎯⃘̶⎯̸.°\n✦ Bσƚ:\n✦ Pɾσριҽƚαɾισ:\n✦ Fҽƈԋα ԃҽ Cɾҽαƈιóɳ:\n✦ Hσɾα ԃҽ Cɾҽαƈιóɳ:\n♾━━━━━━━━`
-global.packsticker2 = `━━━━━━━━♾\n✿ 𝑴𝒊𝒕𝒔𝒖𝒓𝒊 𝑲𝒂𝒏𝒓𝒐𝒋𝒊-𝑴𝑫\n✰🙃𝑆𝑖𝑛 "𝑃𝑎𝑙𝑎" 𝐵𝑟𝑎𝑠~📓\n⇝ ${moment.tz('America/Los_Angeles').format('DD/MM/YY')}\n⇝ ${moment.tz('America/Los_Angeles').format('HH:mm:ss')} \n°.⎯⃘̶⎯̸⎯ܴ⎯̶᳞͇ࠝ⎯⃘̶⎯̸⎯ܴ⎯̶᳞͇ࠝ⎯⃘̶⎯̸.°\n\nѕτιϲκєя ϐγ: '𝘔𝘪𝘵𝘴𝘶𝘳𝘶 𝘒𝘢𝘯𝘳𝘰𝘫𝘺-𝘔𝘋`
+global.packsticker2 = `━━━━━━━━♾\n✿ YO SOY YO\n✰🙃𝑆𝑖𝑛 "𝑃𝑎𝑙𝑎" 𝐵𝑟𝑎𝑠~📓\n⇝ ${moment.tz('America/Los_Angeles').format('DD/MM/YY')}\n⇝ ${moment.tz('America/Los_Angeles').format('HH:mm:ss')} \n°.⎯⃘̶⎯̸⎯ܴ⎯̶᳞͇ࠝ⎯⃘̶⎯̸⎯ܴ⎯̶᳞͇ࠝ⎯⃘̶⎯̸.°\n\nѕτιϲκєя ϐγ: 'YO SOY YO`
 
 //*─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─*
 
-global.packname = `✫𝕄𝕚𝕥𝕤𝕦𝕣𝕚 𝕂𝕒𝕟𝕣𝕠𝕛𝕚-𝕄𝔻`
-global.botname = '★𝑀𝑖𝑡𝑠𝑢𝑟𝑖 𝐾𝑎𝑛𝑟𝑜𝑗𝑖-𝑀𝐷⁂'
-global.wm = '✦𝕄𝕚𝕥𝕤𝕦𝕣𝕚 𝕂𝕒𝕟𝕣𝕠𝕛𝕚-𝕄𝔻❉'
+global.packname = `YO SOY YO`
+global.botname = 'YO SOY YO'
+global.wm = 'YO SOY YO'
 global.author = 'Made By 🙃𝑆𝑖𝑛 "𝑃𝑎𝑙𝑎" 𝐵𝑟𝑎𝑠~📓'
 global.dev = '© ⍴᥆ᥕᥱrᥱძ ᑲᥡ 🙃𝑆𝑖𝑛 "𝑃𝑎𝑙𝑎" 𝐵𝑟𝑎𝑠~📓'
-global.textbot = '🍧𝐌𝐢𝐭𝐬𝐮𝐫𝐢 𝐊𝐚𝐧𝐫𝐨𝐣𝐢-𝐌𝐃🌺 • Powered By 🙃𝑆𝑖𝑛 "𝑃𝑎𝑙𝑎" 𝐵𝑟𝑎𝑠~📓'
+global.textbot = 'YO SOY YO • Powered By 🙃𝑆𝑖𝑛 "𝑃𝑎𝑙𝑎" 𝐵𝑟𝑎𝑠~📓'
 global.numcreador = '573133374132'
 global.moneda = 'Coins'
 global.welcom1 = 'Edita Con #setwelcome'
